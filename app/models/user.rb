@@ -8,9 +8,7 @@ class User < ApplicationRecord
   has_many :user_answers
   has_many :teacher_divisions
   has_many :divisions, through: :teacher_divisions
-  belongs_to :division
+  belongs_to :division, optional: true
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :role, inclusion: { in: %w(teacher student admin) }
+  validates :role, inclusion: { in: %w[teacher student admin] }
 end
