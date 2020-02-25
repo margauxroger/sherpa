@@ -3,4 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :messages
+  has_many :user_answers
+  has_many :teacher_divisions
+  has_many :divisions, through: :teacher_divisions
+  belongs_to :division
 end

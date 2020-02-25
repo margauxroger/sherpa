@@ -10,10 +10,97 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_173548) do
+ActiveRecord::Schema.define(version: 2020_02_25_104342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chapters", force: :cascade do |t|
+    t.string "name"
+    t.text "content"
+    t.bigint "material_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["material_id"], name: "index_chapters_on_material_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.bigint "division_id"
+    t.bigint "material_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["division_id"], name: "index_courses_on_division_id"
+    t.index ["material_id"], name: "index_courses_on_material_id"
+  end
+
+  create_table "divisions", force: :cascade do |t|
+    t.string "name"
+    t.string "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.text "comment"
+    t.integer "rating"
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_feedbacks_on_course_id"
+  end
+
+  create_table "flashcards", force: :cascade do |t|
+    t.text "question"
+    t.text "answer"
+    t.bigint "chapter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chapter_id"], name: "index_flashcards_on_chapter_id"
+  end
+
+  create_table "forums", force: :cascade do |t|
+    t.string "topic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_forums_on_course_id"
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "forum_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["forum_id"], name: "index_messages_on_forum_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "teacher_divisions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "division_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["division_id"], name: "index_teacher_divisions_on_division_id"
+    t.index ["user_id"], name: "index_teacher_divisions_on_user_id"
+  end
+
+  create_table "user_answers", force: :cascade do |t|
+    t.text "answer_student"
+    t.bigint "user_id"
+    t.bigint "flashcard_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flashcard_id"], name: "index_user_answers_on_flashcard_id"
+    t.index ["user_id"], name: "index_user_answers_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +110,20 @@ ActiveRecord::Schema.define(version: 2020_02_24_173548) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "grade", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chapters", "materials"
+  add_foreign_key "courses", "divisions"
+  add_foreign_key "courses", "materials"
+  add_foreign_key "feedbacks", "courses"
+  add_foreign_key "flashcards", "chapters"
+  add_foreign_key "messages", "forums"
+  add_foreign_key "messages", "users"
+  add_foreign_key "teacher_divisions", "divisions"
+  add_foreign_key "teacher_divisions", "users"
+  add_foreign_key "user_answers", "flashcards"
+  add_foreign_key "user_answers", "users"
 end
