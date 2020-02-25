@@ -18,3 +18,8 @@ User.create!(
   password: "azerty",
 )
 
+User.create!(
+  email: "roger@gmail.com",
+  password: "azerty",
+  role: "teacher",
+)
