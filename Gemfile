@@ -16,7 +16,7 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
-gem 'ankirb'
+
 
 
 group :development do
