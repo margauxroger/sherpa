@@ -1,0 +1,45 @@
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-sherpa">
+    <a class="navbar-brand avatar" href="/">
+      <img src="https://image.flaticon.com/icons/svg/1854/1854382.svg">
+  </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item <%= 'active' if current_page?(teachers_root_path) %>">
+            <%= link_to "Dashboard", teachers_root_path, class: "nav-link mr-3" %>
+          </li>
+          <li class="nav-item <%= 'active' if current_page?(root_path) %>">
+            <%= link_to "Courses", root_path, class: "nav-link mr-3" %>
+          </li>
+          <li class="nav-item <%= 'active' if current_page?(root_path) %>  ">
+            <%= link_to "Flashcards", root_path, class: "nav-link mr-4" %>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a class="mr-4"><%= current_user.email %></a>
+          </li>
+          <li class="nav-item dropdown ml-3">
+
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://picsum.photos/200" />
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">My Profile</a>
+              <a class="dropdown-item" href="#">Notifications</a>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item mr-3">
+            <a class="nav-link" id="color1" href="/users/sign_up">Sign up</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" id="color2" href="/users/sign_in">Sign in</a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
