@@ -6,5 +6,4 @@ class Teachers::TeachersController < ApplicationController
     @teacher = current_user
     authorize @teacher
   end
-
 end
