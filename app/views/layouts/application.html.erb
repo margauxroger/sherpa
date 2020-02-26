@@ -8,8 +8,9 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700|Source+Sans+Pro:300,400,600&display=swap" rel="stylesheet">
-
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
   </head>
   <body>
     <%= render 'shared/navbar_top' %>
@@ -18,5 +19,7 @@
     <%= javascript_include_tag 'application' %>
 
     <%= javascript_pack_tag 'application' %>
+
+
   </body>
 </html>
