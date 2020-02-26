@@ -6,5 +6,4 @@ class Teachers::TeachersController < ApplicationController
     authorize([:teachers, current_user])
     current_user.courses
   end
-
 end

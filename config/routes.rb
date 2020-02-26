@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
   resources :materials, only: [:index, :show, :edit, :update]
-  resources :courses, only: [:show]
+  resources :courses, only: [:show] do
+    resources :flashcards, only: [:index, :create, :update, :destroy]
+  end
   resources :forums, only: [:show]
 end
