@@ -1,7 +1,10 @@
 class MaterialPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
+
+  def update?
+    user.teacher?
+  end
+
+  def edit?
+    update?
   end
 end

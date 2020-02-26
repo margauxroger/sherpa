@@ -1,0 +1,6 @@
+<div class="container mt-5">
+  <h1>I'm a student <%= params[:id] %> of the division <%= params[:course_id] %> individual dashboard</h1>
+  Pay attention to the order of params !
+
+  <div><%= link_to 'Back to class', teachers_course_path(params[:course_id]), class: "btn btn-primary" %></div>
+</div>

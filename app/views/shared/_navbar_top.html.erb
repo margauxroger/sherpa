@@ -13,8 +13,8 @@
           <li class="nav-item <%= 'active' if current_page?(teachers_root_path) %>">
             <%= link_to "Dashboard", teachers_root_path, class: "nav-link mr-3" %>
           </li>
-          <li class="nav-item <%= 'active' if current_page?(root_path) %>">
-            <%= link_to "Courses", root_path, class: "nav-link mr-3" %>
+          <li class="nav-item <%= 'active' if current_page?(materials_path) %>">
+            <%= link_to "Courses", materials_path, class: "nav-link mr-3" %>
           </li>
           <li class="nav-item <%= 'active' if current_page?(root_path) %>  ">
             <%= link_to "Flashcards", root_path, class: "nav-link mr-4" %>
@@ -33,9 +33,6 @@
             </div>
           </li>
         <% else %>
-          <li class="nav-item mr-3">
-            <a class="nav-link" id="color1" href="/users/sign_up">Sign up</a>
-          </li>
           <li class="nav-item mr-3">
             <a class="nav-link" id="color2" href="/users/sign_in">Sign in</a>
           </li>
