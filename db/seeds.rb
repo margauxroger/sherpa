@@ -22,6 +22,7 @@ User.create!(
 )
 
 User.create!(
+
   email:    "diogo.heineken@gmail.com",
   password: "azerty",
   role:     "teacher"
