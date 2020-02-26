@@ -14,10 +14,20 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
 
+
   private
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) ||
+    if resource.is_a?(User) && resource.role = "teacher"
+      teachers_root_path
+    else
+      super
+    end
   end
 
 end

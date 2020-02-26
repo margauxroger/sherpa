@@ -13,10 +13,11 @@ Rails.application.routes.draw do
 
   namespace :teachers do
     root to: 'teachers#show'
-    resources :courses, only: [:show] do
+      resources :courses, only: [:show] do
       resources :students, only: [:index, :show]
     end
   end
+  resources :materials, only: [:index, :show, :edit, :update]
   resources :courses, only: [:show]
   resources :forums, only: [:show]
 end

@@ -3,8 +3,8 @@ class Teachers::TeachersController < ApplicationController
   # before_action :verify_authorized, except: :show, unless: :skip_pundit?
 
   def show
-    @teacher = current_user
-    authorize @teacher
+    authorize([:teachers, current_user])
+    current_user.courses
   end
 
 end

@@ -12,4 +12,12 @@ class User < ApplicationRecord
 
 
   validates :role, inclusion: { in: %w[teacher student admin] }
+
+  def teacher?
+    role == "teacher"
+  end
+
+  def courses
+    self.divisions.map(&:courses).flatten
+  end
 end
