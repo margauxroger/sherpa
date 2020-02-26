@@ -1,4 +1,6 @@
-let chart = document.getElementById('myChart').getContext('2d');
+let chart = document.getElementById('myChart')
+if (chart) {
+chart.getContext('2d');
 let myChart = new Chart(chart, {
     type: 'doughnut',
     data: {
@@ -41,3 +43,4 @@ let myChart = new Chart(chart, {
         }
     }
 });
+}
