@@ -13,6 +13,7 @@
 
 
 
+<%= render 'shared/flashcards' %>
 
 
 
@@ -54,95 +55,3 @@
 
 
 
-<div id="flashcards-container" class="flex-container-column">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <a class="btn-go-back" href="/teachers/courses">
-          <i class="mdi mdi-chevron-left"></i> <font color="white"> < Back to Course</font>
-</a>      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-12 col-sm-12 col-md-9 col-lg-7 col-xl-6">
-        <div class="deck-stats">
-          <div class="deck-stats-message">
-
-  <p>You only have <strong>10</strong> cards in this deck keep going :)</p>
-
-          </div>
-
-          <div class="deck-stats-progress">
-            <div class="progress">
-  <div class="mastered-progress-bar" style="width: 0.0%;"></div>
-  <div class="not-mastered-progress-bar" style="width: 0.0%;"></div>
-</div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-12 col-sm-12 col-md-9 col-lg-7 col-xl-6">
-        <div class="flashcard-container">
-          <div id="flashcard">
-  <div class="cardSlideIn">
-    <div class="cardSpinner"></div>
-
-    <div class="flashcard-game-card-front">
-      <div class="flashcard-game-card">
-        <div class="flashcard-game-card-header">
-          <div class="flashcard-game-card-title">
-
-            <h4><i class="fas fa-calculator"></i> <font color="white">Chapter 1: Linear Equation</h4></font>
-          </div>
-          <div class="flashcard-game-card-controls">
-              <i class="mdi mdi-key flashcard-game-card-controls-icon" data-toggle="tooltip" data-placement="top" title="" data-original-title="Key concept"></i>
-          </div>
-        </div>
-        <div class="flashcard-game-card-content">
-          <div class="flashcard-game-card-content-markdown">
-            <p class="flashcard-question"><%=@card.front.content %></p>
-
-          </div>
-          <textarea class="form-control" id="user-guess-text-area" autofocus="" rows="4" placeholder="Enter your answer here (alt + enter to flip card)"></textarea>
-          <a class="btn-turn-around" href="javascript:void(0)">
-            <i class="mdi mdi-refresh"></i> <font color="white"><i class="fas fa-undo"></i>flip card </font>
-</a>        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="flashcard-game-card-back invisible">
-        <div class="flashcard-game-card bg-white">
-          <div class="flashcard-game-card-header">
-            <div class="flashcard-game-card-title">
-              <!--?xml version="1.0" encoding="UTF-8"?-->
-
-
-            </div>
-            <div class="flashcard-game-card-controls">
-              <a data-toggle="modal" data-target="#issueModal" data-placement="top" title="" id="reportBugAction" class="icon-link" href="#" data-original-title="Report a bug">
-                <i class="mdi mdi-bug"></i>
-</a>                <a class="bookmark-action icon-link bookmark-action-rest_api" data-toggle="tooltip" data-placement="top" title="" data-remote="true" rel="nofollow" data-method="post" href="/camps/352/bookmarked_cards?bookmarked_card%5Bcard_slug%5D=rest_api&amp;bookmarked_card%5Bpath%5D=06-Projects%2F02-i18n" data-original-title="Add to bookmarks">
-    <i class="mdi mdi-bookmark-outline"></i>
-</a>
-            </div>
-          </div>
-          <div class="flashcard-game-card-content">
-            <p>It’s an API using:</p>
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<%= @card.back.content %>
