@@ -1,1 +1,47 @@
 // Specific CSS for your home-page
+body {
+  background-color: $sherpa-light-violet;
+}
+
+.home-container {
+  width: 95%;
+  margin: 16px auto;
+  box-shadow: 0 0 3px rgba(0,0,0,0.8);
+  border-radius: 10px;
+}
+
+.home-content-teachers,
+.home-content-students {
+  display: flex;
+  justify-content: space-around;
+  height: 45%;
+  width: 85%;
+  margin: 5em auto;
+}
+
+.home-content-card {
+  height: 100%;
+  width: 40%;
+  background: white;
+  border-radius: 5px;
+  color: black;
+  padding: 32px;
+  h5 {
+    font-weight: bolder;
+    width: 60%;
+    margin-bottom: 32px;
+    font-size: 20px
+  }
+  p {
+    width: 90%;
+    font-size: 18px;
+  }
+}
+
+.card-shadow-right {
+  box-shadow: 30px 30px 5px 0px rgba(0,0,0,0.1);
+}
+
+.card-shadow-left {
+  box-shadow: -30px 30px 5px 0px rgba(0,0,0,0.1);
+}
