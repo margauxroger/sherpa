@@ -385,3 +385,8 @@ teacher_division1 = TeacherDivision.create!(
 teacher_division2 = TeacherDivision.create!(
   user: teacher2,
   division: div2)
+
+teacher_division3 = TeacherDivision.create!(
+  user: teacher1,
+  division: div4)
+
