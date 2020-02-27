@@ -14,8 +14,10 @@ class Chapter < ApplicationRecord
     self.flashcards.each do |flashcard|
       flashcard.user_answers.where("user_id = ?", student.id).each do |student_flashcard|
         student_flashcards << student_flashcard
+        # p flashcard
       end
     end
+    student_flashcards
   end
 
 end
