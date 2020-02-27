@@ -6,4 +6,8 @@ class Material < ApplicationRecord
 
   validates :name, presence: true
   validates :category, presence: true
+
+  def flashcards_number
+    self.chapters.map { |chapter| chapter.flashcards_number }.sum
+  end
 end

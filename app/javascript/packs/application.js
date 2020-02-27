@@ -1,5 +1,7 @@
 import "bootstrap";
-import "../components/charts_teacher_home"
+
+import { graph  } from "../components/charts_teacher_home";
+graph();
 
 import { initMarkdown } from 'pluggins/init_markdown';
 

@@ -8,6 +8,15 @@
 require 'open-uri'
 require 'nokogiri'
 
+def student_trains_on_flashcards(student, material)
+  material.flashcards.each do |flashcard|
+    UserAnswer.create!(user_id: student.id,
+                       flashcard_id: flashcard.id,
+                       status: UserAnswer::STATUSES[rand(0..2)],
+                       )
+  end
+end
+
 puts "Destroying all"
 
 User.destroy_all
@@ -36,6 +45,8 @@ div1 = Division.create!(
          )
 40.times do
   User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
     division_id: div1.id,
@@ -48,6 +59,8 @@ div2 = Division.create!(
          )
 40.times do
   User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
     division_id: div2.id,
@@ -60,6 +73,8 @@ div3 = Division.create!(
          )
 40.times do
   User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
     division_id: div3.id,
@@ -72,6 +87,8 @@ div4 = Division.create!(
          )
 40.times do
   User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
     division_id: div4.id,
@@ -385,3 +402,16 @@ teacher_division1 = TeacherDivision.create!(
 teacher_division2 = TeacherDivision.create!(
   user: teacher2,
   division: div2)
+
+teacher_division3 = TeacherDivision.create!(
+  user: teacher1,
+  division: div4)
+
+div1.users.each do |student|
+  student_trains_on_flashcards(student, hist_term_s)
+end
+
+div2.users.each do |student|
+  student_trains_on_flashcards(student, maths_prem_es)
+end
+
