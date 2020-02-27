@@ -1,9 +1,15 @@
 <div class="container mt-5 d-flex justify-content-around">
-  <% @teacher.courses.each do |course| %>
-  <% @material = course.material %>
-  <%= link_to @material.name, material_path(@material), class: "material-card" %>
-
+  <div class="row">
+  <% @levels.each do |level| %>
+    <div class="col-3">
+      <h2 class="mb-3"><%= level %></h2>
+      <% @teacher.courses.each do |course| %>
+      <% if course.division.level == level %>
+      <%= link_to course.material.name, material_path(course.material), class: "material-card" %>
+      <% end %>
+      <% end %>
+    </div>
   <% end %>
-
+  </div>
 
 </div>
