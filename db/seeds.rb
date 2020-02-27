@@ -389,23 +389,14 @@ puts "Assigning awesome students to brilliant teachers"
 
 course1 = Course.create!(
             division: div1,
-            material: hist_term_s)
+            material: hist_term_s,
+            user_id: teacher1.id)
 
 course2 = Course.create!(
             division: div2,
-            material: maths_prem_es)
+            material: maths_prem_es,
+            user_id: teacher2.id)
 
-teacher_division1 = TeacherDivision.create!(
-  user: teacher1,
-  division: div1)
-
-teacher_division2 = TeacherDivision.create!(
-  user: teacher2,
-  division: div2)
-
-teacher_division3 = TeacherDivision.create!(
-  user: teacher1,
-  division: div4)
 
 div1.users.each do |student|
   student_trains_on_flashcards(student, hist_term_s)
