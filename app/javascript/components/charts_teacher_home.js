@@ -1,4 +1,3 @@
-
 const graph = () => {
   let charts = document.querySelectorAll('.chart-teacher-show');
     if (charts) {

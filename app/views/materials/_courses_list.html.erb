@@ -1,0 +1,9 @@
+<div class="container mt-5 d-flex justify-content-around">
+  <% @teacher.courses.each do |course| %>
+  <% @material = course.material %>
+  <%= link_to @material.name, material_path(@material), class: "material-card" %>
+
+  <% end %>
+
+
+</div>

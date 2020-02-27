@@ -389,3 +389,4 @@ teacher_division2 = TeacherDivision.create!(
 teacher_division3 = TeacherDivision.create!(
   user: teacher1,
   division: div4)
+
