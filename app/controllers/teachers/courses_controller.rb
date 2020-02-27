@@ -4,4 +4,5 @@ class Teachers::CoursesController < ApplicationController
     @course  = Course.find(params[:id])
     authorize([:teachers, @course])
   end
+
 end

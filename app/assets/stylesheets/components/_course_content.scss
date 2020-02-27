@@ -1,0 +1,45 @@
+.card-body-chapter-content {
+  background: rgba(255,255,255, 0.2);
+}
+
+.material-card {
+  height: 180px;
+  width:400px;
+  opacity: 0.7;
+  border-width: 1px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+
+  font-size: 32px;
+  color: #9c47fc;
+  background: -webkit-linear-gradient(#9c47fc, #356ad2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+
+
+}
+
+#preview, #editor {
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+#preview {
+  min-height: 100px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px 12px;
+  text-align: left;
+}
+
+#preview img {
+  max-width: 100%;
+}
