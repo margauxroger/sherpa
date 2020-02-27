@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :teacher_divisions
   has_many :divisions, through: :teacher_divisions
   belongs_to :division, optional: true
-
+  has_many :suggestions
 
   validates :role, inclusion: { in: %w[teacher student admin] }
 
