@@ -8,3 +8,7 @@ import { initMarkdown } from 'pluggins/init_markdown';
 import "../components/footer"
 
 initMarkdown();
+
+import { initTranslateMarkdown } from 'pluggins/init_turndown';
+
+initTranslateMarkdown();

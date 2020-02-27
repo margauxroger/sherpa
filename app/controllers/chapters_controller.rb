@@ -10,10 +10,24 @@ class ChaptersController < ApplicationController
     @material = Material.find(params[:chapter][:material])
     @chapter.material = @material
     if @chapter.save
-      redirect_to teachers_root_path
+      redirect_to materials_path
     else
-      render :new
+      render 'shared/navbar_teacher_courses'
     end
+  end
+
+  def edit
+  end
+
+  def update
+    authorize current_user
+    @chapter = Chapter.find(params[:id])
+    if @chapter.update(params_chapter)
+      redirect_to materials_path
+    else
+      render 'shared/navbar_teacher_courses'
+    end
+
   end
 
   private

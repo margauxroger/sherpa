@@ -1,6 +1,6 @@
 class Course < ApplicationRecord
   belongs_to :division
   belongs_to :material
-  has_many :forums
+  belongs_to :user
   has_many :feedbacks
 end

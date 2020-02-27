@@ -45,6 +45,8 @@ div1 = Division.create!(
          )
 40.times do
   User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
     division_id: div1.id,
@@ -57,6 +59,8 @@ div2 = Division.create!(
          )
 40.times do
   User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
     division_id: div2.id,
@@ -69,6 +73,8 @@ div3 = Division.create!(
          )
 40.times do
   User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
     division_id: div3.id,
@@ -81,6 +87,8 @@ div4 = Division.create!(
          )
 40.times do
   User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
     division_id: div4.id,
@@ -381,23 +389,14 @@ puts "Assigning awesome students to brilliant teachers"
 
 course1 = Course.create!(
             division: div1,
-            material: hist_term_s)
+            material: hist_term_s,
+            user_id: teacher1.id)
 
 course2 = Course.create!(
             division: div2,
-            material: maths_prem_es)
+            material: maths_prem_es,
+            user_id: teacher2.id)
 
-teacher_division1 = TeacherDivision.create!(
-  user: teacher1,
-  division: div1)
-
-teacher_division2 = TeacherDivision.create!(
-  user: teacher2,
-  division: div2)
-
-teacher_division3 = TeacherDivision.create!(
-  user: teacher1,
-  division: div4)
 
 div1.users.each do |student|
   student_trains_on_flashcards(student, hist_term_s)

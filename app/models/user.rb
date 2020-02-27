@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :messages
-  has_many :user_answers
-  has_many :teacher_divisions
-  has_many :divisions, through: :teacher_divisions
+  has_many :user_answers, dependent: :destroy
+  has_many :courses
+  has_many :divisions, through: :courses
+  has_many :materials, through: :courses
   belongs_to :division, optional: true
   has_many :suggestions
 
