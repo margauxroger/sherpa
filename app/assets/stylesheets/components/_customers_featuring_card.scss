@@ -1,0 +1,24 @@
+.customers-featuring-card {
+  width: 90%;
+  margin: 0 auto 32px auto;
+  background: $sherpa-violet;
+  position: relative;
+  border-radius: 4px;
+  padding: 32px 40px;
+  color: white;
+  height: 16em;
+  position: relative;
+  h1 {
+    margin-bottom: 40px;
+  }
+  > img {
+    position: absolute;
+    top: -40px;
+    right: 10%;
+  }
+}
+
+.customers-company-logos {
+  display: flex;
+  justify-content: space-around;
+}

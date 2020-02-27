@@ -6,8 +6,17 @@ body {
 .home-container {
   width: 95%;
   margin: 16px auto;
+  padding: 0 0 32px 0;
   box-shadow: 0 0 3px rgba(0,0,0,0.8);
-  border-radius: 10px;
+  border-radius: 4px;
+}
+
+.home-spacer {
+  height: 36em;
+}
+
+.home-demo-booking {
+  height: 18em;
 }
 
 .home-content-teachers,
@@ -23,9 +32,10 @@ body {
   height: 100%;
   width: 40%;
   background: white;
-  border-radius: 5px;
+  border-radius: 4px;
   color: black;
   padding: 32px;
+  position: relative;
   h5 {
     font-weight: bolder;
     width: 60%;
@@ -36,6 +46,11 @@ body {
     width: 90%;
     font-size: 18px;
   }
+  img {
+    position: absolute;
+    top: -50px;
+    right: 30px;
+  }
 }
 
 .card-shadow-right {
@@ -45,3 +60,24 @@ body {
 .card-shadow-left {
   box-shadow: -30px 30px 5px 0px rgba(0,0,0,0.1);
 }
+
+.highlight-orange {
+  background: linear-gradient(180deg, rgba(255,255,255,0) 45%, $sherpa-orange 45%);
+}
+
+.highlight-blue {
+  background: linear-gradient(180deg, rgba(255,255,255,0) 45%, $sherpa-dark-blue 45%);
+}
+
+.home-demo-booking {
+  margin: 64px 0 32px 0;
+}
+
+.booking-flexbox {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+

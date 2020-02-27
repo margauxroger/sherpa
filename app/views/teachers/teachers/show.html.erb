@@ -1,3 +1,15 @@
 <%= link_to 'Division 1', teachers_course_path(1), class: "btn btn-primary" %>
 
+<div class="container-teacher-show">
+  <div class="card-global-teacher-show">
+    <h1>All my alerts</h1>
+    <div class="cards-teacher-show">
+      <%= render 'shared/card_teacher_show' %>
+    </div>
+    <div>
+      <h1>All my classes</h1>
+      <%= render 'shared/chart_dougnhut' %>
+    </div>
+  </div>
+</div>
 
