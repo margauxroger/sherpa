@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_154605) do
+ActiveRecord::Schema.define(version: 2020_02_27_103719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,17 @@ ActiveRecord::Schema.define(version: 2020_02_25_154605) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "suggestions", force: :cascade do |t|
+    t.string "type"
+    t.string "content"
+    t.bigint "user_id"
+    t.bigint "teacher_division_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teacher_division_id"], name: "index_suggestions_on_teacher_division_id"
+    t.index ["user_id"], name: "index_suggestions_on_user_id"
+  end
+
   create_table "teacher_divisions", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "division_id"
@@ -125,6 +136,8 @@ ActiveRecord::Schema.define(version: 2020_02_25_154605) do
   add_foreign_key "flashcards", "chapters"
   add_foreign_key "messages", "forums"
   add_foreign_key "messages", "users"
+  add_foreign_key "suggestions", "teacher_divisions"
+  add_foreign_key "suggestions", "users"
   add_foreign_key "teacher_divisions", "divisions"
   add_foreign_key "teacher_divisions", "users"
   add_foreign_key "user_answers", "flashcards"
