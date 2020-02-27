@@ -20,4 +20,15 @@ class User < ApplicationRecord
   def courses
     self.divisions.map(&:courses).flatten
   end
+
+  def score(material)
+    chapter_scores = material.chapters.map { |chapter| flashcards_score(chapter) }
+    chapter_scores.sum.fdiv(chapter_scores.length).round
+  end
+
+  def flashcards_score(chapter)
+    student_flashcards = material.find_flashcards_answers_by_student(self)
+    score = student_flashcards.map {|student_flashcard| student_flashcard.completion }.sum
+    score.fdiv(material.flashcards_number).round
+  end
 end
