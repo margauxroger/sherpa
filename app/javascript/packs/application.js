@@ -5,4 +5,6 @@ graph();
 
 import { initMarkdown } from 'pluggins/init_markdown';
 
+import "../components/footer"
+
 initMarkdown();
