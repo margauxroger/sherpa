@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :user_answers, dependent: :destroy
   has_many :courses
   has_many :divisions, through: :courses
+  has_many :materials, through: :courses
   belongs_to :division, optional: true
   has_many :suggestions
 
