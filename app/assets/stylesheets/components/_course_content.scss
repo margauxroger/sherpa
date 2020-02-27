@@ -27,19 +27,18 @@
 
 }
 
-#preview, #editor {
+#editor {
   margin: 20px auto;
-  max-width: 600px;
 }
 
-#preview {
-  min-height: 100px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 6px 12px;
-  text-align: left;
-}
-
-#preview img {
-  max-width: 100%;
+#md-helper {
+  margin: 20px 0;
+  margin-left: 20px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 5px;
+  border-color: rgba(0,0,0, 0.1);
+  padding: 10px 10px 0 10px;
+  box-shadow: 0 0 5px 2px rgba(0,0,0, 0.1);
+  width: 280px;
 }
