@@ -5,9 +5,13 @@
 
 
 
-.card-student:hover,
-.card-student:focus {
-    background-color:rgba(79, 42, 203, 0.50);
+.card-student-list:hover,
+.card-student-list:focus {
+    background: linear-gradient(
+      40deg,
+      rgba(67, 138, 243, 0.5),
+      rgba(79, 42, 205, 0.5),
+    );
     color: white;
     box-shadow: 1px;
     outline: none;
@@ -16,23 +20,21 @@
 
 
 
-.button {
-  background-color: rgba(0, 116, 217,1) ; /* Green */
-  border: none;
-  color: white;
-  padding: 5px 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius:10%;
+.student-details-icon {
+  opacity: 0.6;
+}
+
+.student-details-icon:hover {
+  opacity: 1.0;
 }
 
 .photo-nom{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top:5px;
+    width:70px;
+    margin-top:2%;
+
 }
 
 
@@ -47,32 +49,33 @@ section .section-title {
     text-transform: uppercase;
 }
 
-.card-student {
+.card-student-list {
 
     border: none;
     background: white;
     border-radius:10px;
+    max-width: 70%
 
 }
 
 
 
-.frontside .card-student{
+.frontside .card-student-list{
     min-height: 60px;
 }
 
 
 
-.backside .card-student a {
+.backside .card-student-list a {
     font-size: 18px;
     color: #4F2ACD !important;
 }
 
-.frontside .card-student .card-title{
+.frontside .card-student-list .card-title{
     color: #4F2ACD !important;
 }
 
-.frontside .card-student .card-body-student img {
+.frontside .card-student-list .card-body-student img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -84,14 +87,15 @@ section .section-title {
   padding-right: 0px;
 }
 
-.card-text{
-  padding: 15px;
-  margin:0 auto;
+.card-student-text{
+  text-align: center;
+  margin:auto;
 }
 
 
 .eye-icon{
 justify-content: center;
+margin:auto;
 
 }
 

@@ -1,0 +1,7 @@
+<%= simple_form_for(chapter) do |f| %>
+<%= f.input :material, collection: @materials %>
+<%= f.input :name %>
+  <textarea class="form-control" id="editor" rows="4"></textarea>
+<%= f.input :content, as: :hidden %>
+<%= f.submit %>
+<% end %>
