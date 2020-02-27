@@ -12,9 +12,7 @@ const initTranslateMarkdown = () => {
     textarea.forEach((ta) => {
     const chapter = chapter_content[i].firstElementChild;
     console.log(chapter)
-    const translate_markdown = new TurndownService({ headingStyle: 'atx', emDelimiter: '*', blankReplacement: {
-
-    }});
+    const translate_markdown = new TurndownService({ headingStyle: 'atx', emDelimiter: '*'});
     const rmd = translate_markdown.turndown(chapter.value);
     ta.innerText = rmd;
     i += 2
