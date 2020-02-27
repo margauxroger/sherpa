@@ -45,6 +45,8 @@ div1 = Division.create!(
          )
 40.times do
   User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
     division_id: div1.id,
@@ -57,6 +59,8 @@ div2 = Division.create!(
          )
 40.times do
   User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
     division_id: div2.id,
@@ -69,6 +73,8 @@ div3 = Division.create!(
          )
 40.times do
   User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
     division_id: div3.id,
@@ -81,6 +87,8 @@ div4 = Division.create!(
          )
 40.times do
   User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
     division_id: div4.id,
