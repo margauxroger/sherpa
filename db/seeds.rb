@@ -8,6 +8,15 @@
 require 'open-uri'
 require 'nokogiri'
 
+def student_trains_on_flashcards(student, material)
+  material.flashcards.each do |flashcard|
+    UserAnswer.create!(user_id: student.id,
+                       flashcard_id: flashcard.id,
+                       status: UserAnswer::STATUSES[rand(0..2)],
+                       )
+  end
+end
+
 puts "Destroying all"
 
 User.destroy_all
@@ -15,13 +24,13 @@ Division.destroy_all
 
 puts "Creating teachers"
 
-User.create!(
+teacher1 = User.create!(
   email:    "remi.charette@gmail.com",
   password: "azerty",
   role:     "teacher"
 )
 
-User.create!(
+teacher2 = User.create!(
 
   email:    "diogo.heineken@gmail.com",
   password: "azerty",
@@ -385,3 +394,24 @@ course1 = Course.create!(
 course2 = Course.create!(
             division: div2,
             material: maths_prem_es)
+
+teacher_division1 = TeacherDivision.create!(
+  user: teacher1,
+  division: div1)
+
+teacher_division2 = TeacherDivision.create!(
+  user: teacher2,
+  division: div2)
+
+teacher_division3 = TeacherDivision.create!(
+  user: teacher1,
+  division: div4)
+
+div1.users.each do |student|
+  student_trains_on_flashcards(student, hist_term_s)
+end
+
+div2.users.each do |student|
+  student_trains_on_flashcards(student, maths_prem_es)
+end
+
