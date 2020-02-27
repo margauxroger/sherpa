@@ -1,0 +1,113 @@
+
+#team {
+    background: #eee !important;
+}
+
+
+
+.card-student-list:hover,
+.card-student-list:focus {
+    background: linear-gradient(
+      40deg,
+      rgba(67, 138, 243, 0.5),
+      rgba(79, 42, 205, 0.5),
+    );
+    color: white;
+    box-shadow: 1px;
+    outline: none;
+
+}
+
+
+
+.student-details-icon {
+  opacity: 0.6;
+}
+
+.student-details-icon:hover {
+  opacity: 1.0;
+  cursor: pointer;
+}
+
+.photo-nom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:70px;
+    margin-top:2%;
+
+}
+
+
+section {
+    padding: 60px 0;
+}
+
+section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.card-student-list {
+
+    border: none;
+    background: white;
+    border-radius:10px;
+    max-width: 70%
+
+}
+
+
+
+.frontside .card-student-list{
+    min-height: 60px;
+}
+
+
+
+.backside .card-student-list a {
+    font-size: 18px;
+    color: #4F2ACD !important;
+}
+
+.frontside .card-student-list .card-title{
+    color: #4F2ACD !important;
+}
+
+.frontside .card-student-list .card-body-student img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin:0 auto;
+}
+
+.card-body-student{
+  padding-left: 5px;
+  padding-right: 0px;
+}
+
+.card-student-text{
+  text-align: center;
+  margin:auto;
+}
+
+
+.eye-icon{
+justify-content: center;
+margin:auto;
+
+}
+
+.space-cards{
+  padding:6px;
+}
+
+
+
+.student-difficulty-text{
+  color:#4F2ACD;
+}
+
+
