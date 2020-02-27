@@ -4,6 +4,8 @@ class Teachers::CoursesController < ApplicationController
     @course  = Course.find(params[:id])
     authorize([:teachers, @course])
     @course_students = User.where("division_id = ?", @course.division.id)
+
+
   end
 
 end

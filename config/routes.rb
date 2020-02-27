@@ -22,5 +22,7 @@ Rails.application.routes.draw do
   resources :courses, only: [:show] do
     resources :flashcards, only: [:index, :create, :update, :destroy]
   end
-  resources :forums, only: [:show]
+  resources :forums, only: [:create, :update, :show] do
+    resources :messages, only: [:create, :show]
+  end
 end
