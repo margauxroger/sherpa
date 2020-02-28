@@ -9,6 +9,12 @@ import "../components/footer"
 
 initMarkdown();
 
-import { initTranslateMarkdown } from 'pluggins/init_turndown';
+import { lineGraph } from '../components/charts_courses_show_line';
+lineGraph();
 
+import { scatterGraph } from '../components/charts_courses_show_scatter';
+scatterGraph();
+
+import { initTranslateMarkdown } from 'pluggins/init_turndown';
 initTranslateMarkdown();
+

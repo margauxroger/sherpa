@@ -1,7 +1,25 @@
 <div class="container mt-5">
 
-  <h1>I'm the division <%= params[:id] %> dashboard 🙃</h1>
-
   <%= link_to 'Student in difficulty', teachers_course_student_path(1,9), class: "btn btn-primary" %>
 
+  <div style="height: 33vh">
+    <%= render 'shared/chart_line' %>
+    </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render 'shared/card_class_dashboard' %>
+    </div>
+    <div class="col-lg-3">
+      <%= render 'shared/card_review_class_dashboard' %>
+    </div>
+    <div class="col-lg-4">
+      <%= render 'shared/chart_scatter' %>
+    </div>
+    <div class="col-lg-2">
+      <%= render 'shared/card_class_dashboard_student' %>
+    </div>
+  </div>
+
 </div>
+
