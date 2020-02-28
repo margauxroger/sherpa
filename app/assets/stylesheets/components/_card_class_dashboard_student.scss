@@ -1,0 +1,20 @@
+.card-class-dashboard-student-global {
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  margin: 8px;
+  height: 140px;
+}
+
+.card-class-dashboard-student-photo {
+
+  img {
+    width: 80px;
+    height: auto;
+  }
+}
+
+.card-class-dashboard-student {
+  display: flex;
+  flex: row;
+}

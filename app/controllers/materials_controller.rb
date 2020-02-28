@@ -7,7 +7,9 @@ class MaterialsController < ApplicationController
     policy_scope(Material)
     @chapter = Chapter.new
     @materials = []
-    @teacher.courses.each { |course| @materials << course.material }
+    @levels = []
+    @teacher.courses.each { |course| @materials << course.material && @levels << course.division.level}
+    @levels = @levels.uniq
   end
 
   def show
