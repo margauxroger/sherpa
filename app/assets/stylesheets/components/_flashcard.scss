@@ -6,15 +6,15 @@ $accent-color: #355cc9;
 }
 
 
-.wrapper {
+.wrapper-flashcard {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
 
-.card {
+.card-flashcard {
   width: 430px;
-  height: 350px;
+  height: 400px;
   margin: 1em;
   perspective: 1500px;
   border-radius:6px;
@@ -35,8 +35,8 @@ $accent-color: #355cc9;
   }
 }
 
-.front,
-.back {
+.front-flashcard,
+.back-flashcard {
   position: absolute;
   top: 0;
   left: 0;
@@ -54,7 +54,7 @@ $accent-color: #355cc9;
   }
 }
 
-.front {
+.front-flashcard {
   background-color: #fff;
   background-size: cover;
   background-position: center center;
@@ -101,7 +101,7 @@ $accent-color: #355cc9;
   }
 }
 
-.back {
+.back-flashcard {
   transform: rotateY(180deg);
   background-color: #fff;
   border: 2px solid rgb(240, 240, 240);
@@ -112,7 +112,7 @@ $accent-color: #355cc9;
     justify-items: center;
   }
 
-  .info {
+  .info-flashcard {
     position: relative;
     display: flex;
     align-items: center;
@@ -151,16 +151,17 @@ $accent-color: #355cc9;
     }
   }
 
-  .description {
-    grid-row: 5;
-    grid-column: 1/-1;
-    font-size: 0.86em;
-    border-radius: 5px;
+  .description-flashcard{
+
     font-weight: 600;
     line-height: 1.4em;
     overflow: auto;
     color: $accent-color;
-    padding-right: 10px;
+    text-align: center;
+
+    border: 2px solid rgb(67, 138, 243);
+      margin:5px;
+    padding:5px;
   }
 
   .flashcard-subject{
@@ -168,25 +169,21 @@ $accent-color: #355cc9;
     color: $accent-color;
     grid-row: 1;
     font-size: 0.86em;
-    margin: 30px;
+    margin: 10px;
   }
 
   .flashcard-subject {
-    justify-self: left;
+    text-align: center;
   }
 
-  .price {
-    grid-column: 3/-1;
-    justify-self: right;
-  }
 
-  .button {
+  .button-submit-flashcard {
     grid-column: 1/-1;
     justify-self: center;
   }
 }
 
-.button {
+.button-submit-flashcard {
   grid-row: -1;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -251,10 +248,24 @@ $accent-color: #355cc9;
 }
 
 
-
+.icon-question-flashcard-backside{
+  width:40px;
+  height:40px;
+  justify-content: center;
+}
 
 .bottom-flashcard-button{
-margin-top:20%;
-
-
+margin-top:10%;
 }
+
+.fa-arrow-left{
+padding-top:3%;
+}
+
+.place-icon-answer{
+  text-align: center;
+}
+
+
+
+

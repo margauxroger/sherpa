@@ -10,7 +10,8 @@
 .card-global-teacher-show {
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  height: 85%;
+  min-height: 38em;
+  margin-top: 30px;
   h1 {
     color: rgba(0, 0, 0, 0.7);
     padding: 5px 0px 0px 5px;
@@ -42,6 +43,7 @@
   font-size: 18px;
   border-radius: 0px 15px 15px 0px;
   align-content: center;
+  width: 150%;
   p {
     margin: 0 0 3px 0;
     color: white;
