@@ -424,11 +424,6 @@ course4 = Course.create!(
             material: hist_term_s,
             user_id: teacher1.id)
 
-course5 = Course.create!(
-            division: div4,
-            material: hist_term_s,
-            user_id: teacher1.id)
-
 forum1 = Forum.create!(
             topic: "Histoire TS1",
             course_id: course1.id)
