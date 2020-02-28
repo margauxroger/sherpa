@@ -413,7 +413,6 @@ course5 = Course.create!(
             user_id: teacher1.id)
 
 
-
 div1.users.each do |student|
   student_trains_on_flashcards(student, hist_term_s)
 end

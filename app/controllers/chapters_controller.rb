@@ -27,7 +27,14 @@ class ChaptersController < ApplicationController
     else
       render 'shared/navbar_teacher_courses'
     end
+  end
 
+  def destroy
+    authorize current_user
+    @chapter = Chapter.find(params[:id])
+    @material = @chapter.material
+    @chapter.destroy
+    redirect_to material_path(@material)
   end
 
   private

@@ -1,6 +1,6 @@
 class Chapter < ApplicationRecord
   belongs_to :material
-  has_many :flashcards
+  has_many :flashcards, dependent: :destroy
 
   validates :name, presence: true
   validates :content, presence: true

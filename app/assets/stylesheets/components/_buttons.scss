@@ -1,0 +1,27 @@
+.btn-sherpa {
+  background: $sherpa-violet;
+  color: white;
+  opacity: 0.6;
+  margin: 0 2px;
+
+  &:hover {
+    opacity: 1;
+    color: white;
+  }
+}
+
+.btn-sherpa-transp {
+  background: transparent;
+  color: $sherpa-violet;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $sherpa-violet;
+  opacity: 0.6;
+  margin: 0 2px;
+
+  &:hover {
+    opacity: 1;
+    color: $sherpa-violet
+  }
+
+}
