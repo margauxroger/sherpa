@@ -1,10 +1,49 @@
-<div class="card-class-dashboard-student-global">
+<%  arrayPhoto = ['https://images.unsplash.com/photo-1544703432-78fe9ba48d4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1571512599285-9ac4fdf3dba9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
+  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/flagged/photo-1570084787226-c77bdc6a1705?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1547212371-eb5e6a4b590c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1508216404415-a35220fab80e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1551108168-229956dd31bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1568386562062-e03c15641420?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
+  'https://images.unsplash.com/photo-1575879722495-9b0e524e39e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1563405614130-5a4b326051ed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1579626379295-2b3a2dd7cbc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1575075500178-c99ef905661a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60']%>
+
+<div class="card-class-dashboard-student-global animated fadeIn">
   <div class="card-class-dashboard-student">
     <div class="card-class-dashboard-student-name">
       <h1>Nad</h1>
     </div>
     <div class="card-class-dashboard-student-photo">
-      <img src="https://previews.123rf.com/images/triken/triken1608/triken160800029/61320775-homme-photo-de-profil-avatar-avatar-de-l-utilisateur-par-d%C3%A9faut-invit%C3%A9-avatar-simplement-la-t%C3%AAte-humain.jpg" alt="photo profil">
+      <img style="border: 2px solid red;" src= "<%= arrayPhoto.sample %>" alt="photo profil">
+    </div>
+  </div>
+  <div class="card-class-dashboard-student">
+    <div class="card-class-dashboard-student-name">
+      <h1>F-X</h1>
+    </div>
+    <div class="card-class-dashboard-student-photo">
+      <img style="border: 2px solid orange;" src= "<%= arrayPhoto.sample %>" alt="photo profil">
+    </div>
+  </div>
+  <div class="card-class-dashboard-student">
+    <div class="card-class-dashboard-student-name">
+      <h1>Alex</h1>
+    </div>
+    <div class="card-class-dashboard-student-photo">
+      <img style="border: 2px solid orange;" src= "<%= arrayPhoto.sample %>" alt="photo profil">
+    </div>
+  </div>
+  <div class="card-class-dashboard-student">
+    <div class="card-class-dashboard-student-name">
+      <h1>Dogo</h1>
+    </div>
+    <div class="card-class-dashboard-student-photo">
+      <img style="border: 2px solid green;" src= "<%= arrayPhoto.sample %>" alt="photo profil">
     </div>
   </div>
 </div>
