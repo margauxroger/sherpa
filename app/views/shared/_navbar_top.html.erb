@@ -17,7 +17,7 @@
             <%= link_to "Courses", materials_path, class: "nav-link mr-3" %>
           </li>
           <li class="nav-item <%= 'active' if current_page?(root_path) %>  ">
-            <%= link_to "Flashcards", root_path, class: "nav-link mr-4" %>
+            <%= link_to "Flashcards", "#", class: "nav-link mr-4" %>
           </li>
           <li class="nav-item d-flex align-items-center">
             <a class="mr-4"><%= current_user.email %></a>
