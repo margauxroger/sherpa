@@ -4,15 +4,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :photo
+
   has_many :messages, dependent: :destroy
   has_many :user_answers, dependent: :destroy
   has_many :courses
   has_many :divisions, through: :courses
   has_many :materials, through: :courses
-  belongs_to :division, optional: true
   has_many :suggestions
+  belongs_to :division, optional: true
 
   validates :role, inclusion: { in: %w[teacher student admin] }
+
+
+
 
   def teacher?
     role == "teacher"
