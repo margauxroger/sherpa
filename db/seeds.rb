@@ -398,12 +398,17 @@ course2 = Course.create!(
             user_id: teacher2.id)
 
 course3 = Course.create!(
-            division: div4,
-            material: maths_prem_es,
+            division: div2,
+            material: hist_term_s,
             user_id: teacher1.id)
 
 course4 = Course.create!(
             division: div3,
+            material: hist_term_s,
+            user_id: teacher1.id)
+
+course5 = Course.create!(
+            division: div4,
             material: hist_term_s,
             user_id: teacher1.id)
 
