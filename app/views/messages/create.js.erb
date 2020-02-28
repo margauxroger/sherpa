@@ -1,0 +1,14 @@
+function refreshForm() {
+  const newMessagewForm = document.getElementById('message_content');
+  newMessagewForm.value = ""
+}
+
+function loadMessage(messageHTML) {
+  const message_history = document.querySelector('.message-history');
+  message_history.insertAdjacentHTML('beforeend', messageHTML);
+  refreshForm();
+  message_history.scrollTop = message_history.scrollHeight;
+}
+
+loadMessage('<div class="d-flex justify-content-end"><div class="d-flex flex-column align-items-end"><p class="btn btn-message-sent mb-0 pb-0"><%= @message.content %></p><em class="mr-2" style="font-size: 12px;"><%= "You" %></em></div></div>');
+
