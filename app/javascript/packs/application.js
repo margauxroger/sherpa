@@ -18,3 +18,5 @@ scatterGraph();
 import { initTranslateMarkdown } from 'pluggins/init_turndown';
 initTranslateMarkdown();
 
+import { lineGraphStudent } from '../components/charts_courses_student_show_line';
+lineGraphStudent();
