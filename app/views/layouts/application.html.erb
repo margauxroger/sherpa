@@ -20,12 +20,19 @@
     <% end %>
 
     <%= render 'shared/flashes' %>
-    <%= yield %>
+
+    <div class="loggedin-container">
+      <%= yield %>
+    </div>
+
+    <% unless current_page?(root_path) %>
+      <%= render 'shared/footer' %>
+    <% end %>
+
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-
 
   </body>
 </html>
