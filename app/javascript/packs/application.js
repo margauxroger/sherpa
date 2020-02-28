@@ -20,3 +20,6 @@ initTranslateMarkdown();
 
 import { lineGraphStudent } from '../components/charts_courses_student_show_line';
 lineGraphStudent();
+
+// import { scrollMessages } from '../components/messages';
+// scrollMessages();

@@ -5,10 +5,22 @@ class MessagesController < ApplicationController
     @message = Message.new(params_message)
     @forum = Forum.find(params[:forum_id])
     @message.forum = @forum
+    # if @message.save
+    #   redirect_to materials_path
+    # else
+    #   render 'shared/navbar_left'
+    # end
+
     if @message.save
-      redirect_to materials_path
+      respond_to do |format|
+        format.html { redirect_to materials_path }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render 'shared/navbar_left'
+      respond_to do |format|
+        format.html { render 'shared/navbar_left' }
+        format.js  # <-- idem
+      end
     end
   end
 

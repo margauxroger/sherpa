@@ -397,10 +397,6 @@ course2 = Course.create!(
             material: maths_prem_es,
             user_id: teacher2.id)
 
-forum1 = Forum.create!(
-            topic: "Histoire TS1",
-            course_id: course1.id)
-
 course3 = Course.create!(
             division: div2,
             material: hist_term_s,
@@ -415,6 +411,10 @@ course5 = Course.create!(
             division: div4,
             material: hist_term_s,
             user_id: teacher1.id)
+
+forum1 = Forum.create!(
+            topic: "Histoire TS1",
+            course_id: course1.id)
 
 
 div1.users.each do |student|
