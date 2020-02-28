@@ -430,7 +430,8 @@ forum1 = Forum.create!(
 
 message1 = Message.create!(
             user_id: 3,
-            content: "Bonjour, j'ai une question sur le 1er chapitre")
+            content: "Bonjour, j'ai une question sur le 1er chapitre",
+            forum_id: 1)
 
 
 div1.users.each do |student|
