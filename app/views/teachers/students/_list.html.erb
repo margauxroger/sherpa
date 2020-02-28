@@ -1,6 +1,6 @@
+<h1 class="mt-3"><span class="highlight-orange"><%= Division.find(params[:id]).name %> - List of Students</span></h1>
 <div class="container mt-5">
 
-  <h1>I'm the students list of division <%= params[:id] %> </h1>
 
 </div>
 <%  arrayPhoto = ['https://images.unsplash.com/photo-1544703432-78fe9ba48d4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
@@ -24,7 +24,7 @@
       </h4>
     </div>
 
-
+    <div class="student-cards-container">
       <div class="col-xs-12 col-sm-8 col-md-8">
           <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
               <div class="mainflip">
@@ -172,7 +172,7 @@
 
 
 <p>
-  <button class="btn btn-primary" type="button-list" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">See Full List</button>
+  <button class="btn btn-sherpa" type="button-list" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">See Full List</button>
 </p>
 <div class="row">
   <div class="col">
@@ -187,7 +187,7 @@
                       <div class="card-student-list">
                           <div class="card-body-student d-flex">
                             <div class="photo-nom">
-                              <img class=" img-fluid" src='<%= arrayPhoto.sample%>' alt='card image'>
+                              <img class=" img-fluid" src='<%= student.picture_url %>' alt='card image'>
                               <h20 class="card-title">
                                 <%= student.first_name%>
                               </h20>
