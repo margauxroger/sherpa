@@ -23,7 +23,7 @@ class ChaptersController < ApplicationController
     authorize current_user
     @chapter = Chapter.find(params[:id])
     if @chapter.update(params_chapter)
-      redirect_to materials_path
+      redirect_to material_path(@chapter.material)
     else
       render 'shared/navbar_teacher_courses'
     end
