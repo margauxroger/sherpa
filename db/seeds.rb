@@ -428,6 +428,10 @@ forum1 = Forum.create!(
             topic: "Histoire TS1",
             course_id: course1.id)
 
+message1 = Message.create!(
+            user_id: 3,
+            content: "Bonjour, j'ai une question sur le 1er chapitre")
+
 
 div1.users.each do |student|
   student_trains_on_flashcards(student, hist_term_s)
