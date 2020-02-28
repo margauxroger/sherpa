@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :user_answers, dependent: :destroy
   has_many :courses
   has_many :divisions, through: :courses

@@ -5,3 +5,12 @@
   <div><%= link_to 'Back to class', teachers_course_path(params[:course_id]), class: "btn btn-primary" %></div>
   <img src="<%= User.find(params[:id]).picture_url %>" alt="">
 </div>
+
+
+<div style="height: 33vh;">
+  <%= render 'shared/chart_line_student_show' %>
+</div>
+
+<div>
+
+</div>

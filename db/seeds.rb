@@ -414,6 +414,21 @@ course2 = Course.create!(
             material: maths_prem_es,
             user_id: teacher2.id)
 
+course3 = Course.create!(
+            division: div2,
+            material: hist_term_s,
+            user_id: teacher1.id)
+
+course4 = Course.create!(
+            division: div3,
+            material: hist_term_s,
+            user_id: teacher1.id)
+
+course5 = Course.create!(
+            division: div4,
+            material: hist_term_s,
+            user_id: teacher1.id)
+
 
 div1.users.each do |student|
   student_trains_on_flashcards(student, hist_term_s)

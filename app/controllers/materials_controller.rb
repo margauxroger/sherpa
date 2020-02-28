@@ -10,6 +10,8 @@ class MaterialsController < ApplicationController
     @levels = []
     @teacher.courses.each { |course| @materials << course.material && @levels << course.division.level}
     @levels = @levels.uniq
+    @materials_display = []
+
   end
 
   def show
