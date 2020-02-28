@@ -1,4 +1,4 @@
-class Chapter < ApplicationRecord
+ class Chapter < ApplicationRecord
   belongs_to :material
   has_many :flashcards, dependent: :destroy
 
