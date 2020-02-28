@@ -14,36 +14,44 @@
   'https://images.unsplash.com/photo-1575075500178-c99ef905661a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60']%>
 
 <div class="card-class-dashboard-student-global animated fadeIn">
-  <div class="card-class-dashboard-student">
-    <div class="card-class-dashboard-student-name">
-      <h1>Nad</h1>
+  <%= link_to teachers_course_student_path(1,9), style:"text-decoration:none; color:black" do %>
+    <div class="card-class-dashboard-student">
+      <div class="card-class-dashboard-student-name">
+        <h1>Nad</h1>
+      </div>
+      <div class="card-class-dashboard-student-photo">
+        <img style="border: 2px solid red;" src= "<%= arrayPhoto.sample %>" alt="photo profil">
+      </div>
     </div>
-    <div class="card-class-dashboard-student-photo">
-      <img style="border: 2px solid red;" src= "<%= arrayPhoto.sample %>" alt="photo profil">
+  <% end %>
+  <%= link_to teachers_course_student_path(1,9), style:"text-decoration:none; color:black" do %>
+    <div class="card-class-dashboard-student">
+      <div class="card-class-dashboard-student-name">
+        <h1>F-X</h1>
+      </div>
+      <div class="card-class-dashboard-student-photo">
+        <img style="border: 2px solid orange;" src= "<%= arrayPhoto.sample %>" alt="photo profil">
+      </div>
     </div>
-  </div>
-  <div class="card-class-dashboard-student">
-    <div class="card-class-dashboard-student-name">
-      <h1>F-X</h1>
+  <% end %>
+  <%= link_to teachers_course_student_path(1,9), style:"text-decoration:none; color:black" do %>
+    <div class="card-class-dashboard-student">
+      <div class="card-class-dashboard-student-name">
+        <h1>Alex</h1>
+      </div>
+      <div class="card-class-dashboard-student-photo">
+        <img style="border: 2px solid orange;" src= "<%= arrayPhoto.sample %>" alt="photo profil">
+      </div>
     </div>
-    <div class="card-class-dashboard-student-photo">
-      <img style="border: 2px solid orange;" src= "<%= arrayPhoto.sample %>" alt="photo profil">
+  <% end %>
+  <%= link_to teachers_course_student_path(1,9), style:"text-decoration:none; color:black" do %>
+    <div class="card-class-dashboard-student">
+      <div class="card-class-dashboard-student-name">
+        <h1>Dogo</h1>
+      </div>
+      <div class="card-class-dashboard-student-photo">
+        <img style="border: 2px solid green;" src= "<%= arrayPhoto.sample %>" alt="photo profil">
+      </div>
     </div>
-  </div>
-  <div class="card-class-dashboard-student">
-    <div class="card-class-dashboard-student-name">
-      <h1>Alex</h1>
-    </div>
-    <div class="card-class-dashboard-student-photo">
-      <img style="border: 2px solid orange;" src= "<%= arrayPhoto.sample %>" alt="photo profil">
-    </div>
-  </div>
-  <div class="card-class-dashboard-student">
-    <div class="card-class-dashboard-student-name">
-      <h1>Dogo</h1>
-    </div>
-    <div class="card-class-dashboard-student-photo">
-      <img style="border: 2px solid green;" src= "<%= arrayPhoto.sample %>" alt="photo profil">
-    </div>
-  </div>
+  <% end %>
 </div>

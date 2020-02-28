@@ -1,22 +1,24 @@
-<div class="container-dash-class mt-5">
-
-  <%= link_to 'Student in difficulty', teachers_course_student_path(1,9), class: "btn btn-primary" %>
+<div class="container-dash-class mt-3">
+<h2 style="text-align: center">Class Dashboard</h2>
 
   <div style="height: 33vh">
     <%= render 'shared/chart_line' %>
     </div>
 
-  <div class="row">
+  <div class="row class-dash-row-style">
     <div class="col-lg-3">
+      <h6 class="animated fadeIn">My class alerts</h6>
       <%= render 'shared/card_class_dashboard' %>
     </div>
     <div class="col-lg-3">
+      <h6 class="animated fadeIn">My reviews</h6>
       <%= render 'shared/card_review_class_dashboard' %>
     </div>
     <div class="col-lg-4">
       <%= render 'shared/chart_scatter' %>
     </div>
     <div class="col-lg-2">
+      <h6 class="animated fadeIn">Student focus</h6>
       <%= render 'shared/card_class_dashboard_student' %>
     </div>
   </div>
