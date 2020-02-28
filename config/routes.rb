@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
   resources :materials, only: [:index, :show]
-  resources :chapters, only: [:new, :create, :edit, :update]
+  resources :chapters, only: [:new, :create, :edit, :update, :destroy]
   resources :courses, only: [:show] do
     resources :flashcards, only: [:index, :create, :update, :destroy]
   end
