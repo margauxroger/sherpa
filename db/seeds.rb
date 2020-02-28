@@ -429,6 +429,10 @@ course5 = Course.create!(
             material: hist_term_s,
             user_id: teacher1.id)
 
+forum1 = Forum.create!(
+            topic: "Histoire TS1",
+            course_id: course1.id)
+
 
 div1.users.each do |student|
   student_trains_on_flashcards(student, hist_term_s)
