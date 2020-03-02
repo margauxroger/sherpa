@@ -1,19 +1,24 @@
-const lineGraph = () => {
-  let chart = document.getElementById("lineChart")
+const dougnhutGraphStudent = () => {
+  let chart = document.getElementById("dougnhutChartStudentFlash")
   if (chart) {
   new Chart(chart, {
-    type: 'bar',
-    data: {
-      labels: ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6"],
-      datasets: [{
-          data: [86, 72, 19, 29, 98, 37],
-          label: "Flashcards done",
-          borderColor: "purple",
-          backgroundColor: "purple",
-          fill: false
-        },
-      ]
-    },
+    type: 'doughnut',
+   data: {
+       labels: ['Flashcards done', "Flashcards not done"],
+       datasets: [{
+           label: 'Flashcards done',
+           data: [78, 22],
+           backgroundColor: [
+               'rgba(79, 42, 205, 0.6)',
+               'rgba(79, 42, 205, 0.1)'
+           ],
+           borderColor: [
+               'rgba(79, 42, 205, 1)',
+               'rgba(79, 42, 205, 0.6)'
+           ],
+           borderWidth: 1
+       }]
+   },
     options: {
       responsive: true,
       maintainAspectRatio: false,
@@ -27,7 +32,7 @@ const lineGraph = () => {
       scales: {
           yAxes: [{
               ticks: {
-                  display: true,
+                  display: false,
                   beginAtZero: false,
               },
               gridLines : {
@@ -36,7 +41,7 @@ const lineGraph = () => {
           }],
           xAxes: [{
               ticks: {
-                  display: true,
+                  display: false,
                   beginAtZero: false,
               },
               gridLines : {
@@ -49,4 +54,4 @@ const lineGraph = () => {
   }
 };
 
-export { lineGraph };
+export { dougnhutGraphStudent };

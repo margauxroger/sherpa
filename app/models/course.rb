@@ -5,4 +5,12 @@ class Course < ApplicationRecord
 
   has_many :feedbacks
   has_many :users, through: :division
+
+  def division_score
+    score = []
+    self.division.users.each do |student|
+      score << student.score(self.material)
+    end
+    score.sum.fdiv(score.length).round(2)
+  end
 end
