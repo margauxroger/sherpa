@@ -42,4 +42,11 @@ class User < ApplicationRecord
     score.fdiv(chapter.flashcards_number).round(2)*100
   end
 
+  def border_color(material)
+    return "red-border"     if self.score(material) < 45
+    return "orange-border"  if self.score(material) < 65
+    "green-border"
+  end
+
+
 end
