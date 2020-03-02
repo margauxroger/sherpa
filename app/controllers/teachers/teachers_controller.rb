@@ -5,11 +5,18 @@ class Teachers::TeachersController < ApplicationController
 
   def show
     authorize([:teachers, current_user])
-    current_user.courses
+    @courses = current_user.courses
     @divisions = current_user.divisions
   end
 
-  private
-  def new_suggestion
+  def trigger_flashcard_notifications
+    current_user.flashcards_notifications
   end
+
+  private
+
+  def new_suggestion
+
+  end
+
 end
