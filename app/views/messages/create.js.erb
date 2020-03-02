@@ -3,12 +3,14 @@ function refreshForm() {
   newMessagewForm.value = ""
 }
 
-function loadMessage(messageHTML) {
+function loadMessage() {
   const message_history = document.querySelector('.message-history');
-  message_history.insertAdjacentHTML('beforeend', messageHTML);
+  message_history.insertAdjacentHTML('beforeend', '<%= j render "message", message: @message, user_is_message_author: true %>' );
   refreshForm();
-  message_history.scrollTop = message_history.scrollHeight;
+  let messages = document.querySelectorAll('.message');
+  let lastMessage = messages[messages.length - 1];
+  lastMessage.scrollIntoView();
 }
 
-loadMessage('<div class="d-flex justify-content-end"><div class="d-flex flex-column align-items-end"><p class="btn btn-message-sent mb-0 pb-0"><%= @message.content %></p><em class="mr-2" style="font-size: 12px;"><%= "You" %></em></div></div>');
+loadMessage();
 

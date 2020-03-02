@@ -4,7 +4,7 @@ class Teachers::TeachersController < ApplicationController
   before_action :new_suggestion, only: :show
 
   def show
-    authorize([:teachers, current_user])
+    authorize current_user
     current_user.courses
     @divisions = current_user.divisions
   end

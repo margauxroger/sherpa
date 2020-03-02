@@ -1,0 +1,29 @@
+
+
+
+<% current_user.courses.each do |course| %>
+<%= course.material.name %>
+<% end %>
+
+
+<div class="container mt-5 ">
+  <% @levels.each do |level| %>
+      <h2 class="mb-3"><%= level %></h2>
+      <% current_user.courses.each do |course| %>
+      <% if course.division.level == level && !@materials_display.include?(course.material.name) %>
+      <h3><%= course.material.name %></h3>
+      <% @materials_display << course.material.name %>
+      <% end %>
+      <% end %>
+  <% end %>
+  </div>
+
+</div>
+
+
+<!-- <div class="container">
+
+      <p>Level</p>
+      <p>Material</p>
+      <p>Cards</p>
+</div> -->
