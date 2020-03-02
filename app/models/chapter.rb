@@ -20,4 +20,13 @@
     student_flashcards
   end
 
+  def score_chapter(students_number)
+    score = 0
+    self.flashcards.each do |flashcard|
+      flashcard.user_answers.each do |user_answer|
+        score += user_answer.completion
+      end
+    end
+    score.fdiv(self.flashcards_number).fdiv(students_number).round(2)*100
+  end
 end
