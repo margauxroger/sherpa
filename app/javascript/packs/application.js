@@ -23,3 +23,6 @@ lineGraphStudent();
 
 // import { scrollMessages } from '../components/messages';
 // scrollMessages();
+
+import { dougnhutGraphStudent } from '../components/charts_courses_student_show_dougnhut_flash';
+dougnhutGraphStudent();

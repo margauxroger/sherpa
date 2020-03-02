@@ -1,14 +1,28 @@
-<div class="container mt-5">
+<div class="container-dash-student mt-5">
 
   <div><%= link_to 'Back to class', teachers_course_path(params[:course_id]), class: "btn btn-sherpa" %></div>
-  <img src="<%= User.find(params[:id]).picture_url %>" alt="">
-</div>
 
+  <div class="student-dashboard-infos">
+    <div>
+      <img src="<%= User.find(params[:id]).picture_url %>" alt="">
+    </div>
+    <div>
+      <h1>Nom et prénom</h1>
+      <h2>Classe</h2>
+      <p>envoyer un message</p>
+    </div>
+    <div>
+      <h3> Sentiment Analysis</h3>
+    </div>
+  </div>
 
-<div style="height: 33vh;">
-  <%= render 'shared/chart_line_student_show' %>
-</div>
-
-<div>
+  <div class="student-dashboard-infos">
+    <div style="height: 33vh;">
+      <%= render 'shared/chart_line_student_show' %>
+    </div>
+    <div>
+      <%= render 'shared/chart_dougnhut_student_show' %>
+    </div>
+  </div>
 
 </div>
