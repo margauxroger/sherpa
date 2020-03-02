@@ -80,6 +80,10 @@ class User < ApplicationRecord
     end
   end
 
+  def count_unread_notifications
+    Notification.where("user_id = ?", self.id).where(read_status: false).length
+  end
+
   private
 
   def calculate_percentile(array = [], percentile = 0.0)

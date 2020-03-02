@@ -45,9 +45,10 @@ UserAnswer.destroy_all
 puts "Creating teachers"
 
 teacher1 = User.create!(
-  email:    "remi.charette@gmail.com",
-  password: "azerty",
-  role:     "teacher",
+  email:        "remi.charette@gmail.com",
+  password:     "azerty",
+  role:         "teacher",
+  picture_url:  "https://avatars1.githubusercontent.com/u/51755761?s=400&v=4"
 )
 
 teacher2 = User.create!(
@@ -55,6 +56,7 @@ teacher2 = User.create!(
   email:    "diogo.heineken@gmail.com",
   password: "azerty",
   role:     "teacher",
+  picture_url: "https://avatars3.githubusercontent.com/u/18058374?s=400&v=4"
 )
 
 puts "Creating 4 different divisions, each containing 40 students"
