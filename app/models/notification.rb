@@ -2,7 +2,7 @@ class Notification < ApplicationRecord
   belongs_to :user
   belongs_to :course
 
-  validates :type, presence: true,
+  validates :notif_type, presence: true,
                    inclusion: { in: ['flashcards', 'feeling', 'message', 'feedback'] },
                    uniqueness: { scope: :course_id }
 
