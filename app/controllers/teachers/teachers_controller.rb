@@ -9,7 +9,14 @@ class Teachers::TeachersController < ApplicationController
     @courses = current_user.courses
   end
 
-  private
-  def new_suggestion
+  def trigger_flashcard_notifications
+    current_user.flashcards_notifications
   end
+
+  private
+
+  def new_suggestion
+
+  end
+
 end
