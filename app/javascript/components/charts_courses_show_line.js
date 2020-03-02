@@ -1,12 +1,18 @@
 const lineGraph = () => {
+  let div_chart = document.querySelector(".lineChartClass")
+  let score_hash = JSON.parse(div_chart.dataset.chapters)
   let chart = document.getElementById("lineChart")
+
+  console.log(typeof score_hash)
+  console.log(score_hash)
+
   if (chart) {
   new Chart(chart, {
     type: 'bar',
     data: {
-      labels: ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6"],
+      labels: Object.keys(score_hash),
       datasets: [{
-          data: [86, 72, 19, 29, 98, 37],
+          data: Object.values(score_hash),
           label: "Flashcards done",
           borderColor: "purple",
           backgroundColor: "purple",
@@ -28,7 +34,7 @@ const lineGraph = () => {
           yAxes: [{
               ticks: {
                   display: true,
-                  beginAtZero: false,
+                  beginAtZero: true,
               },
               gridLines : {
                 display: false,
@@ -37,7 +43,7 @@ const lineGraph = () => {
           xAxes: [{
               ticks: {
                   display: true,
-                  beginAtZero: false,
+                  beginAtZero: true,
               },
               gridLines : {
                 display: false,

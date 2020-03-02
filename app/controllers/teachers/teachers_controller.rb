@@ -5,8 +5,8 @@ class Teachers::TeachersController < ApplicationController
 
   def show
     authorize([:teachers, current_user])
-    current_user.courses
     @divisions = current_user.divisions
+    @courses = current_user.courses
   end
 
   private
