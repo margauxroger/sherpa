@@ -10,8 +10,10 @@
   display: flex;
   justify-content: space-between;
   width: 90%;
-  margin: 15px auto;
-  height: 25vh;
+  margin: 30px auto;
+  height: 30vh;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .average-review-graph {
