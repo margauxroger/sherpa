@@ -1,0 +1,6 @@
+<%= simple_form_for [teacher, flashcard] do |f| %>
+<%= f.input :question %>
+<%= f.input :answer %>
+<%= f.input :chapter_id, as: :hidden, html_input: { value: flashcard.chapter.id} %>
+<%= f.button :submit, class: "btn btn-sherpa" %>
+<% end %>
