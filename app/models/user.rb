@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :materials, through: :courses
   has_many :feedbacks, through: :courses
   has_many :suggestions
+  has_many :feedbacks
   belongs_to :division, optional: true
 
   validates :role, inclusion: { in: %w[teacher student admin] }

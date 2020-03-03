@@ -1,0 +1,98 @@
+.container-reviews {
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 15px;
+  background-color: white;
+  padding: 10px;
+}
+
+.average-review {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 15px auto;
+  height: 25vh;
+}
+
+.average-review-graph {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.average-review-grade {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  p {
+    font-size: 60px;
+    margin: 5px;
+  }
+}
+
+.average-review-stars {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.review-content-rating {
+  margin-left: 30px;
+}
+
+.student-rating-mf {
+  margin-top: 15px;
+  display: flex;
+}
+
+.review-info-student {
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  background-color: $light-gray;
+  border-radius: 15px 0px 0px 15px;
+}
+
+.student-review-img {
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.review-card-student {
+  width: 90%;
+  margin: 15px auto;
+  display: flex;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+#star-color-feedback {
+  color: #FFDA2F !important;
+}
+
+.student-comment-mf {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+#title-student-feedbacks {
+  text-align: center;
+}
+
+.review-summary-stars {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  i {
+    font-size: 40px;
+  }
+}
