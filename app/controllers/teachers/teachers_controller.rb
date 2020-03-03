@@ -5,11 +5,20 @@ class Teachers::TeachersController < ApplicationController
 
   def show
     authorize([:teachers, current_user])
-    current_user.courses
     @divisions = current_user.divisions
+    @courses = current_user.courses
+  end
+
+  def trigger_flashcard_notifications
+    authorize(current_user)
+    current_user.flashcards_notifications
+    redirect_to teachers_root_path
   end
 
   private
+
   def new_suggestion
+
   end
+
 end

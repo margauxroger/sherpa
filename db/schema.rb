@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_120652) do
+ActiveRecord::Schema.define(version: 2020_03_02_150353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_120652) do
     t.bigint "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "sentiment_score"
     t.index ["course_id"], name: "index_feedbacks_on_course_id"
   end
 
@@ -106,13 +107,14 @@ ActiveRecord::Schema.define(version: 2020_02_28_120652) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "suggestions", force: :cascade do |t|
-    t.string "type"
+  create_table "notifications", force: :cascade do |t|
+    t.string "notif_type"
     t.string "content"
     t.bigint "user_id"
     t.bigint "course_id"
-    t.index ["course_id"], name: "index_suggestions_on_course_id"
-    t.index ["user_id"], name: "index_suggestions_on_user_id"
+    t.boolean "read_status", default: false
+    t.index ["course_id"], name: "index_notifications_on_course_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "user_answers", force: :cascade do |t|
@@ -154,8 +156,8 @@ ActiveRecord::Schema.define(version: 2020_02_28_120652) do
   add_foreign_key "flashcards", "chapters"
   add_foreign_key "messages", "forums"
   add_foreign_key "messages", "users"
-  add_foreign_key "suggestions", "courses"
-  add_foreign_key "suggestions", "users"
+  add_foreign_key "notifications", "courses"
+  add_foreign_key "notifications", "users"
   add_foreign_key "user_answers", "flashcards"
   add_foreign_key "user_answers", "users"
 end

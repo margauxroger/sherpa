@@ -9,7 +9,7 @@ const graph = () => {
               labels: ['Flashcards done', "Flashcards not done"],
               datasets: [{
                   label: 'Flashcards done',
-                  data: [78, 22],
+                  data: [element.dataset.score, 100 - element.dataset.score],
                   backgroundColor: [
                       'rgba(79, 42, 205, 0.6)',
                       'rgba(79, 42, 205, 0.1)'
