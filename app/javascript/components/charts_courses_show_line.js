@@ -1,13 +1,12 @@
 const lineGraph = () => {
   let chart = document.getElementById("lineChart")
 
-  // console.log(typeof score_hash)
-  // console.log(score_hash)
-
   if (chart) {
   let div_chart = document.querySelector(".lineChartClass")
   let score_hash = JSON.parse(div_chart.dataset.chapters)
-
+  let cumulative_score_hash = JSON.parse(div_chart.dataset.score)
+  console.log(score_hash)
+  console.log(cumulative_score_hash)
   new Chart(chart, {
     type: 'bar',
     data: {
@@ -16,10 +15,18 @@ const lineGraph = () => {
           data: Object.values(score_hash),
           label: "Flashcards done",
           borderColor: "purple",
-          backgroundColor: "purple",
+          backgroundColor: "rgba(79, 42, 205, 0.1)",
           fill: false
         },
-      ]
+        {
+          data: Object.values(cumulative_score_hash),
+          label: "Flashcards done",
+          borderColor: "rgba(112,115,190,0.8)",
+          backgroundColor: "blue",
+          fill: false,
+          type: 'line',
+                },
+        ],
     },
     options: {
       responsive: true,
