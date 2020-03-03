@@ -31,7 +31,7 @@ scrollLastMessageIntoView();
 
 
 import { dougnhutGraphStudent } from '../components/charts_courses_student_show_dougnhut_flash';
-dougnhutGraphStudent();
+dougnhutGraphStudent(0);
 
 
 

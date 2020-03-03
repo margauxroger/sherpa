@@ -1,41 +1,44 @@
-const lineGraphStudent = () => {
+const lineGraphStudent = (values) => {
   let chart = document.getElementById("lineStudentChart")
-  if (chart) {
-  new Chart(chart, {
-    type: 'line',
-    data: {
-      labels: ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6"],
-      datasets: [{
-          data: [86, 72, 19, 29, 98, 37],
+  let chapters = JSON.parse(document.querySelector(".card-student-list").dataset.label)
+  if (values) {
+    if (chart) {
+      var my_chart = new Chart(chart, {
+        type: 'bar',
+        data: {
+          labels: chapters,
+          datasets: [{
+              data: Object.values(values),
           label: "Flashcards done",
           borderColor: "purple",
-          fill: false
+          backgroundColor: "purple",
+            },
+          ]
         },
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      legend: {
-        display: false,
-      },
-      title: {
-        display: true,
-        text: "Flashcards progression over chapters"
-      },
-      scales: {
-          yAxes: [{
-              ticks: {
-                  display: true,
-                  beginAtZero: false,
-              },
-              gridLines : {
-                display: false,
-              }
-          }]
-      },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          legend: {
+            display: false,
+          },
+          title: {
+            display: true,
+            text: "Flashcards progression chapter by chapter"
+          },
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      display: true,
+                      beginAtZero: true,
+                  },
+                  gridLines : {
+                    display: false,
+                  }
+              }]
+          },
+        }
+      });
     }
-  });
   }
 };
 
