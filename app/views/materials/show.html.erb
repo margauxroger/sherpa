@@ -18,9 +18,9 @@
                 </button>
               </h2>
               <div class="d-flex align-items-center">
-                <button type="button" class="btn btn-transp" data-toggle="modal" data-target="#modal-<%= chapter.id %>"><i class="far fa-edit"></i></button>
+                <button type="button" class="btn btn-transp" data-toggle="modal" data-target="#modal-<%= chapter.id %>"><i class="far fa-edit navbar-icon"></i></button>
                 <%= link_to chapter_path(chapter.id), method: :delete, data: { confirm: "Are you sure?"} do %>
-                  <i class="fas fa-trash"></i>
+                  <i class="fas fa-trash navbar-icon"></i>
                 <% end %>
               </div>
               </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_150353) do
+ActiveRecord::Schema.define(version: 2020_03_02_153228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,7 +70,9 @@ ActiveRecord::Schema.define(version: 2020_03_02_150353) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "sentiment_score"
+    t.bigint "user_id"
     t.index ["course_id"], name: "index_feedbacks_on_course_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
   create_table "flashcards", force: :cascade do |t|
@@ -153,6 +155,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_150353) do
   add_foreign_key "courses", "materials"
   add_foreign_key "courses", "users"
   add_foreign_key "feedbacks", "courses"
+  add_foreign_key "feedbacks", "users"
   add_foreign_key "flashcards", "chapters"
   add_foreign_key "messages", "forums"
   add_foreign_key "messages", "users"

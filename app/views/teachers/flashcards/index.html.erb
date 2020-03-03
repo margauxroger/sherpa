@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <% @levels.each do |level| %>
       <h2 class="mb-3"><%= level %></h2>
-      <% current_user.courses.each do |course| %>
+      <% @courses.each do |course| %>
       <% if course.division.level == level && !@materials_display.include?(course.material.name) %>
       <h3><%= course.material.name %></h3>
       <% @materials_display << course.material.name %>
@@ -9,11 +9,53 @@
       <div class="row row-flashcards-chapter">
           <div class="material-card mb-4 p-3"><%= link_to chapter.name %></div>
           <% chapter.flashcards.each do |flashcard| %>
-            <div class="flashcard-teacher mb-4 p-3 no-show overflow-auto">
+            <div class="flashcard-teacher mb-4 p-3 pt-5 no-show overflow-auto">
               <strong><%= flashcard.question %></strong>
               <div class="border-top mt-2 pt-3"><%= flashcard.answer %></div>
+              <%= link_to teachers_flashcard_path(flashcard.id), method: :delete, data: { confirm: "Are you sure?"}, class: "button-delete-flash-teach" do %>
+                  <i class="fas fa-trash"></i>
+                <% end %>
+              <button type="button" class=" btn btn-transp button-edit-flash-teach m-0 p-0" data-toggle="modal" data-target="#modal-<%= flashcard.id %>"><i class="far fa-edit" style="color: white;"></i></button>
+
+              <div class="modal fade" id="modal-<%= flashcard.id %>" tabindex="-1" role="dialog" aria-labelledby="modal-<%= flashcard.id %>" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header" style="background: rgba(79, 42, 205, 0.1); color: rgba(20,20,20, 0.4)">
+                        <h5 class="modal-title" id="modal-<%= flashcard.id %>"><%= flashcard.chapter.name %></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <%= render "teachers/flashcards/edit", teacher: "#{current_user.role}s", flashcard: Flashcard.find(flashcard.id) %>
+                      </div>
+                  </div>
+                </div>
+            </div>
+
             </div>
           <% end %>
+          <div class="flashcard-teacher teacher-add-flashcard no-show">
+            <button type="button" class=" btn btn-transp m-0 p-0" data-toggle="modal" data-target="#modal-flashcard_new"><i class="fas fa-plus navbar-icon p-5 m-4"></i></button>
+
+            <div class="modal fade" id="modal-flashcard_new" tabindex="-1" role="dialog" aria-labelledby="modal-flashcard_new" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header" style="background: rgba(79, 42, 205, 0.1); color: rgba(20,20,20, 0.4)">
+                        <h5 class="modal-title" id="modal-flashcard_new"><%= chapter.name %></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <%= render "flashcards/new", chapter: chapter, flashcard: Flashcard.new %>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+
       </div>
         <% end %>
       <% end %>
