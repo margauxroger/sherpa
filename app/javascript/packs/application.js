@@ -12,6 +12,10 @@ import { dougnhutGraphStudent } from '../components/charts_courses_student_show_
 import { handleClickOnStudentsList } from '../components/handleClickOnStudentsList';
 import { handleClickOnForum } from '../components/handleClickOnForum';
 import { handleClickOnFeedbackList } from '../components/handleClickOnFeedbackList';
+import { scrollLastMessageIntoView } from '../components/messages';
+import { barGraphTeacherReview } from '../components/charts_courses_teacher_reviews';
+import { displayIndividualChart } from '../components/display_individual_student_chart';
+import { showChapterFlashcards } from '../components/flashcard_chapter';
 
 
 graph();
@@ -24,26 +28,14 @@ dougnhutGraphStudent();
 handleClickOnStudentsList();
 handleClickOnForum();
 handleClickOnFeedbackList();
-
-
-import { scrollLastMessageIntoView } from '../components/messages';
 scrollLastMessageIntoView();
+dougnhutGraphStudent();
+barGraphTeacherReview();
+displayIndividualChart ();
+showChapterFlashcards();
 
 //= require rails-ujs
 //= require jquery
 //= require turbolinks
 //= require_tree
 
-
-import { dougnhutGraphStudent } from '../components/charts_courses_student_show_dougnhut_flash';
-dougnhutGraphStudent();
-
-import { barGraphTeacherReview } from '../components/charts_courses_teacher_reviews';
-barGraphTeacherReview();
-
-
-import { displayIndividualChart } from '../components/display_individual_student_chart';
-displayIndividualChart ();
-
-import { showChapterFlashcards } from '../components/flashcard_chapter';
-showChapterFlashcards();
