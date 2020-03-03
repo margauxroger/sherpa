@@ -2,4 +2,7 @@
   <% @courses.each do |course| %>
   <%= course.material.name %>
   <% end %>
+
+  <%= link_to "specific course", students_course_path(1) %>
 </div>
+
