@@ -42,16 +42,18 @@ UserAnswer.destroy_all
 puts "Creating teachers"
 
 teacher1 = User.create!(
-  email:    "remi.charette@gmail.com",
-  password: "azerty",
-  role:     "teacher",
+  email:        "remi.carette@gmail.com",
+  password:     "azerty",
+  role:         "teacher",
+  picture_url:  "https://avatars1.githubusercontent.com/u/51755761?s=400&v=4"
 )
 
 teacher2 = User.create!(
 
-  email:    "diogo.heineken@gmail.com",
+  email:    "diogo.heinen@gmail.com",
   password: "azerty",
   role:     "teacher",
+  picture_url: "https://avatars3.githubusercontent.com/u/18058374?s=400&v=4"
 )
 
 puts "Creating 4 different divisions, each containing 40 students"
@@ -61,20 +63,25 @@ puts "Creating 4 different divisions, each containing 40 students"
 # p user["name"]
 # p user["name"]["first"]
 
+user_emails = []
+
 div1 = Division.create!(
          name:  "Term. S2",
          level: "Terminale"
          )
 40.times do
   user = JSON.parse(open('https://randomuser.me/api/').read)["results"].first
-  user_instance = User.new( first_name: user["name"]["first"],
-                            last_name:  user["name"]["last"],
-                            email: user["email"],
-                            password: 'azerty',
-                            division_id: div1.id,
-                            )
-  user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
-  user_instance.save!
+  unless user_emails.include?(user["email"])
+    user_instance = User.new( first_name:  user["name"]["first"],
+                              last_name:   user["name"]["last"],
+                              email:       user["email"],
+                              password:    'azerty',
+                              division_id: div1.id,
+                              )
+    user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
+    user_instance.save!
+    user_emails << user["email"]
+  end
 end
 
 div2 = Division.create!(
@@ -83,14 +90,17 @@ div2 = Division.create!(
          )
 40.times do
   user = JSON.parse(open('https://randomuser.me/api/').read)["results"].first
-  user_instance = User.new( first_name: user["name"]["first"],
-                            last_name:  user["name"]["last"],
-                            email: user["email"],
-                            password: 'azerty',
-                            division_id: div2.id,
-                            )
-  user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
-  user_instance.save!
+  unless user_emails.include?(user["email"])
+    user_instance = User.new( first_name:  user["name"]["first"],
+                              last_name:   user["name"]["last"],
+                              email:       user["email"],
+                              password:    'azerty',
+                              division_id: div2.id,
+                              )
+    user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
+    user_instance.save!
+    user_emails << user["email"]
+  end
 end
 
 div3 = Division.create!(
@@ -99,14 +109,17 @@ div3 = Division.create!(
          )
 40.times do
   user = JSON.parse(open('https://randomuser.me/api/').read)["results"].first
-  user_instance = User.new( first_name: user["name"]["first"],
-                            last_name:  user["name"]["last"],
-                            email: user["email"],
-                            password: 'azerty',
-                            division_id: div3.id,
-                            )
-  user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
-  user_instance.save!
+  unless user_emails.include?(user["email"])
+    user_instance = User.new( first_name:  user["name"]["first"],
+                              last_name:   user["name"]["last"],
+                              email:       user["email"],
+                              password:    'azerty',
+                              division_id: div3.id,
+                              )
+    user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
+    user_instance.save!
+    user_emails << user["email"]
+  end
 end
 
 div4 = Division.create!(
@@ -115,14 +128,17 @@ div4 = Division.create!(
          )
 40.times do
   user = JSON.parse(open('https://randomuser.me/api/').read)["results"].first
-  user_instance = User.new( first_name: user["name"]["first"],
-                            last_name:  user["name"]["last"],
-                            email: user["email"],
-                            password: 'azerty',
-                            division_id: div4.id,
-                            )
-  user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
-  user_instance.save!
+  unless user_emails.include?(user["email"])
+    user_instance = User.new( first_name:  user["name"]["first"],
+                              last_name:   user["name"]["last"],
+                              email:       user["email"],
+                              password:    'azerty',
+                              division_id: div4.id,
+                              )
+    user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
+    user_instance.save!
+    user_emails << user["email"]
+  end
 end
 
 puts "Creating amazing course materials"
@@ -446,6 +462,22 @@ forum1 = Forum.create!(
             topic: "Histoire TS1",
             course_id: course1.id)
 
+forum2 = Forum.create!(
+            topic: "Maths 1ES",
+            course_id: course2.id)
+
+forum3 = Forum.create!(
+            topic: "Histoire TS1",
+            course_id: course3.id)
+
+forum4 = Forum.create!(
+            topic: "Histoire TS1",
+            course_id: course4.id)
+
+forum5 = Forum.create!(
+            topic: "Histoire TS1",
+            course_id: course5.id)
+
 message1 = Message.create!(
             user_id: 3,
             content: "Bonjour, j'ai une question sur le 1er chapitre",
@@ -471,11 +503,28 @@ puts "Students are now leaving feedbacks to courses they followed"
 #   end
 # end
 
-10.times do
-Feedback.create!(comment: Faker::Lorem.paragraph(sentence_count: 2),
-                 course_id: 1,
-                 rating: rand(1..5),
-                 sentiment_score: rand(0..100),
-                 user: User.find(rand(1..30))
-                 )
+User.where(role: "student").each do |student|
+  Course.where(division_id: student.division.id).each do |course|
+    Feedback.create!(comment: Faker::Lorem.paragraph(sentence_count: 2),
+                     course_id: course.id,
+                     rating: rand(1..5),
+                     sentiment_score: rand(1..100),
+                     user_id: student.id
+                     )
+  end
 end
+
+puts "Simulating notifications"
+
+
+User.where(role: "teacher").each do |teacher|
+  Course.where(user_id: teacher.id).each_with_index do |course, index|
+    Notification::NOTIFICATION_TYPES[1..3].each do |notification_type|
+      Notification.create!(  user_id: teacher.id,
+                           course_id: course.id,
+                             content: "This is a seed notification.",
+                          notif_type: notification_type,)
+    end
+  end
+end
+

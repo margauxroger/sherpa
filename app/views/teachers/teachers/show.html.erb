@@ -1,13 +1,14 @@
 <div class="container-teacher-show">
-  <div class="card-global-teacher-show">
-    <h1 class="font-weight-bold">My alerts</h1>
-    <div class="cards-teacher-show">
-      <%= render 'shared/card_teacher_show' %>
-    </div>
-    <div>
-      <h1 class="font-weight-bold">My classes</h1>
-      <%= render 'shared/chart_dougnhut' %>
-    </div>
+  <div class="notifications-title-bar">
+    <h1 class="font-weight-bold">Notifications</h1>
+    <%= link_to "Generate Notifications", flashcards_notifications_path %>
+  </div>
+  <div class="cards-teacher-show">
+    <%= render 'shared/card_teacher_show' %>
+  </div>
+  <div>
+    <h1 class="font-weight-bold">Classes</h1>
+    <%= render 'shared/chart_dougnhut' %>
   </div>
 </div>
 
