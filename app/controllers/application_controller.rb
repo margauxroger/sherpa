@@ -22,11 +22,14 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+
+    # redirect_to students_root_path unless current_user.teacher?
+
     stored_location_for(resource) ||
-    if resource.is_a?(User) && resource.role = "teacher"
-      teachers_root_path
+    if resource.is_a?(User) && resource.role != "teacher"
+      students_root_path
     else
-      super
+      teachers_root_path
     end
   end
 
