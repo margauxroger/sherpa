@@ -22,12 +22,9 @@ def student_trains_on_flashcards(student, material)
   end
 end
 
-def student_leaves_a_review(student, course)
-  Feedback.create!(content: Faker::Lorem.paragraph(sentence_count: 2),
-                   course: course,
-                   rating: rand(1..5),
-                   sentiment_score: rand(0..100))
-end
+# def student_leaves_a_review(student, course)
+
+# end
 
 puts "Destroying all"
 
@@ -466,15 +463,19 @@ end
 
 puts "Students are now leaving feedbacks to courses they followed"
 
-Division.all.each do |division|
-  division.courses do |course|
-    division.users.each do |student|
-      random = rand()
-      if random < 0.4
-        student_leaves_a_review(student, course)
-      end
-    end
-  end
+# Division.all.each do |division|
+#   division.courses do |course|
+#     division.users.each do |student|
+#       student_leaves_a_review(student, course)
+#     end
+#   end
+# end
+
+10.times do
+Feedback.create!(comment: Faker::Lorem.paragraph(sentence_count: 2),
+                 course_id: 1,
+                 rating: rand(1..5),
+                 sentiment_score: rand(0..100),
+                 user: User.find(rand(1..30))
+                 )
 end
-
-

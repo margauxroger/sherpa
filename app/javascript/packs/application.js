@@ -33,6 +33,8 @@ scrollLastMessageIntoView();
 import { dougnhutGraphStudent } from '../components/charts_courses_student_show_dougnhut_flash';
 dougnhutGraphStudent();
 
+import { barGraphTeacherReview } from '../components/charts_courses_teacher_reviews';
+barGraphTeacherReview();
 
 
 import { displayIndividualChart } from '../components/display_individual_student_chart';

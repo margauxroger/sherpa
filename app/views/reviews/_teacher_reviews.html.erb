@@ -1,0 +1,59 @@
+<div class="container-reviews">
+  <h2 id="title-student-feedbacks" class="animated fadeIn">Feedback Summary</h2>
+  <div class="row">
+    <div class="average-review animated fadeIn">
+
+      <div class="average-review-graph col-8">
+        <%= render 'shared/chart_teacher_reviews_summary' %>
+      </div>
+
+      <div class="average-review-grade col-4">
+        <p><%= @reviews_summary %></p>
+        <div class="review-summary-stars">
+          <% @reviews_summary.times do %>
+            <i id="star-color-feedback" class="fas fa-star"></i>
+          <% end %>
+          <% (5 - @reviews_summary).times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+        </div>
+        <h3>Average Rating</h3>
+      </div>
+
+    </div>
+  </div>
+
+
+  <h2 id="title-student-feedbacks" class="animated fadeIn">Reviews</h2>
+
+
+  <% @course_students.each do |student| %>
+    <% student_reviews = @students_feedbacks.select { |feedback| feedback.user == student } %>
+      <% if student_reviews != [] %>
+        <div class="row">
+          <div class="review-card-student animated fadeIn">
+            <div class="review-info-student col-3">
+              <img class="student-review-img" src="<%= student.picture_url %>" alt="student profile picture">
+              <div>
+                <h3><%= student.last_name %></h3>
+                <h3><%= student.first_name  %></h3>
+              </div>
+            </div>
+
+            <div class="review-content-rating col-9">
+              <% student_reviews.each do |review| %>
+                <p class="student-rating-mf">
+                  <% review.rating.times do %>
+                    <i id="star-color-feedback" class="fas fa-star"></i>
+                  <% end %>
+                </p>
+                <p class="student-comment-mf"><%= review.comment %></p>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+
+      <% end %>
+  <% end %>
+</div>

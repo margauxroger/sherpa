@@ -1,19 +1,16 @@
-const lineGraph = () => {
-  let chart = document.getElementById("lineChart")
-
-  // console.log(typeof score_hash)
-  // console.log(score_hash)
+const barGraphTeacherReview = () => {
+  let chart = document.getElementById("barGraphTeacherReview")
 
   if (chart) {
-    let div_chart = document.querySelector(".lineChartClass")
-    let score_hash = JSON.parse(div_chart.dataset.chapters)
+  let div_chart = document.querySelector(".barGraphTeacherReviewClass")
+  let reviews_hash = JSON.parse(div_chart.dataset.reviews)
   new Chart(chart, {
-    type: 'bar',
+    type: 'horizontalBar',
     data: {
-      labels: Object.keys(score_hash),
+      labels: Object.keys(reviews_hash),
       datasets: [{
-          data: Object.values(score_hash),
-          label: "Flashcards done",
+          data: Object.values(reviews_hash),
+          label: "percentage overall",
           borderColor: "purple",
           backgroundColor: "purple",
           fill: false
@@ -28,7 +25,7 @@ const lineGraph = () => {
       },
       title: {
         display: true,
-        text: "Flashcards progression over chapters"
+        text: "Percentage of votes for each stars"
       },
       scales: {
           yAxes: [{
@@ -44,6 +41,7 @@ const lineGraph = () => {
               ticks: {
                   display: true,
                   beginAtZero: true,
+                  labelString: '% of ratings'
               },
               gridLines : {
                 display: false,
@@ -55,4 +53,4 @@ const lineGraph = () => {
   }
 };
 
-export { lineGraph };
+export { barGraphTeacherReview };
