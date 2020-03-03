@@ -21,8 +21,14 @@ initTranslateMarkdown();
 import { lineGraphStudent } from '../components/charts_courses_student_show_line';
 lineGraphStudent();
 
-// import { scrollMessages } from '../components/messages';
-// scrollMessages();
+import { scrollLastMessageIntoView } from '../components/messages';
+scrollLastMessageIntoView();
+
+//= require rails-ujs
+//= require jquery
+//= require turbolinks
+//= require_tree
+
 
 import { dougnhutGraphStudent } from '../components/charts_courses_student_show_dougnhut_flash';
 dougnhutGraphStudent();
