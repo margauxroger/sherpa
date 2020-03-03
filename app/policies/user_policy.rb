@@ -4,4 +4,8 @@ class UserPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def trigger_flashcard_notifications?
+    true
+  end
 end
