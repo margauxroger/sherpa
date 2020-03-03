@@ -1,29 +1,28 @@
+.container-teacher-show {
+  width: 95%;
+  min-height: 100%;
+  margin: 32px auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  padding: 16px;
+  h1 {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 30px;
+  };
+}
+
 .card-teacher-show {
-  border-radius: 15px;
+  border-radius: 4px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   display: flex;
   margin: 8px;
   height: 140px;
   flex: row;
-}
-
-.card-global-teacher-show {
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  min-height: 38em;
-  margin-top: 30px;
-  padding: 8px;
-  h1 {
-    color: rgba(0, 0, 0, 0.7);
-    padding: 5px 0px 0px 5px;
-    font-weight: lighter;
-    font-size: 30px;
-    text-align: center;
-  }
+  width: 100%;
 }
 
 .card-teacher-symbol {
-  border-radius: 15px 0 0 15px;
+  border-radius: 4px 0 0 4px;
   padding: 3px;
   height: 100%;
   width: 60%;
@@ -37,12 +36,16 @@
 
 .card-teacher-back-color {
   background-color: #4F2ACD;
+  &:hover {
+    background-color: #4F2ACD;
+    opacity: 0.9;
+  }
 }
 
 .card-teacher-text {
   padding: 10px;
   font-size: 18px;
-  border-radius: 0px 15px 15px 0px;
+  border-radius: 0px 4px 4px 0px;
   align-content: center;
   width: 150%;
   p {
@@ -51,11 +54,16 @@
   }
 }
 
+.notifications-title-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
 .card-teacher-footer {
   color: rgba(255, 255, 255, 0.8);
   text-align: right;
   margin-right: 7px;
-  border-top: 0.5px solid grey;
+  border-top: 0.5px solid rgba(0, 0, 0, 0.2);
   height: 20%;
   p {
     padding: 5px 0 5px 0;
@@ -66,12 +74,41 @@
   height: 80%;
 }
 
-.cards-teacher-show {
-  border-bottom: 0.5px solid grey;
-  width: 90%;
+
+.notification-container {
+  width: 100%;
   margin: auto;
-  height: 65%;
   padding: 8px;
+  display: flex;
+  min-height: 24em;
 }
 
-// @media (max-width) {}
+.flashcard-notifications,
+.feeling-notifications,
+.message-notifications,
+.feedback-notifications {
+  min-width: 22%;
+  margin: 12px 18px;
+  a:hover {
+    text-decoration: none
+  }
+}
+
+.no-notification-message {
+  width: 80%;
+  margin: 0 auto;
+  min-height: 24em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// .notification-card {
+//   margin: 32px 0;
+// }
+
+.cards-teacher-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

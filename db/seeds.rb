@@ -42,9 +42,10 @@ UserAnswer.destroy_all
 puts "Creating teachers"
 
 teacher1 = User.create!(
-  email:    "remi.charette@gmail.com",
-  password: "azerty",
-  role:     "teacher",
+  email:        "remi.charette@gmail.com",
+  password:     "azerty",
+  role:         "teacher",
+  picture_url:  "https://avatars1.githubusercontent.com/u/51755761?s=400&v=4"
 )
 
 teacher2 = User.create!(
@@ -52,6 +53,7 @@ teacher2 = User.create!(
   email:    "diogo.heineken@gmail.com",
   password: "azerty",
   role:     "teacher",
+  picture_url: "https://avatars3.githubusercontent.com/u/18058374?s=400&v=4"
 )
 
 puts "Creating 4 different divisions, each containing 40 students"
@@ -446,6 +448,22 @@ forum1 = Forum.create!(
             topic: "Histoire TS1",
             course_id: course1.id)
 
+forum2 = Forum.create!(
+            topic: "Maths 1ES",
+            course_id: course2.id)
+
+forum3 = Forum.create!(
+            topic: "Histoire TS1",
+            course_id: course3.id)
+
+forum4 = Forum.create!(
+            topic: "Histoire TS1",
+            course_id: course4.id)
+
+forum5 = Forum.create!(
+            topic: "Histoire TS1",
+            course_id: course5.id)
+
 message1 = Message.create!(
             user_id: 3,
             content: "Bonjour, j'ai une question sur le 1er chapitre",
@@ -478,4 +496,18 @@ Feedback.create!(comment: Faker::Lorem.paragraph(sentence_count: 2),
                  sentiment_score: rand(0..100),
                  user: User.find(rand(1..30))
                  )
+end
+
+puts "Simulating notifications"
+
+User.where(role: "teacher").each do |teacher|
+  courses = Course.where(user_id: teacher.id)
+  Notification::NOTIFICATION_TYPES[1..3].each do |notification_type|
+    3.times do
+      Notification.create(   user_id: teacher.id,
+                           course_id: courses[rand(0...courses.length)].id,
+                             content: "This is a seed notification.",
+                          notif_type: notification_type,)
+    end
+  end
 end
