@@ -16,3 +16,19 @@
 // }
 
 // export { scrollMessages };
+const scrollLastMessageIntoView = () => {
+  const forumBtn = document.getElementById('v-pills-forum-tab')
+  if (forumBtn) {
+    forumBtn.addEventListener('click', (event) => {
+      console.log("hey")
+      const messages = document.querySelectorAll('.message');
+      const lastMessage = messages[messages.length - 1];
+      lastMessage.scrollIntoView();
+    })
+  }
+
+}
+
+export { scrollLastMessageIntoView }
+
+
