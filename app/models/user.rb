@@ -6,18 +6,18 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
-  has_many :messages, dependent: :destroy
-  has_many :user_answers, dependent: :destroy
-  has_many :courses
-  has_many :divisions, through: :courses
-  has_many :materials, through: :courses
-  has_many :suggestions
+  has_many   :messages, dependent: :destroy
+  has_many   :user_answers, dependent: :destroy
+  has_many   :courses
+  has_many   :divisions, through: :courses
+  has_many   :materials, through: :courses
+  has_many   :feedbacks, through: :courses
+  has_many   :suggestions
   belongs_to :division, optional: true
 
   validates :role, inclusion: { in: %w[teacher student admin] }
 
-
-
+  # require 'facets/math/percentile'
 
   def teacher?
     role == "teacher"
@@ -32,6 +32,10 @@ class User < ApplicationRecord
     chapter_scores.sum.fdiv(chapter_scores.length).round(2)
   end
 
+  def sentiment_score(material)
+    self.feedbacks.map { |feedback| feedback.sentiment_score }.sum.fdiv(self.feedbacks.length)
+  end
+
   def find_flashcards_answers(chapter)
     chapter.find_flashcards_answers_by_student(self)
   end
@@ -40,6 +44,46 @@ class User < ApplicationRecord
     student_flashcards = find_flashcards_answers(chapter)
     score = student_flashcards.map {|student_flashcard| student_flashcard.completion }.sum
     score.fdiv(chapter.flashcards_number).round(2)*100
+  end
+
+  def flashcards_notifications
+    Course.where("user_id = ?", self.id).each do |course|
+      student_flashcard_scores = course.users.map { |student| student.score(course.material) }
+      outlier_criteria = calculate_percentile(student_flashcard_scores, 0.25) - 1.5 * (calculate_percentile(student_flashcard_scores, 0.75) - calculate_percentile(student_flashcard_scores, 0.25))
+      if outlier_criteria == 0
+        warning_students = course.users
+      else
+        warning_students = course.users.select { |student| student.score(course.material) < 50.0 }
+      end
+      unless warning_students.nil? || warning_students.empty?
+        Notification.create(notif_type: "flashcards",
+                               content: "#{warning_students.length} student#{"s" if warning_students.length > 1}
+                                          #{warning_students.length > 1 ? "are" : "is"} lagging behind with regards to
+                                          flashcards for #{course.material.name}",
+                             course_id: course.id,
+                               user_id: self.id)
+      end
+    end
+  end
+
+  def feeling_notifications
+    Course.where("user_id = ?", self.id).each do |course|
+      warning_students = course.users.select { |student| student.score(course.material) < 50.0 }
+      unless warning_students.empty?
+        Notification.create(notif_type: "feeling",
+                               content: "#{warning_students.length} student#{"s" if warning_students.length > 1}
+                                          ha#{warning_students.length > 1 ? "ve" : "s"} a sentiment score below 50%
+                                          regarding the course #{course.material.name}",
+                             course_id: course.id,
+                               user_id: self.id)
+      end
+    end
+  end
+
+  private
+
+  def calculate_percentile(array = [], percentile = 0.0)
+    array.empty? ? 0 : array.sort[((array.length * percentile).ceil) - 1]
   end
 
 end

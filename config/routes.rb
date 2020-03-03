@@ -23,7 +23,18 @@ Rails.application.routes.draw do
   resources :courses, only: [:show] do
     resources :flashcards, only: [:create, :update, :destroy]
   end
+
   resources :forums, only: [:create, :update, :show] do
     resources :messages, only: [:create, :show]
   end
+
+  namespace :students do
+    root to: 'students#show'
+      resources :courses, only: [:show] do
+        resources :feedbacks, only: [:create, :update, :delete]
+    end
+  end
+
+  get '/flashcards_notifications', to: 'teachers/teachers#trigger_flashcard_notifications', as: 'flashcards_notifications'
+
 end

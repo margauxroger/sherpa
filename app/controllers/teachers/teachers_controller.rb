@@ -4,12 +4,23 @@ class Teachers::TeachersController < ApplicationController
   before_action :new_suggestion, only: :show
 
   def show
-    authorize([:teachers, current_user])
+    authorize current_user
+    current_user.courses
+
     @divisions = current_user.divisions
     @courses = current_user.courses
   end
 
-  private
-  def new_suggestion
+  def trigger_flashcard_notifications
+    authorize(current_user)
+    current_user.flashcards_notifications
+    redirect_to teachers_root_path
   end
+
+  private
+
+  def new_suggestion
+
+  end
+
 end
