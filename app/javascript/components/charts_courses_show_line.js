@@ -7,6 +7,7 @@ const lineGraph = () => {
   if (chart) {
   let div_chart = document.querySelector(".lineChartClass")
   let score_hash = JSON.parse(div_chart.dataset.chapters)
+
   new Chart(chart, {
     type: 'bar',
     data: {
