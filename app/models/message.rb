@@ -13,4 +13,10 @@ class Message < ApplicationRecord
     })
   end
 
+  def mark_as_read!
+
+    self.read = true
+    self.save
+  end
+
 end

@@ -473,7 +473,7 @@ puts "Students are now leaving feedbacks to courses they followed"
 
 10.times do
 Feedback.create!(comment: Faker::Lorem.paragraph(sentence_count: 2),
-                 course_id: 1,
+                 course_id: rand(1..5),
                  rating: rand(1..5),
                  sentiment_score: rand(0..100),
                  user: User.find(rand(1..30))

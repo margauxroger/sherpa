@@ -1,7 +1,12 @@
 class Teachers::CoursesController < ApplicationController
 
   def show
+
     @course  = Course.find(params[:id])
+
+    mark_received_messages_as_read
+
+
     authorize current_user #([:teachers, @course])
     @course_students = User.where("division_id = ?", @course.division.id)
     @material = @course.material
@@ -64,6 +69,17 @@ class Teachers::CoursesController < ApplicationController
     @reviews_summary = @sum_reviews / @students_feedbacks.length
 
     # Fin des données pour les reviews - Martin
+  end
+
+  def mark_received_messages_as_read
+    forum = @course.forum
+    messages = forum.messages
+
+    messages_received = messages.reject { |message| message.user_id == current_user.id }
+
+    # messages_received = messages.reject { |message| message.user_id == current_user.id }
+
+    messages_received.each { |message| message.mark_as_read! }
   end
 
 end

@@ -26,6 +26,7 @@ class MessagesController < ApplicationController
 
   def index
     @messages = Message.where("forum_id = #{params[:forum_id]}")
+
   end
 
   private
