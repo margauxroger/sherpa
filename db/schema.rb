@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_153228) do
+ActiveRecord::Schema.define(version: 2020_03_03_180006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,15 @@ ActiveRecord::Schema.define(version: 2020_03_02_153228) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "chapter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chapter_id"], name: "index_sessions_on_chapter_id"
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "user_answers", force: :cascade do |t|
     t.text "answer_student"
     t.bigint "user_id"
@@ -161,6 +170,8 @@ ActiveRecord::Schema.define(version: 2020_03_02_153228) do
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "courses"
   add_foreign_key "notifications", "users"
+  add_foreign_key "sessions", "chapters"
+  add_foreign_key "sessions", "users"
   add_foreign_key "user_answers", "flashcards"
   add_foreign_key "user_answers", "users"
 end
