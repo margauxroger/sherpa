@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     root to: 'teachers#show'
       resources :courses, only: [:show] do
         resources :students, only: [:index, :show]
-        # resources :
     end
     resources :flashcards, only: [:index, :destroy, :update, :create]
   end
@@ -38,4 +37,5 @@ Rails.application.routes.draw do
 
   get '/flashcards_notifications', to: 'teachers/teachers#trigger_flashcard_notifications', as: 'flashcards_notifications'
 
+  mount ActionCable.server => "/cable"
 end
