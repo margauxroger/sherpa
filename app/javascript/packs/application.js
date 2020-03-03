@@ -1,6 +1,6 @@
 import "bootstrap";
-import "../components/footer"
-import "../components/dashboardNotifications"
+import "../components/footer";
+import "../components/dashboardNotifications";
 
 import { graph  } from "../components/charts_teacher_home";
 import { initMarkdown } from 'pluggins/init_markdown';
@@ -17,14 +17,13 @@ import { barGraphTeacherReview } from '../components/charts_courses_teacher_revi
 import { displayIndividualChart } from '../components/display_individual_student_chart';
 import { showChapterFlashcards } from '../components/flashcard_chapter';
 
-
 graph();
 initMarkdown();
 lineGraph();
 scatterGraph();
 initTranslateMarkdown();
 lineGraphStudent();
-dougnhutGraphStudent();
+dougnhutGraphStudent(0);
 handleClickOnStudentsList();
 handleClickOnForum();
 handleClickOnFeedbackList();
@@ -38,19 +37,3 @@ showChapterFlashcards();
 //= require jquery
 //= require turbolinks
 //= require_tree
-
-
-
-import { dougnhutGraphStudent } from '../components/charts_courses_student_show_dougnhut_flash';
-dougnhutGraphStudent(0);
-
-
-
-import { displayIndividualChart } from '../components/display_individual_student_chart';
-displayIndividualChart ();
-
-import { showChapterFlashcards } from '../components/flashcard_chapter';
-showChapterFlashcards();
-
-
-
