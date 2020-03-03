@@ -9,7 +9,7 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'pundit'
 gem 'rails', '5.2.4.1'
-gem 'redis'
+gem 'redis', '~> 4.0'
 
 gem 'autoprefixer-rails'
 gem 'cloudinary', '~> 1.12.0'
@@ -18,6 +18,7 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'jquery-rails'
 
 
 

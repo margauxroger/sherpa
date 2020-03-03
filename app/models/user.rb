@@ -47,35 +47,52 @@ class User < ApplicationRecord
     score.fdiv(chapter.flashcards_number).round(2)*100
   end
 
-  private
+
+  def border_color(material)
+    return "red-border"     if self.score(material) < 45
+    return "orange-border"  if self.score(material) < 65
+    "green-border"
+  end
 
   def flashcards_notifications
-    self.courses.each do |course|
+    Course.where("user_id = ?", self.id).each do |course|
       student_flashcard_scores = course.users.map { |student| student.score(course.material) }
-      outlier_criteria = Math.percentile(student_flashcard_scores, 25) - 1.5 * (Math.percentile(student_flashcard_scores, 75) - Math.percentile(student_flashcard_scores, 25))
-      warning_students = course.users.select { |student| student.score(course.material) < outlier_criteria }
-      unless warning_students.empty?
-        Notification.create(     type: "flashcards",
-                              content: "#{warning_students.length} student#{"s" if warning_students.length > 1}
+      outlier_criteria = calculate_percentile(student_flashcard_scores, 0.25) - 1.5 * (calculate_percentile(student_flashcard_scores, 0.75) - calculate_percentile(student_flashcard_scores, 0.25))
+      if outlier_criteria == 0
+        warning_students = course.users
+      else
+        warning_students = course.users.select { |student| student.score(course.material) < 50.0 }
+      end
+      unless warning_students.nil? || warning_students.empty?
+        Notification.create(notif_type: "flashcards",
+                               content: "#{warning_students.length} student#{"s" if warning_students.length > 1}
                                           #{warning_students.length > 1 ? "are" : "is"} lagging behind with regards to
-                                          flashcards for #{course.material}",
-                            course_id: course.id,
-                              user_id: self.id)
+                                          flashcards for #{course.material.name}",
+                             course_id: course.id,
+                               user_id: self.id)
       end
     end
   end
 
   def feeling_notifications
-    self.courses.each do |course|
+    Course.where("user_id = ?", self.id).each do |course|
       warning_students = course.users.select { |student| student.score(course.material) < 50.0 }
       unless warning_students.empty?
-        Notification.create(     type: "feeling",
-                              content: "#{warning_students.length} student#{"s" if warning_students.length > 1}
+        Notification.create(notif_type: "feeling",
+                               content: "#{warning_students.length} student#{"s" if warning_students.length > 1}
                                           ha#{warning_students.length > 1 ? "ve" : "s"} a sentiment score below 50%
-                                          regarding the course #{course.material}",
-                            course_id: course.id,
-                              user_id: self.id)
+                                          regarding the course #{course.material.name}",
+                             course_id: course.id,
+                               user_id: self.id)
       end
     end
   end
+
+  private
+
+  def calculate_percentile(array = [], percentile = 0.0)
+    array.empty? ? 0 : array.sort[((array.length * percentile).ceil) - 1]
+  end
+
+
 end

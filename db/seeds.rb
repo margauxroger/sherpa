@@ -30,6 +30,14 @@ puts "Destroying all"
 
 User.destroy_all
 Division.destroy_all
+Course.destroy_all
+Material.destroy_all
+Chapter.destroy_all
+Flashcard.destroy_all
+Forum.destroy_all
+Message.destroy_all
+Feedback.destroy_all
+UserAnswer.destroy_all
 
 puts "Creating teachers"
 
@@ -79,7 +87,7 @@ div2 = Division.create!(
                             last_name:  user["name"]["last"],
                             email: user["email"],
                             password: 'azerty',
-                            division_id: div1.id,
+                            division_id: div2.id,
                             )
   user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
   user_instance.save!
@@ -95,7 +103,7 @@ div3 = Division.create!(
                             last_name:  user["name"]["last"],
                             email: user["email"],
                             password: 'azerty',
-                            division_id: div1.id,
+                            division_id: div3.id,
                             )
   user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
   user_instance.save!
@@ -111,7 +119,7 @@ div4 = Division.create!(
                             last_name:  user["name"]["last"],
                             email: user["email"],
                             password: 'azerty',
-                            division_id: div1.id,
+                            division_id: div4.id,
                             )
   user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
   user_instance.save!
