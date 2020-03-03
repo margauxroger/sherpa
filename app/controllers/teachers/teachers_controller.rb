@@ -4,7 +4,9 @@ class Teachers::TeachersController < ApplicationController
   before_action :new_suggestion, only: :show
 
   def show
-    authorize([:teachers, current_user])
+    authorize current_user
+    current_user.courses
+
     @divisions = current_user.divisions
     @courses = Course.where(user_id: current_user.id)
     @unread_flashcards_notifications = Notification.where(user_id: current_user.id).where(notif_type: "flashcards").where(read_status: false)

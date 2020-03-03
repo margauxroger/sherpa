@@ -1,0 +1,18 @@
+<% if user_is_message_author %>
+
+          <div class="d-flex justify-content-end">
+            <div class="d-flex flex-column align-items-end">
+              <p class="btn btn-message-sent mb-0 pb-0 message"><%= message.content %></p>
+              <em class="mr-2" style="font-size: 12px;"><%= "You" %></em>
+            </div>
+          </div>
+
+        <% else %>
+
+          <div class="d-flex justify-content-start">
+            <div class="d-flex flex-column align-items-start">
+              <p class="btn btn-message-received mb-0 pb-0 message"><%= message.content %></p>
+              <em class="mr-2" style="font-size: 12px;"><%= User.find(message.user_id).email %></em>
+            </div>
+          </div>
+<% end %>

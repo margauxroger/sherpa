@@ -6,13 +6,14 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
-  has_many   :messages, dependent: :destroy
-  has_many   :user_answers, dependent: :destroy
-  has_many   :courses
-  has_many   :divisions, through: :courses
-  has_many   :materials, through: :courses
-  has_many   :feedbacks, through: :courses
-  has_many   :suggestions
+  has_many :messages, dependent: :destroy
+  has_many :user_answers, dependent: :destroy
+  has_many :courses
+  has_many :divisions, through: :courses
+  has_many :materials, through: :courses
+  has_many :feedbacks, through: :courses
+  has_many :suggestions
+  has_many :feedbacks
   belongs_to :division, optional: true
 
   validates :role, inclusion: { in: %w[teacher student admin] }
@@ -44,6 +45,13 @@ class User < ApplicationRecord
     student_flashcards = find_flashcards_answers(chapter)
     score = student_flashcards.map {|student_flashcard| student_flashcard.completion }.sum
     score.fdiv(chapter.flashcards_number).round(2)*100
+  end
+
+
+  def border_color(material)
+    return "red-border"     if self.score(material) < 45
+    return "orange-border"  if self.score(material) < 65
+    "green-border"
   end
 
   def flashcards_notifications
@@ -89,5 +97,6 @@ class User < ApplicationRecord
   def calculate_percentile(array = [], percentile = 0.0)
     array.empty? ? 0 : array.sort[((array.length * percentile).ceil) - 1]
   end
+
 
 end
