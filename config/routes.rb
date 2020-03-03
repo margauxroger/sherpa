@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # namespace :dashboard do
   #   resources :users, only: %i[show edit update]
@@ -9,7 +10,6 @@ Rails.application.routes.draw do
   #   resources :forums
   #   resources :messages
   # end
-
 
   namespace :teachers do
     root to: 'teachers#show'
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
   resources :materials, only: [:index, :show]
   resources :chapters, only: [:new, :create, :edit, :update, :destroy] do
-    resources :flashcards, only: [:new, :create]
+    resources :flashcards, only: [:show, :create]
   end
   resources :courses, only: [:show]
 
@@ -29,8 +29,8 @@ Rails.application.routes.draw do
   end
 
   namespace :students do
-    root to: 'students#show'
-      resources :courses, only: [:show] do
+    root to: 'courses#index'
+      resources :courses, only: [:index, :show] do
         resources :feedbacks, only: [:create, :update, :delete]
     end
   end
