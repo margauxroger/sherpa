@@ -16,12 +16,14 @@ Rails.application.routes.draw do
       resources :courses, only: [:show] do
         resources :students, only: [:index, :show]
     end
+    resources :flashcards, only: [:index]
   end
   resources :materials, only: [:index, :show]
   resources :chapters, only: [:new, :create, :edit, :update, :destroy]
-  resources :courses, only: [:show]
+  resources :courses, only: [:show] do
+    resources :flashcards, only: [:create, :update, :destroy]
+  end
 
-    resources :flashcards, only: [:index, :create, :update, :destroy]
   resources :forums, only: [:create, :update, :show] do
     resources :messages, only: [:create, :show]
   end

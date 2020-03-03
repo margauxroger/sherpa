@@ -16,8 +16,9 @@
           <li class="nav-item <%= 'active' if current_page?(materials_path) %>">
             <%= link_to "Courses", materials_path, class: "nav-link mr-3" %>
           </li>
-          <li class="nav-item <%= 'active' if current_page?(flashcards_path) %>  ">
-            <%= link_to "Flashcards", flashcards_path, class: "nav-link mr-4" %>
+          <li class="nav-item <%= 'active' if current_page?(teachers_flashcards_path) %>  ">
+            <%= link_to "Flashcards", teachers_flashcards_path, class: "nav-link mr-4" %>
+
           </li>
           <li class="nav-item d-flex align-items-center">
             <a class="mr-4"><%= current_user.email %></a>
