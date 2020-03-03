@@ -39,3 +39,18 @@ showChapterFlashcards();
 //= require turbolinks
 //= require_tree
 
+
+
+import { dougnhutGraphStudent } from '../components/charts_courses_student_show_dougnhut_flash';
+dougnhutGraphStudent(0);
+
+
+
+import { displayIndividualChart } from '../components/display_individual_student_chart';
+displayIndividualChart ();
+
+import { showChapterFlashcards } from '../components/flashcard_chapter';
+showChapterFlashcards();
+
+
+

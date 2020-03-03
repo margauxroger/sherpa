@@ -48,6 +48,13 @@ class User < ApplicationRecord
   end
 
 
+  def flashcards_score_student(material)
+    score = {}
+    material.chapters.each { |chapter| score[chapter.name]=flashcards_score(chapter)}
+    return score
+  end
+
+
   def border_color(material)
     return "red-border"     if self.score(material) < 45
     return "orange-border"  if self.score(material) < 65

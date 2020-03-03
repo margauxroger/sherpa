@@ -18,6 +18,8 @@ class Teachers::CoursesController < ApplicationController
     @list_students_without_top_offender = @new_course_students.drop(5)
     @chapter_score = {}
 
+
+
     @course.material.chapters.each_with_index do |chapter, index|
       @chapter_score["Chapter #{index + 1}"]  = chapter.score_chapter(@course.division.users.length)
     end
