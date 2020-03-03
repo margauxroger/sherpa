@@ -46,6 +46,13 @@ class User < ApplicationRecord
     score.fdiv(chapter.flashcards_number).round(2)*100
   end
 
+
+  def border_color(material)
+    return "red-border"     if self.score(material) < 45
+    return "orange-border"  if self.score(material) < 65
+    "green-border"
+  end
+
   def flashcards_notifications
     Course.where("user_id = ?", self.id).each do |course|
       student_flashcard_scores = course.users.map { |student| student.score(course.material) }
@@ -85,5 +92,6 @@ class User < ApplicationRecord
   def calculate_percentile(array = [], percentile = 0.0)
     array.empty? ? 0 : array.sort[((array.length * percentile).ceil) - 1]
   end
+
 
 end
