@@ -47,6 +47,7 @@ class User < ApplicationRecord
   end
 
   def flashcards_notifications
+    Notification.where(notif_type: "flashcards").where(user_id: self.id).to_a.each { |notification| notification.destroy }
     Course.where("user_id = ?", self.id).each do |course|
       student_flashcard_scores = course.users.map { |student| student.score(course.material) }
       outlier_criteria = calculate_percentile(student_flashcard_scores, 0.25) - 1.5 * (calculate_percentile(student_flashcard_scores, 0.75) - calculate_percentile(student_flashcard_scores, 0.25))
@@ -58,8 +59,7 @@ class User < ApplicationRecord
       unless warning_students.nil? || warning_students.empty?
         Notification.create(notif_type: "flashcards",
                                content: "#{warning_students.length} student#{"s" if warning_students.length > 1}
-                                          #{warning_students.length > 1 ? "are" : "is"} lagging behind with regards to
-                                          flashcards for #{course.material.name}",
+                                          lagging behind for #{course.material.name}",
                              course_id: course.id,
                                user_id: self.id)
       end

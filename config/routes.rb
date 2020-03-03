@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     root to: 'teachers#show'
       resources :courses, only: [:show] do
         resources :students, only: [:index, :show]
+        # resources :
     end
   end
   resources :materials, only: [:index, :show]

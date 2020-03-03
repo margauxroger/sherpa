@@ -1,135 +1,93 @@
-<div class="flashcard-notifications">
-  <div class="w-100 mb-3">
-    <div class="card-teacher-show animated fadeIn">
-      <div class="card-teacher-symbol">
-        <i class="fas fa-stopwatch"></i>
-      </div>
-      <div class="card-teacher-text card-teacher-back-color">
-        <div class="card-teacher-body">
-          <p>Maxence must understand: DON'T DO SCAFFOLDS!</p>
+<div class="notification-container">
+  <div class="flashcard-notifications">
+    <% @unread_flashcards_notifications.first(2).each_with_index do |flashcard_notification, index| %>
+      <%= link_to teachers_course_path(click_student_list: true, id: flashcard_notification.course.id, notif_type: "flashcards") do %>
+        <div class="notification-card <%= index.zero? ? "mb-5" : "mt-5" %>">
+          <div class="card-teacher-show animated fadeIn">
+            <div class="card-teacher-symbol">
+              <i class="far fa-window-restore"></i>
+            </div>
+            <div class="card-teacher-text card-teacher-back-color">
+              <div class="card-teacher-body">
+                <p><%= flashcard_notification.content %></p>
+              </div>
+              <div class="card-teacher-footer">
+                <p id="card_teacher_class"><%= flashcard_notification.course.division.name %></p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-teacher-footer">
-          <p id="card_teacher_class">Term. S2</p>
-        </div>
-      </div>
-    </div>
+      <% end %>
+    <% end %>
   </div>
 
-  <div class="w-100 mt-3">
-    <div class="card-teacher-show animated fadeIn">
-      <div class="card-teacher-symbol">
-        <i class="fas fa-stopwatch"></i>
-      </div>
-      <div class="card-teacher-text card-teacher-back-color">
-        <div class="card-teacher-body">
-          <p>Tom wants to become an intern but this is not a job</p>
+  <div class="feeling-notifications">
+    <% @unread_feeling_notifications.first(2).each_with_index do |feeling_notification, index| %>
+      <%= link_to teachers_course_path(click_student_list: true, id: feeling_notification.course.id, notif_type: "feeling") do %>
+        <div class="notification-card <%= index.zero? ? "mb-5" : "mt-5" %>">
+          <div class="card-teacher-show animated fadeIn">
+            <div class="card-teacher-symbol">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div class="card-teacher-text card-teacher-back-color">
+              <div class="card-teacher-body">
+                <p><%= feeling_notification.content %></p>
+              </div>
+              <div class="card-teacher-footer">
+                <p id="card_teacher_class"><%= feeling_notification.course.division.name %></p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-teacher-footer">
-          <p id="card_teacher_class">Term. S2</p>
-        </div>
-      </div>
-    </div>
+      <% end %>
+    <% end %>
   </div>
+
+  <div class="message-notifications">
+    <% @unread_message_notifications.first(2).each_with_index do |message_notification, index| %>
+      <%= link_to teachers_course_path(click_forum: true, id: message_notification.course.id, notif_type: "message") do %>
+        <div class="notification-card <%= index.zero? ? "mb-5" : "mt-5" %>">
+          <div class="card-teacher-show animated fadeIn">
+            <div class="card-teacher-symbol">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="card-teacher-text card-teacher-back-color">
+              <div class="card-teacher-body">
+                <p><%= message_notification.content %></p>
+              </div>
+              <div class="card-teacher-footer">
+                <p id="card_teacher_class"><%= message_notification.course.division.name %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="feedback-notifications">
+    <% @unread_feedback_notifications.first(2).each_with_index do |feedback_notification, index| %>
+      <%= link_to teachers_course_path(click_feedback_list: true, id: feedback_notification.course.id, notif_type: "feedback") do %>
+        <div class="notification-card <%= index.zero? ? "mb-5" : "mt-5" %>">
+          <div class="card-teacher-show animated fadeIn">
+            <div class="card-teacher-symbol">
+              <i class="fas fa-comment-alt"></i>
+            </div>
+            <div class="card-teacher-text card-teacher-back-color">
+              <div class="card-teacher-body">
+                <p><%= feedback_notification.content %></p>
+              </div>
+              <div class="card-teacher-footer">
+                <p id="card_teacher_class"><%= feedback_notification.course.division.name %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>
-
-<div class="feeling-notifications">
-  <div class="w-100 mb-3">
-    <div class="card-teacher-show animated fadeIn">
-      <div class="card-teacher-symbol">
-        <i class="fas fa-stopwatch"></i>
-      </div>
-      <div class="card-teacher-text card-teacher-back-color">
-        <div class="card-teacher-body">
-          <p>Augustin was faking a sickness to fly to Thailand</p>
-        </div>
-        <div class="card-teacher-footer">
-          <p id="card_teacher_class">Term. L1</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="w-100 mt-3">
-    <div class="card-teacher-show animated fadeIn">
-      <div class="card-teacher-symbol">
-        <i class="fas fa-stopwatch"></i>
-      </div>
-      <div class="card-teacher-text card-teacher-back-color">
-        <div class="card-teacher-body">
-          <p>Ambroise should make a choice: ping-pong or code. Because right now, he sucks at both</p>
-        </div>
-        <div class="card-teacher-footer">
-          <p id="card_teacher_class">Sec. 1</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="message-notifications">
-  <div class="w-100 mb-3">
-    <div class="card-teacher-show animated fadeIn">
-      <div class="card-teacher-symbol">
-        <i class="fas fa-stopwatch"></i>
-      </div>
-      <div class="card-teacher-text card-teacher-back-color">
-        <div class="card-teacher-body">
-          <p>Augustin was faking a sickness to fly to Thailand</p>
-        </div>
-        <div class="card-teacher-footer">
-          <p id="card_teacher_class">Term. L1</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="w-100 mt-3">
-    <div class="card-teacher-show animated fadeIn">
-      <div class="card-teacher-symbol">
-        <i class="fas fa-stopwatch"></i>
-      </div>
-      <div class="card-teacher-text card-teacher-back-color">
-        <div class="card-teacher-body">
-          <p>Ambroise should make a choice: ping-pong or code. Because right now, he sucks at both</p>
-        </div>
-        <div class="card-teacher-footer">
-          <p id="card_teacher_class">Sec. 1</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="feedback-notifications">
-  <div class="w-100 mb-3">
-    <div class="card-teacher-show animated fadeIn">
-      <div class="card-teacher-symbol">
-        <i class="fas fa-stopwatch"></i>
-      </div>
-      <div class="card-teacher-text card-teacher-back-color">
-        <div class="card-teacher-body">
-          <p>Augustin was faking a sickness to fly to Thailand</p>
-        </div>
-        <div class="card-teacher-footer">
-          <p id="card_teacher_class">Term. L1</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="w-100 mt-3">
-    <div class="card-teacher-show animated fadeIn">
-      <div class="card-teacher-symbol">
-        <i class="fas fa-stopwatch"></i>
-      </div>
-      <div class="card-teacher-text card-teacher-back-color">
-        <div class="card-teacher-body">
-          <p>Ambroise should make a choice: ping-pong or code. Because right now, he sucks at both</p>
-        </div>
-        <div class="card-teacher-footer">
-          <p id="card_teacher_class">Sec. 1</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="no-notification-message">
+  <h1>Congratulations, you don't have any notifications left!</h1>
 </div>

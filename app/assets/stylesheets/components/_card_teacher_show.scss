@@ -12,7 +12,7 @@
 }
 
 .card-teacher-show {
-  border-radius: 15px;
+  border-radius: 4px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   display: flex;
   margin: 8px;
@@ -22,7 +22,7 @@
 }
 
 .card-teacher-symbol {
-  border-radius: 15px 0 0 15px;
+  border-radius: 4px 0 0 4px;
   padding: 3px;
   height: 100%;
   width: 60%;
@@ -36,12 +36,16 @@
 
 .card-teacher-back-color {
   background-color: #4F2ACD;
+  &:hover {
+    background-color: #4F2ACD;
+    opacity: 0.9;
+  }
 }
 
 .card-teacher-text {
   padding: 10px;
   font-size: 18px;
-  border-radius: 0px 15px 15px 0px;
+  border-radius: 0px 4px 4px 0px;
   align-content: center;
   width: 150%;
   p {
@@ -70,18 +74,41 @@
   height: 80%;
 }
 
-.cards-teacher-show {
+
+.notification-container {
   width: 100%;
   margin: auto;
   padding: 8px;
   display: flex;
+  min-height: 24em;
 }
 
 .flashcard-notifications,
 .feeling-notifications,
 .message-notifications,
 .feedback-notifications {
-  min-width: 23%;
-  margin: 12px;
+  min-width: 22%;
+  margin: 12px 18px;
+  a:hover {
+    text-decoration: none
+  }
 }
 
+.no-notification-message {
+  width: 80%;
+  margin: 0 auto;
+  min-height: 24em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// .notification-card {
+//   margin: 32px 0;
+// }
+
+.cards-teacher-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
