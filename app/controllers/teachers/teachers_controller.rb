@@ -5,7 +5,6 @@ class Teachers::TeachersController < ApplicationController
 
   def show
     authorize current_user
-    current_user.courses
 
     @divisions = current_user.divisions
     @courses = Course.where(user_id: current_user.id)
