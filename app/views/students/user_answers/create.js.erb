@@ -25,15 +25,16 @@ flashcardHTML = `
               <p><%= @flashcard.answer %></p>
             </div>
             <div class="global-actions mt-5">
-            <div class="left-action" data-swipe="0"><%= link_to 'Left', students_session_user_answers_path(session_id: @session.id, flashcard_id: @flashcard.id, output: false), method: 'post', remote: true %></div>
+            <div class="left-action"><%= link_to 'Left', students_session_user_answers_path(session_id: @session.id, flashcard_id: @flashcard.id, output: false), method: 'post', remote: true %></div>
             <div class="top-action" style="display:none;">Top</div>
-            <div class="right-action">Right</div>
+            <div class="right-action"><%= link_to 'Right', students_session_user_answers_path(session_id: @session.id, flashcard_id: @flashcard.id, output: true), method: 'post', remote: true %></div>
           </div>
           </div>
         </div>
         `
-
+<% unless @ua.output %>
 deckElement.insertAdjacentHTML('beforeend', flashcardHTML);
+<% end %>
 
 obj = document.getElementById('stacked-cards-block');
 
