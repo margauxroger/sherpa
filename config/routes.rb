@@ -34,7 +34,12 @@ Rails.application.routes.draw do
         resources :feedbacks, only: [:create, :update, :delete]
         resources :forums, only: [:show, :create]
     end
-    resources :sessions, only: [:show, :create]
+    resources :sessions, only: [:show, :create] do
+      member do
+        patch :swipe_right
+        patch :swipe_left
+      end
+    end
   end
 
   get '/flashcards_notifications', to: 'teachers/teachers#trigger_flashcard_notifications', as: 'flashcards_notifications'
