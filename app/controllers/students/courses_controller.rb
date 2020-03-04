@@ -17,4 +17,9 @@ class Students::CoursesController < ApplicationController
     @course = Course.find(params[:id])
     authorize current_user
   end
+
+  def show
+    authorize current_user
+    @course = Course.find(params[:id])
+  end
 end

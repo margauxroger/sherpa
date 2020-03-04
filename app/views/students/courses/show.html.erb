@@ -1,1 +1,13 @@
-<h1>Student show of courses</h1>
+
+
+
+<% @course.material.chapters.each do |chapter| %>
+<%= link_to chapter.name, chapter_flashcards_path(chapter), class: "material-card ml-3" %>
+<% end %>
+
+
+
+
+
+<%= render 'shared/navbar_mobile_bottom' %>
+

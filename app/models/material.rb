@@ -1,7 +1,7 @@
 class Material < ApplicationRecord
   has_many :courses
   has_many :divisions, through: :courses
-  has_many :users, through: :courses
+  has_many :users, through: :courses, source: :user
   has_many :chapters
   has_many :flashcards, through: :chapters
 

@@ -13,14 +13,14 @@ Rails.application.routes.draw do
 
   namespace :teachers do
     root to: 'teachers#show'
-      resources :courses, only: [:show] do
-        resources :students, only: [:index, :show]
+    resources :courses, only: [:show] do
+      resources :students, only: [:index, :show]
     end
     resources :flashcards, only: [:index, :destroy, :update, :create]
   end
   resources :materials, only: [:index, :show]
   resources :chapters, only: [:new, :create, :edit, :update, :destroy] do
-    resources :flashcards, only: [:show, :create]
+    resources :flashcards, only: [:index, :show, :create]
   end
   resources :courses, only: [:show]
 
@@ -32,6 +32,13 @@ Rails.application.routes.draw do
     root to: 'courses#index'
       resources :courses, only: [:index, :show] do
         resources :feedbacks, only: [:create, :update, :delete]
+        resources :forums, only: [:show, :create]
+    end
+    resources :sessions, only: [:show, :create] do
+      member do
+        patch :swipe_right
+        patch :swipe_left
+      end
     end
   end
 

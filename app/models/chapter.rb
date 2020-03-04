@@ -1,6 +1,7 @@
  class Chapter < ApplicationRecord
   belongs_to :material
   has_many :flashcards, dependent: :destroy
+  has_many :sessions
 
   validates :name, presence: true
   validates :content, presence: true
@@ -20,13 +21,7 @@
     student_flashcards
   end
 
-  def score_chapter(students_number)
-    score = 0
-    self.flashcards.each do |flashcard|
-      flashcard.user_answers.each do |user_answer|
-        score += user_answer.completion
-      end
-    end
-    score.fdiv(self.flashcards_number).fdiv(students_number).round(2)*100
+  def score_div(division)
+    division.users.map { |student| student.flashcards_score(self) }.sum.fdiv(flashcards_number)
   end
 end
