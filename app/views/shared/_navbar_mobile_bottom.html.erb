@@ -7,7 +7,7 @@
     <%= link_to students_course_path(1), id: "mobile-nav-center-btn" do %>
       <i class="far fa-play-circle navbar-icon"></i>
     <% end %>
-    <%= link_to "#" do %>
+    <%= link_to students_course_feedbacks_path(params[:id]) do %>
       <i class="fas fa-star navbar-icon"></i>
     <% end %>
 </div>

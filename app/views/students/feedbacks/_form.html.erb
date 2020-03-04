@@ -1,0 +1,5 @@
+<%= simple_form_for @feedback do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :rating %>
+  <%= f.submit "Leave a feedback", class: "btn btn-primary w-100" %>
+<% end %>

@@ -24,6 +24,10 @@ class User < ApplicationRecord
     role == "teacher"
   end
 
+  def full_name
+    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
+  end
+
   def student?
     role == "student"
   end
@@ -95,6 +99,10 @@ class User < ApplicationRecord
 
   def count_unread_notifications
     Notification.where("user_id = ?", self.id).where(read_status: false).length
+  end
+
+  def left_a_feedback?(course)
+    self.feedbacks.where(course_id: course.id).any?
   end
 
   private
