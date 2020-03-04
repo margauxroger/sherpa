@@ -2,6 +2,7 @@ class Session < ApplicationRecord
   belongs_to :user
   belongs_to :chapter
   has_many :user_answers
+  has_many :flashcards, through: :chapter
 
   def analyse_answers
     # Returns a hash with all flashcards of the session as keys and their level of mastery by user as values
