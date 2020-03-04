@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
   resources :materials, only: [:index, :show]
   resources :chapters, only: [:new, :create, :edit, :update, :destroy] do
-    resources :flashcards, only: [:show, :create]
+    resources :flashcards, only: [:index, :show, :create]
   end
   resources :courses, only: [:show]
 
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
         resources :feedbacks, only: [:create, :update, :delete]
         resources :forums, only: [:show, :create]
     end
+    resources :sessions, only: [:show, :create]
   end
 
   get '/flashcards_notifications', to: 'teachers/teachers#trigger_flashcard_notifications', as: 'flashcards_notifications'
