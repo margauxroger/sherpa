@@ -157,14 +157,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Functions to swipe left elements on logic external action.
     function onActionLeft() {
-      if(!(currentPosition >= maxElements)){
+      // if(!(currentPosition >= maxElements)){
         if(useOverlays) {
           leftObj.classList.remove('no-transition');
           topObj.classList.remove('no-transition');
           leftObj.style.zIndex = '8';
           transformUi(0, 0, 1, leftObj);
 
-        }
+        // }
 
         setTimeout(function() {
           onSwipeLeft();
@@ -175,13 +175,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Functions to swipe right elements on logic external action.
     function onActionRight() {
-      if(!(currentPosition >= maxElements)){
+      // if(!(currentPosition >= maxElements)){
         if(useOverlays) {
           rightObj.classList.remove('no-transition');
           topObj.classList.remove('no-transition');
           rightObj.style.zIndex = '8';
           transformUi(0, 0, 1, rightObj);
-        }
+        // }
 
         setTimeout(function(){
           onSwipeRight();

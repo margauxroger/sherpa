@@ -1,0 +1,40 @@
+console.log('hello')
+
+deckElement = document.querySelector('.stackedcards-container');
+console.log(deckElement);
+
+
+flashcardHTML = `
+        <div class="card-item no-show">
+          <div class="d-flex flex-column align-items-center front-flashcard">
+            <img class="icon-question-flashcard mt-5" src="https://picsum.photos/201/300" />
+            <div  class="question-flashcard mt-5">
+              <p><%= @flashcard.question %></p>
+            </div>
+            <form class='flashcard-form'>
+              <textarea class="form-control" id="user_input" autofocus="" rows="4" placeholder="Enter your answer here (alt + enter to flip card)"  id="user_input"  type="text" name="message">
+              </textarea>
+            </form>
+            <label for="card1" class="button-submit-flashcard mt-5" aria-hidden="true" onclick="showInput();">
+                Check Answer
+            </label>
+            <div class="hidden-answer mt-5 no-show">
+              <p><%= @flashcard.answer %></p>
+            </div>
+          </div>
+        </div>
+        `
+
+deckElement.insertAdjacentHTML('beforeend', flashcardHTML);
+
+obj = document.getElementById('stacked-cards-block');
+
+stackedCardsObj = obj.querySelector('.stackedcards-container');
+listElNodesObj = stackedCardsObj.children;
+
+function countElements() {
+      maxElements = listElNodesObj.length;
+    };
+
+countElements();
+console.log(maxElements)

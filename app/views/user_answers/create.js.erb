@@ -1,31 +1,53 @@
+console.log('hello')
+
 deckElement = document.querySelector('.stackedcards-container');
 console.log(deckElement);
 
 
-deckElement.innerHTML = ''
-
-
-deckElement.innerHTML = `
-  <% @flashcards.each do |flashcard| %>
-
-    <div class="card-item stackedcards-active stackedcards-top stackedcards--animatable stackedcards-origin-top" style="transform: scale(1) translateX(0px) translateY(20px) translateZ(0px); opacity: 1; z-index: 7;>
-      <div class="d-flex flex-column align-items-center front-flashcard">
-        <img class="icon-question-flashcard mt-5" src="https://picsum.photos/201/300" />
-        <div  class="question-flashcard mt-5">
-          <p><%= flashcard.question %></p>
+flashcardHTML = `
+        <div class="card-item">
+          <div class="d-flex flex-column align-items-center front-flashcard">
+            <img class="icon-question-flashcard mt-5" src="https://picsum.photos/201/300" />
+            <div  class="question-flashcard mt-5">
+              <p><%= flashcard.question %></p>
+            </div>
+            <form class='flashcard-form'>
+              <textarea class="form-control" id="user_input" autofocus="" rows="4" placeholder="Enter your answer here (alt + enter to flip card)"  id="user_input"  type="text" name="message">
+              </textarea>
+            </form>
+            <label for="card1" class="button-submit-flashcard mt-5" aria-hidden="true" onclick="showInput();">
+                Check Answer
+            </label>
+            <div class="hidden-answer mt-5 no-show">
+              <p><%= flashcard.answer %></p>
+            </div>
+          </div>
         </div>
-        <form class='flashcard-form'>
-          <textarea class="form-control" id="user_input" autofocus="" rows="4" placeholder="Enter your answer here (alt + enter to flip card)"  id="user_input"  type="text" name="message">
-          </textarea>
-        </form>
-        <label for="card1" class="button-submit-flashcard mt-5" aria-hidden="true" onclick="showInput();">
-            Check Answer
-        </label>
-        <div class="hidden-answer mt-5 no-show">
-          <p><%= flashcard.answer %></p>
-        </div>
-      </div>
-    </div>
+        `
 
-  <% end %>
+deckElement.insertAdjacentHTML('beforeend', flashcardHTML)
+
+// deckElement.innerHTML = `
+//   <% @flashcards.each do |flashcard| %>
+
+//     <div class="card-item stackedcards-active stackedcards-top stackedcards--animatable stackedcards-origin-top" style="transform: scale(1) translateX(0px) translateY(20px) translateZ(0px); opacity: 1; z-index: 7;>
+//       <div class="d-flex flex-column align-items-center front-flashcard">
+//         <img class="icon-question-flashcard mt-5" src="https://picsum.photos/201/300" />
+//         <div  class="question-flashcard mt-5">
+//           <p><%= flashcard.question %></p>
+//         </div>
+//         <form class='flashcard-form'>
+//           <textarea class="form-control" id="user_input" autofocus="" rows="4" placeholder="Enter your answer here (alt + enter to flip card)"  id="user_input"  type="text" name="message">
+//           </textarea>
+//         </form>
+//         <label for="card1" class="button-submit-flashcard mt-5" aria-hidden="true" onclick="showInput();">
+//             Check Answer
+//         </label>
+//         <div class="hidden-answer mt-5 no-show">
+//           <p><%= flashcard.answer %></p>
+//         </div>
+//       </div>
+//     </div>
+
+//   <% end %>
 `
