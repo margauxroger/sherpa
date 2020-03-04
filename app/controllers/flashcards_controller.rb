@@ -2,35 +2,36 @@ class FlashcardsController < ApplicationController
 
   def index
     authorize current_user
-    policy_scope(Flashcard)
-
-    @user = current_user
-    @materials = []
-    @levels = []
-    @courses = Course.where("user_id = '#{@user.id}'")
-    # current_user.courses.each { |course| @materials << course.material && @levels << course.division.level}
-    @courses.each { |course| @materials << course.material && @levels << course.division.level}
-
-    @levels = @levels.uniq
-    @materials_display = []
+    @chapter_flash = Flashcard.where("chapter_id = #{params[:chapter_id]}")
+    policy_scope(@chapter_flash)
   end
+  #   @user = current_user
+  #   @materials = []
+  #   @levels = []
+  #   @courses = Course.where("user_id = '#{@user.id}'")
+  #   # current_user.courses.each { |course| @materials << course.material && @levels << course.division.level}
+  #   @courses.each { |course| @materials << course.material && @levels << course.division.level}
 
-  def create
-        authorize current_user
+  #   @levels = @levels.uniq
+  #   @materials_display = []
+  # end
 
-    @flashcard = Flashcard.new(params_flash)
-    @flashcard.chapter = Chapter.find(params[:chapter_id])
-    if @flashcard.save
-      redirect_to teachers_flashcards_path
-    else
-      render :new
-    end
-  end
+  # def create
+  #       authorize current_user
 
-  private
+  #   @flashcard = Flashcard.new(params_flash)
+  #   @flashcard.chapter = Chapter.find(params[:chapter_id])
+  #   if @flashcard.save
+  #     redirect_to teachers_flashcards_path
+  #   else
+  #     render :new
+  #   end
+  # end
 
-  def params_flash
-    params.require(:flashcard).permit(:question, :answer)
-  end
+  # private
+
+  # def params_flash
+  #   params.require(:flashcard).permit(:question, :answer)
+  # end
 
 end
