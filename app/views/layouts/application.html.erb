@@ -21,7 +21,7 @@
 
     <%= render 'shared/flashes' %>
 
-    <% if current_user.teacher? %>
+    <% if current_page?(root_path) || (user_signed_in? && current_user.teacher?) %>
       <div class="loggedin-container">
         <%= yield %>
       </div>
@@ -29,7 +29,7 @@
       <%= yield %>
     <% end %>
 
-    <% if current_user.teacher? %>
+    <% if user_signed_in? && current_user.teacher? %>
       <% unless current_page?(root_path) %>
         <%= render 'shared/footer' %>
       <% end %>
