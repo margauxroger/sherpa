@@ -21,7 +21,7 @@ class Teachers::CoursesController < ApplicationController
 
 
     @course.material.chapters.each_with_index do |chapter, index|
-      @chapter_score["Chapter #{index + 1}"]  = chapter.score_chapter(@course.division.users.length)
+      @chapter_score["Chapter #{index + 1}"]  = chapter.score_div(@course.division)
     end
 
     # cumulative score for line chart
@@ -30,7 +30,7 @@ class Teachers::CoursesController < ApplicationController
     @cumulative_sum_chapter = 0
 
     @course.material.chapters.each_with_index do |chapter, index|
-      @cumulative_sum_chapter += chapter.score_chapter(@course.division.users.length)
+      @cumulative_sum_chapter += chapter.score_div(@course.division)
       @chapter_cumulative_score["Chapter #{index + 1}"]  = @cumulative_sum_chapter
     end
 
