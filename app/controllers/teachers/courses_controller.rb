@@ -16,13 +16,16 @@ class Teachers::CoursesController < ApplicationController
 
     @new_course_students = @course_students.sort_by{ |student| student.score(@material) }
     @list_students_without_top_offender = @new_course_students.drop(5)
+
+    # Score for bar chart
+
     @chapter_score = {}
 
-
-
     @course.material.chapters.each_with_index do |chapter, index|
-      @chapter_score["Chapter #{index + 1}"]  = chapter.score_div(@course.division)
+      @chapter_score["Chapter #{index + 1}"] = chapter.score_div(@course.division)
     end
+
+    # Fin score for bar chart
 
     # cumulative score for line chart
 
@@ -84,6 +87,27 @@ class Teachers::CoursesController < ApplicationController
     @reviews_summary = @sum_reviews / @students_feedbacks.length
 
     # Fin des données pour les reviews - Martin
+
+    # Données pour le scatterplot - Martin
+
+    @student_sentiment_score_flashcards_score = {}
+
+    @course_students.each_with_index do |student|
+      if student.score(@material) >= 60 && student.sentiment_score(@course) >= 70
+        @student_sentiment_score_flashcards_score[student.id] = { x: student.score(@material) , y: student.sentiment_score(@course), color: "green" }
+
+      elsif student.score(@material) >= 40 && student.score(@material) < 70 && student.sentiment_score(@course) >= 70
+        @student_sentiment_score_flashcards_score[student.id] = { x: student.score(@material) , y: student.sentiment_score(@course), color: "blue" }
+
+      elsif student.score(@material) >= 45 && student.sentiment_score(@course) >= 20 && student.sentiment_score(@course) <= 70
+        @student_sentiment_score_flashcards_score[student.id] = { x: student.score(@material) , y: student.sentiment_score(@course), color: "purple" }
+
+      else @student_sentiment_score_flashcards_score[student.id] = { x: student.score(@material) , y: student.sentiment_score(@course), color: "red" }
+      end
+    end
+
+    # Fin des données pour le scatterplot - Martin
+
   end
 
 end
