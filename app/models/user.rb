@@ -37,8 +37,9 @@ class User < ApplicationRecord
     chapter_scores.sum.fdiv(chapter_scores.length).round(2)
   end
 
-  def sentiment_score(material)
-    self.feedbacks.map { |feedback| feedback.sentiment_score }.sum.fdiv(self.feedbacks.length)
+  def sentiment_score(course)
+    Feedback.where(user_id: self.id).where(course_id: course.id).first.sentiment_score
+    # self.feedbacks.map { |feedback| feedback.sentiment_score }
   end
 
   def flashcards_score(chapter)
