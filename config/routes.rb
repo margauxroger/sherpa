@@ -13,8 +13,8 @@ Rails.application.routes.draw do
 
   namespace :teachers do
     root to: 'teachers#show'
-      resources :courses, only: [:show] do
-        resources :students, only: [:index, :show]
+    resources :courses, only: [:show] do
+      resources :students, only: [:index, :show]
     end
     resources :flashcards, only: [:index, :destroy, :update, :create]
   end
