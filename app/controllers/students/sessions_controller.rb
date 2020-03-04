@@ -11,6 +11,8 @@ class Students::SessionsController < ApplicationController
     authorize current_user
     @session = Session.new(user_id:    current_user.id,
                            chapter_id: params[:chapter_id],)
+    @session.save
+    redirect_to students_session_path(@session)
   end
 
   def swipe_right

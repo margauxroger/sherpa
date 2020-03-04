@@ -45,37 +45,44 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //Prepare elements on DOM
     const addMargin = elementsMargin * (items -1) + 'px';
 
-    let i = items
+    let i = 0
+    console.log(i)
+    console.log(maxElements)
     if(stackedOptions === "Top"){
-
-      for(i; i < maxElements; i++){
-        listElNodesObj[i].classList.add('stackedcards-top', 'stackedcards--animatable', 'stackedcards-origin-top');
+      while(i != maxElements) {
+        if (i < items){
+          listElNodesObj[i].classList = ('stackedcards-top', 'stackedcards--animatable', 'stackedcards-origin-top');
+          i++
+        } else {
+          listElNodesObj[i].classList.add('no-show')
+          i++
+        }
       }
 
       elTrans = elementsMargin * (items - 1);
 
       stackedCardsObj.style.marginBottom = addMargin;
 
-    } else if(stackedOptions === "Bottom"){
+     } // else if(stackedOptions === "Bottom"){
 
 
-      for(i; i < maxElements; i++){
-        listElNodesObj[i].classList.add('stackedcards-bottom', 'stackedcards--animatable', 'stackedcards-origin-bottom');
-      }
+    //   for(i; i < maxElements; i++){
+    //     listElNodesObj[i].classList.add('stackedcards-bottom', 'stackedcards--animatable', 'stackedcards-origin-bottom');
+    //   }
 
-      elTrans = 0;
+    //   elTrans = 0;
 
-      stackedCardsObj.style.marginBottom = addMargin;
+    //   stackedCardsObj.style.marginBottom = addMargin;
 
-    } else if (stackedOptions === "None"){
+    // } else if (stackedOptions === "None"){
 
-      for(i; i < maxElements; i++){
-        listElNodesObj[i].classList.add('stackedcards-none', 'stackedcards--animatable');
-      }
+    //   for(i; i < maxElements; i++){
+    //     listElNodesObj[i].classList.add('stackedcards-none', 'stackedcards--animatable');
+    //   }
 
-      elTrans = 0;
+    //   elTrans = 0;
 
-    }
+    // }
 
     for(i; i < maxElements; i++){
       listElNodesObj[i].style.zIndex = 0;
@@ -150,12 +157,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Functions to swipe left elements on logic external action.
     function onActionLeft() {
-      if(!(currentPosition >= maxElements)){
+      // if(!(currentPosition >= maxElements)){
         if(useOverlays) {
           leftObj.classList.remove('no-transition');
           topObj.classList.remove('no-transition');
-          leftObj.style.zIndex = '8';
+          leftObj.style.zIndex = '0';
           transformUi(0, 0, 1, leftObj);
+          console.log(leftObj.dataset.swipe)
 
         }
 
@@ -163,16 +171,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
           onSwipeLeft();
           resetOverlayLeft();
         },300);
-      }
+      // }
+      let btnLefts = document.querySelectorAll('.left-action')
+      btnLefts.forEach((btn) => {
+        btn.addEventListener('click', onActionLeft, false);
+      });
+
+    let btnRights = document.querySelectorAll('.right-action')
+      btnRights.forEach((btn) => {
+        btn.addEventListener('click', onActionRight, false);
+      })
     };
 
     //Functions to swipe right elements on logic external action.
     function onActionRight() {
-      if(!(currentPosition >= maxElements)){
+      console.log('going-right')
+      // if(!(currentPosition >= maxElements)){
         if(useOverlays) {
           rightObj.classList.remove('no-transition');
           topObj.classList.remove('no-transition');
-          rightObj.style.zIndex = '8';
+          rightObj.style.zIndex = '0';
           transformUi(0, 0, 1, rightObj);
         }
 
@@ -180,7 +198,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
           onSwipeRight();
           resetOverlayRight();
         },300);
-      }
+      // }
+      btnLefts = document.querySelectorAll('.left-action')
+      btnLefts.forEach((btn) => {
+        btn.addEventListener('click', onActionLeft, false);
+      });
+
+    btnRights = document.querySelectorAll('.right-action')
+      btnRights.forEach((btn) => {
+        btn.addEventListener('click', onActionRight, false);
+      })
     };
 
     //Functions to swipe top elements on logic external action.
@@ -190,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           leftObj.classList.remove('no-transition');
           rightObj.classList.remove('no-transition');
           topObj.classList.remove('no-transition');
-          topObj.style.zIndex = '8';
+          topObj.style.zIndex = '0';
           transformUi(0, 0, 1, topObj);
         }
 
@@ -203,6 +230,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Swipe active card to left.
     function onSwipeLeft() {
+      console.log('going left')
       removeNoTransition();
       transformUi(-1000, 0, 0, currentElementObj);
       if(useOverlays){
@@ -218,6 +246,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Swipe active card to right.
     function onSwipeRight() {
+      console.log('going-righty')
       removeNoTransition();
       transformUi(1000, 0, 0, currentElementObj);
       if(useOverlays){
@@ -476,7 +505,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         for(i = currentPosition; i < (currentPosition + items); i++){
           if(listElNodesObj[i]){
             if(stackedOptions === "Top"){
-
+              listElNodesObj[i].classList.remove('no-show');
               listElNodesObj[i].classList.add('stackedcards-top', 'stackedcards--animatable', 'stackedcards-origin-top');
 
               if(useOverlays){
@@ -488,8 +517,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
               elTrans = elTransInc * elTransTop;
               elTransTop--;
 
-            } else if(stackedOptions === "Bottom"){
-              listElNodesObj[i].classList.add('stackedcards-bottom', 'stackedcards--animatable', 'stackedcards-origin-bottom');
+            }  else if(stackedOptions === "Bottom"){
+             listElNodesObj[i].classList.add('stackedcards-bottom', 'stackedcards--animatable', 'stackedcards-origin-bottom');
 
               if(useOverlays){
                 leftObj.classList.add('stackedcards-origin-bottom');
@@ -675,13 +704,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
     element.addEventListener('touchend', gestureEnd, false);
 
     //Add listeners to call global action for swipe cards
-    var buttonLeft = document.querySelector('.left-action');
-    var buttonTop = document.querySelector('.top-action');
-    var buttonRight = document.querySelector('.right-action');
+    // var buttonLeft = document.querySelector('.left-action');
+    // var buttonTop = document.querySelector('.top-action');
+    // var buttonRight = document.querySelector('.right-action');
 
-    buttonLeft.addEventListener('click', onActionLeft, false);
-    buttonTop.addEventListener('click', onActionTop, false);
-    buttonRight.addEventListener('click', onActionRight, false);
+    // buttonLeft.addEventListener('click', onActionLeft, false);
+    // buttonTop.addEventListener('click', onActionTop, false);
+    // buttonRight.addEventListener('click', onActionRight, false);
+
+    let btnLefts = document.querySelectorAll('.left-action')
+      btnLefts.forEach((btn) => {
+        btn.addEventListener('click', onActionLeft, false);
+      });
+
+    let btnRights = document.querySelectorAll('.right-action')
+      btnRights.forEach((btn) => {
+        btn.addEventListener('click', onActionRight, false);
+      });
 
   }
 

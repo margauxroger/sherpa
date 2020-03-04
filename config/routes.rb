@@ -34,11 +34,12 @@ Rails.application.routes.draw do
         resources :feedbacks, only: [:create, :update, :delete]
         resources :forums, only: [:show, :create]
     end
+    resources :sessions do
+      resources :user_answers, only: [:create]
+    end
   end
 
-  # resources :sessions do
-  #   resources :user_answers, only: [:create]
-  # end
+
 
   get '/flashcards_notifications', to: 'teachers/teachers#trigger_flashcard_notifications', as: 'flashcards_notifications'
 

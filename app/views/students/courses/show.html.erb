@@ -2,7 +2,7 @@
 
 
 <% @course.material.chapters.each do |chapter| %>
-<%= link_to chapter.name, chapter_flashcards_path(chapter), class: "material-card ml-3" %>
+<%= link_to chapter.name, students_sessions_path(chapter_id: chapter.id), method: :post, class: "material-card ml-3" %>
 <% end %>
 
 
