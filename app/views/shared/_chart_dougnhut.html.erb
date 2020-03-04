@@ -1,7 +1,7 @@
 <div class="row chart-teacher-show-display">
   <% @courses.each do |course| %>
      <div class="col-sm-12 col-md-4 col-lg-3">
-       <%= link_to teachers_course_path(1) do %>
+       <%= link_to teachers_course_path(course.id) do %>
        <div data-division= "<%= course.division.name %>" data-score = "<%= course.division_score %>" class="chart-teacher-show">
          <canvas class="myCharts"></canvas>
        </div>
