@@ -7,4 +7,8 @@ class Students::CoursesController < ApplicationController
     @courses = Course.where("division_id = #{div_id}")
     policy_scope(@courses)
   end
+
+  def show
+    authorize current_user
+  end
 end

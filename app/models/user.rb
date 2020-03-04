@@ -24,6 +24,10 @@ class User < ApplicationRecord
     role == "teacher"
   end
 
+  def student?
+    role == "student"
+  end
+
   def courses
     self.divisions.map(&:courses).flatten
   end

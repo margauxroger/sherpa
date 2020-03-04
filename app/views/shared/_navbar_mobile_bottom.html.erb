@@ -1,0 +1,13 @@
+<div class="container">
+</div>
+<div class="navbar-mobile d-flex justify-content-around fixed-bottom align-items-end">
+    <%= link_to students_course_forum_path(1, params[:id]) do %>
+      <i class="fas fa-comments navbar-icon"></i>
+    <% end %>
+    <%= link_to "#", id: "mobile-nav-center-btn" do %>
+      <i class="far fa-play-circle navbar-icon"></i>
+    <% end %>
+    <%= link_to "#" do %>
+      <i class="fas fa-star navbar-icon"></i>
+    <% end %>
+</div>

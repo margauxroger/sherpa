@@ -21,12 +21,18 @@
 
     <%= render 'shared/flashes' %>
 
-    <div class="loggedin-container">
+    <% if current_user.teacher? %>
+      <div class="loggedin-container">
+        <%= yield %>
+      </div>
+    <% else %>
       <%= yield %>
-    </div>
+    <% end %>
 
-    <% unless current_page?(root_path) %>
-      <%= render 'shared/footer' %>
+    <% if current_user.teacher? %>
+      <% unless current_page?(root_path) %>
+        <%= render 'shared/footer' %>
+      <% end %>
     <% end %>
 
     <%= javascript_include_tag 'application' %>
