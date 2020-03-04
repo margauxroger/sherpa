@@ -3,6 +3,7 @@ $accent-color: #355cc9;
 .question-flashcard{
   color:white;
   justify-content: center;
+  z-index: inherit;
 }
 
 
@@ -58,6 +59,7 @@ $accent-color: #355cc9;
   background-color: #fff;
   background-size: cover;
   background-position: center center;
+  z-index: inherit;
   &:after {
     content: '';
     position: absolute;
@@ -203,6 +205,7 @@ $accent-color: #355cc9;
   backface-visibility: hidden;
   transition: 0.3s ease-in-out;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  z-index: inherit;
 
   &:hover {
     background-color: #fff;
@@ -244,7 +247,7 @@ $accent-color: #355cc9;
 .icon-question-flashcard{
   width:40px;
   height:40px;
-
+  z-index: inherit;
 }
 
 
@@ -266,6 +269,8 @@ padding-top:3%;
   text-align: center;
 }
 
-
+.flashcard-form {
+  z-index: inherit;
+}
 
 
