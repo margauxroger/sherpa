@@ -10,10 +10,10 @@
     <% end %>
   </div>
   <% @message = Message.new %>
-  <%= simple_form_for [@forum, @message], remote: true, html: { class: "form-inline mt-3 mb-5 d-flex w-100 justify-content-between" } do |f| %>
-  <%= f.input :content, input_html: { class: "form-control w-100"}, label: false %>
+  <%= simple_form_for [@forum, @message], remote: true, html: { class: "form-inline mt-3 mb-5 d-flex w-100 justify-content-between mobile_message" } do |f| %>
+  <%= f.input :content, input_html: { class: "form-control w-100" }, label: false %>
   <%= f.input :user_id, as: :hidden, input_html: { value: "#{current_user.id}"} %>
-  <%= f.button :submit, 'Send Message', class: "btn btn-sherpa mr-3" %>
+  <%= f.button :submit, 'Send Message', class: "btn btn-sherpa mr-3 w-100" %>
   <% end %>
 </div>
 <% content_for :after_js do %>
