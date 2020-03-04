@@ -1,8 +1,8 @@
 const lineGraphStudent = (values) => {
   let chart = document.getElementById("lineStudentChart")
-  let chapters = JSON.parse(document.querySelector(".card-student-list").dataset.label)
   if (values) {
     if (chart) {
+      let chapters = JSON.parse(document.querySelector(".card-student-list").dataset.label)
       var my_chart = new Chart(chart, {
         type: 'bar',
         data: {
