@@ -45,37 +45,44 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //Prepare elements on DOM
     const addMargin = elementsMargin * (items -1) + 'px';
 
-    let i = items
+    let i = 0
+    console.log(i)
+    console.log(maxElements)
     if(stackedOptions === "Top"){
-
-      for(i; i < maxElements; i++){
-        listElNodesObj[i].classList.add('stackedcards-top', 'stackedcards--animatable', 'stackedcards-origin-top');
+      while(i != maxElements) {
+        if (i < items){
+          listElNodesObj[i].classList = ('stackedcards-top', 'stackedcards--animatable', 'stackedcards-origin-top');
+          i++
+        } else {
+          listElNodesObj[i].classList.add('no-show')
+          i++
+        }
       }
 
       elTrans = elementsMargin * (items - 1);
 
       stackedCardsObj.style.marginBottom = addMargin;
 
-    } else if(stackedOptions === "Bottom"){
+     } // else if(stackedOptions === "Bottom"){
 
 
-      for(i; i < maxElements; i++){
-        listElNodesObj[i].classList.add('stackedcards-bottom', 'stackedcards--animatable', 'stackedcards-origin-bottom');
-      }
+    //   for(i; i < maxElements; i++){
+    //     listElNodesObj[i].classList.add('stackedcards-bottom', 'stackedcards--animatable', 'stackedcards-origin-bottom');
+    //   }
 
-      elTrans = 0;
+    //   elTrans = 0;
 
-      stackedCardsObj.style.marginBottom = addMargin;
+    //   stackedCardsObj.style.marginBottom = addMargin;
 
-    } else if (stackedOptions === "None"){
+    // } else if (stackedOptions === "None"){
 
-      for(i; i < maxElements; i++){
-        listElNodesObj[i].classList.add('stackedcards-none', 'stackedcards--animatable');
-      }
+    //   for(i; i < maxElements; i++){
+    //     listElNodesObj[i].classList.add('stackedcards-none', 'stackedcards--animatable');
+    //   }
 
-      elTrans = 0;
+    //   elTrans = 0;
 
-    }
+    // }
 
     for(i; i < maxElements; i++){
       listElNodesObj[i].style.zIndex = 0;
@@ -476,7 +483,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         for(i = currentPosition; i < (currentPosition + items); i++){
           if(listElNodesObj[i]){
             if(stackedOptions === "Top"){
-
+              listElNodesObj[i].classList.remove('no-show');
               listElNodesObj[i].classList.add('stackedcards-top', 'stackedcards--animatable', 'stackedcards-origin-top');
 
               if(useOverlays){
@@ -488,23 +495,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
               elTrans = elTransInc * elTransTop;
               elTransTop--;
 
-            } else if(stackedOptions === "Bottom"){
-              listElNodesObj[i].classList.add('stackedcards-bottom', 'stackedcards--animatable', 'stackedcards-origin-bottom');
+            } // else if(stackedOptions === "Bottom"){
+            //   listElNodesObj[i].classList.add('stackedcards-bottom', 'stackedcards--animatable', 'stackedcards-origin-bottom');
 
-              if(useOverlays){
-                leftObj.classList.add('stackedcards-origin-bottom');
-                rightObj.classList.add('stackedcards-origin-bottom');
-                topObj.classList.add('stackedcards-origin-bottom');
-              }
+            //   if(useOverlays){
+            //     leftObj.classList.add('stackedcards-origin-bottom');
+            //     rightObj.classList.add('stackedcards-origin-bottom');
+            //     topObj.classList.add('stackedcards-origin-bottom');
+            //   }
 
-              elTrans = elTrans + elTransInc;
+            //   elTrans = elTrans + elTransInc;
 
-            } else if (stackedOptions === "None"){
+            // } else if (stackedOptions === "None"){
 
-              listElNodesObj[i].classList.add('stackedcards-none', 'stackedcards--animatable');
-              elTrans = elTrans + elTransInc;
+            //   listElNodesObj[i].classList.add('stackedcards-none', 'stackedcards--animatable');
+            //   elTrans = elTrans + elTransInc;
 
-            }
+            // }
 
             listElNodesObj[i].style.transform ='scale(' + elScale + ') translateX(0) translateY(' + (elTrans - elTransInc) + 'px) translateZ(0)';
             listElNodesObj[i].style.webkitTransform ='scale(' + elScale + ') translateX(0) translateY(' + (elTrans - elTransInc) + 'px) translateZ(0)';
