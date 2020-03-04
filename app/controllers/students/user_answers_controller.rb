@@ -8,16 +8,17 @@ class Students::UserAnswersController < ApplicationController
 
     @flashcards = @session.flashcards
 
-    ua = UserAnswer.new(
+    @ua = UserAnswer.new(
       session: @session,
       flashcard: @flashcard,
       output: @output
     )
 
-    ua.save
-    respond_to do |format|
-      format.html { redirect_to students_root_path}
-      format.js
+    if @ua.save
+      respond_to do |format|
+        format.html { redirect_to students_root_path}
+        format.js
+      end
     end
   end
 end

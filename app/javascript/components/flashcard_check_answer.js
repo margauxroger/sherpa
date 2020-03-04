@@ -5,10 +5,10 @@ const showFlashcardAnswer = () => {
 
 
   if (btnCheckAnswer) {
-    btnCheckAnswer.forEach((checkAnswer) => {
-      checkAnswer.addEventListener('click', (event) => {
-        checkAnswer.classList.add('no-show')
-        checkAnswer.nextElementSibling.classList.remove('no-show')
+    btnCheckAnswer.forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        btn.classList.add('no-show')
+        btn.nextElementSibling.classList.remove('no-show')
       })
     })
   }
