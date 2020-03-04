@@ -380,6 +380,82 @@ hist_term_s_chap2_fc5 = Flashcard.create!(
 
 
 
+
+
+maths_term_s = Material.create!(
+  name: "Maths for Term. S classes",
+  category: "Maths"
+  )
+
+maths_term_s_chap1 = Chapter.create!(
+  name: "Polynômes et équations du second degré",
+  content: "On appelle polynôme (ou trinôme) du second degré toute expression pouvant se mettre sous la forme :
+    On rappelle que les solutions de l'équation
+    f(x)=0
+     sont les abscisses des points d'intersection de la courbe
+    C_{f}Cf
+     et de l'axe des abscisses.
+    En regroupant les propriétés de ce chapitre et celles vues en Seconde on peut résumer ces résultats dans le tableau :",
+  material_id: maths_term_s.id,
+  )
+
+maths_term_s_chap1_fc1 = Flashcard.create!(
+                          question:   "Quelle est la forme d'une équation du second degré ?",
+                          answer:     "aX + bX^2 + c",
+                          chapter_id: maths_term_s_chap1.id,
+                        )
+
+maths_term_s_chap1_fc2 = Flashcard.create!(
+                          question: "Qu'est-ce que l'ordonnée à l'origine ?",
+                          answer: "La valeur de la fonction pour x = 0",
+                          chapter_id: maths_term_s_chap1.id,
+                        )
+
+maths_term_s_chap1_fc3 = Flashcard.create!(
+                          question:   "Où est l'axe des abscisses?",
+                          answer:     "En bas.",
+                          chapter_id: maths_term_s_chap1.id,
+                          )
+
+
+maths_term_s_chap2 = Chapter.create!(
+  name: "Etude de fonctions",
+  content: "Une fonction associe, à tout nombre réel. Cette définition est importante car elle établit un lien entre la courbe représentative d'une fonction et la formule définissant la fonction. Elle permet de déterminer notamment si un point appartient à la courbe représentative d'une fonction.
+    La fonction racine carrée est strictement croissante sur
+    left[0;+infinity right[[0;+∞[",
+  material_id: maths_term_s.id,
+  )
+
+maths_term_s_chap2_fc1 = Flashcard.create!(
+                          question:   "La fonction racine carrée est-elle croissante ou décroissante pour tout réel positif ?",
+                          answer:     "Elle est croissante",
+                          chapter_id: maths_term_s_chap2.id,
+                        )
+
+maths_term_s_chap2_fc2 = Flashcard.create!(
+                          question:   "Qu'est-ce qu'une fonction affine ?",
+                          answer:     "Une fonction de la forme aX + b",
+                          chapter_id: maths_term_s_chap2.id,
+                        )
+
+maths_term_s_chap2_fc3 = Flashcard.create!(
+                          question:   "Comment savoir si un point donné appartient à la courbe représentative d'une fonction ?",
+                          answer:     "On calcule l'image de l'abscisses par la fonction en question. Si ce résultat est égal à l'ordonnée du point, alors celui-ci appartient à la courbe représentative de la fonction.",
+                          chapter_id: maths_term_s_chap2.id,
+                          )
+
+
+
+
+
+
+
+
+
+
+
+
+
 maths_prem_es = Material.create!(
   name: "Maths for Prem. ES classes",
   category: "Maths"
@@ -469,6 +545,11 @@ course5 = Course.create!(
             material: hist_term_s,
             user_id: teacher1.id)
 
+course6 = Course.create!(
+            division: div1,
+            material: maths_term_s,
+            user_id: teacher2.id)
+
 forum1 = Forum.create!(
             topic: "Histoire TS1",
             course_id: course1.id)
@@ -502,6 +583,10 @@ end
 
 div2.users.each do |student|
   student_trains_on_flashcards(student, maths_prem_es)
+end
+
+div1.users.each do |student|
+  student_trains_on_flashcards(student, maths_term_s)
 end
 
 puts "Students are now leaving feedbacks to courses they followed"
