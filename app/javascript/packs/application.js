@@ -16,6 +16,7 @@ import { scrollLastMessageIntoView } from '../components/messages';
 import { barGraphTeacherReview } from '../components/charts_courses_teacher_reviews';
 import { displayIndividualChart } from '../components/display_individual_student_chart';
 import { showChapterFlashcards } from '../components/flashcard_chapter';
+import { makeFlashcardsSwipe } from '../components/stack_cards'
 
 graph();
 initMarkdown();
@@ -32,6 +33,8 @@ dougnhutGraphStudent();
 barGraphTeacherReview();
 displayIndividualChart ();
 showChapterFlashcards();
+makeFlashcardsSwipe();
+
 
 //= require rails-ujs
 //= require jquery
