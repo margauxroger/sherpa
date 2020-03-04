@@ -70,6 +70,7 @@
 .row-flashcards-chapter {
   display: -webkit-box;
   flex-wrap: nowrap;
+  overflow: scroll;
 }
 
 .show {
