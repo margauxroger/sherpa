@@ -2,8 +2,12 @@ class FlashcardsController < ApplicationController
 
   def index
     authorize current_user
-    @chapter_flash = Flashcard.where("chapter_id = #{params[:chapter_id]}")
-    policy_scope(@chapter_flash)
+    @chapter = Chapter.find(params[:chapter_id])
+    @flashcards = @chapter.flashcards
+    @session = current_user.sessions.last
+
+    # @chapter_flash = Flashcard.where("chapter_id = #{params[:chapter_id]}")
+    policy_scope(Flashcard)
   end
   #   @user = current_user
   #   @materials = []

@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var elTrans;
 
     obj = document.getElementById('stacked-cards-block');
+
     stackedCardsObj = obj.querySelector('.stackedcards-container');
     listElNodesObj = stackedCardsObj.children;
 
