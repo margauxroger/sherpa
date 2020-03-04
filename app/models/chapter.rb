@@ -21,19 +21,6 @@
     student_flashcards
   end
 
-
-  # A SUPPRIMER ?
-  def score_chapter(students_number)
-    score = 0
-    self.flashcards.each do |flashcard|
-      flashcard.user_answers.each do |user_answer|
-        score += user_answer.completion
-      end
-    end
-    score.fdiv(self.flashcards_number).fdiv(students_number).round(2)*100
-  end
-
-  # POUR REMPLACER
   def score_div(division)
     division.users.map { |student| student.flashcards_score(self) }.sum.fdiv(flashcards_number)
   end
