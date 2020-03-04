@@ -34,13 +34,13 @@ Rails.application.routes.draw do
         resources :feedbacks, only: [:create, :update, :delete]
         resources :forums, only: [:show, :create]
     end
-    resources :sessions, only: [:show, :create] do
+    # resources :sessions, only: [:show, :create] do
 
-      member do
-        patch :swipe_right
-        patch :swipe_left
-      end
-    end
+    #   member do
+    #     patch :swipe_right
+    #     patch :swipe_left
+    #   end
+    # end
   end
 
   resources :sessions do
