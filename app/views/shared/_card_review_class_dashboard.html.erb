@@ -2,22 +2,24 @@
   <div class="card-review-show animated fadeIn">
     <div class="card-review-text card-review-back-color">
       <div class="card-review-header">
-        <p>Simon Chrétien</p>
+        <p><%= @students_feedbacks.last.user.first_name %></p>
+        <p><%= @students_feedbacks.last.user.last_name %></p>
       </div>
       <div class="card-review-content">
-        <p id="card_review_class">It was a very interresting class. I'd like myself to become a teacher sooner or later.</p>
+        <p><%= @students_feedbacks.last.comment %></p>
       </div>
     </div>
   </div>
 
   <div class="card-review-show animated fadeIn">
-    <div class="card-review-text card-review-back-color">
-      <div class="card-review-header">
-        <p>Nicolas Hild</p>
-      </div>
-      <div class="card-review-content">
-        <p id="card_teacher_class">I don't understand why I'm the only one who likes css</p>
+      <div class="card-review-text card-review-back-color">
+        <div class="card-review-header">
+          <p><%= @students_feedbacks[-2].user.first_name %></p>
+          <p><%= @students_feedbacks[-2].user.last_name %></p>
+        </div>
+        <div class="card-review-content">
+          <p><%= @students_feedbacks[-2].comment %></p>
+        </div>
       </div>
     </div>
-  </div>
 </div>

@@ -108,6 +108,14 @@ class Teachers::CoursesController < ApplicationController
 
     # Fin des données pour le scatterplot - Martin
 
+    # Données pour les alerts dans le dash de la classe - Martin
+
+    @unread_flashcards_notifications = Notification.where(user_id: current_user.id).where(notif_type: "flashcards").where(read_status: false)
+    @unread_feeling_notifications    = Notification.where(user_id: current_user.id).where(notif_type: "feeling").where(read_status: false)
+    @unread_message_notifications    = Notification.where(user_id: current_user.id).where(notif_type: "message").where(read_status: false)
+
+    # Fin des données pour les alerts dash
+
   end
 
 end
