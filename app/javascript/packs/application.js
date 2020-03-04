@@ -16,6 +16,7 @@ import { scrollLastMessageIntoView } from '../components/messages';
 import { barGraphTeacherReview } from '../components/charts_courses_teacher_reviews';
 import { displayIndividualChart } from '../components/display_individual_student_chart';
 import { showChapterFlashcards } from '../components/flashcard_chapter';
+import { doughnutGraphIndexStudent } from '../components/charts_courses_index_student_doughnut';
 
 graph();
 initMarkdown();
@@ -32,6 +33,7 @@ dougnhutGraphStudent();
 barGraphTeacherReview();
 displayIndividualChart ();
 showChapterFlashcards();
+doughnutGraphIndexStudent();
 
 //= require rails-ujs
 //= require jquery

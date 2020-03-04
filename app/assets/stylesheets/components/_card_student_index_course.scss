@@ -1,0 +1,37 @@
+.material-card-student-index {
+  min-height: 180px;
+  min-width:350px;
+  opacity: 0.7;
+  border-width: 1px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+
+  font-size: 30px;
+  color: #9c47fc;
+  background: -webkit-linear-gradient(#9c47fc, #356ad2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+
+  -webkit-animation: cardEnter 0.75s ease-in-out 0.5s;
+  animation: cardEnter 0.75s ease-in-out 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  opacity: 0;
+
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+
+
+}
+
+
+.chart-doughnut-index{
+  width: 140px;
+  height: 140px
+}

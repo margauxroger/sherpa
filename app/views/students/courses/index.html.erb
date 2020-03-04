@@ -1,5 +1,24 @@
-<div class="container">
-  <% @courses.each do |course| %>
-  <%= course.material.name %>
-  <% end %>
+<h1 class="m-2">
+  <span class="highlight-orange">Pick one Subject 📚</span>
+</h1>
+
+<div class="row">
+  <div class="col-8">
+    <div class="ml-2">
+      <% @courses.each_with_index do |course, index| %>
+        <a class="material-card-student-index m-2 " href="/students/courses/<%=index+1%>" >
+          <h3 class="m-3"><%= course.material.name %></h3>
+          <div class="chart-doughnut-index">
+            <%= render'shared/chart_doughnut_index_student', course: course %>
+          </div>
+        </a>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+
+
+
+
+
