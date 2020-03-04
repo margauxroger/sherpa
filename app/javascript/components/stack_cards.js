@@ -1,5 +1,7 @@
 // JavaScript Document
 const makeFlashcardsSwipe = () => {
+const testFlash = document.getElementById('stacked-cards-block')
+  if (testFlash) {
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
@@ -686,7 +688,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   stackedCards();
 
 });
-
+}
 };
 
 export { makeFlashcardsSwipe }
