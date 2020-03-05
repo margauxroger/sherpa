@@ -7,11 +7,11 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   has_many :messages, dependent: :destroy
-  has_many :courses
+  has_many :courses, dependent: :destroy
   has_many :divisions, through: :courses
   has_many :materials, through: :courses
   has_many :feedbacks, through: :courses
-  has_many :sessions
+  has_many :sessions, dependent: :destroy
   has_many :suggestions
   has_many :feedbacks
   belongs_to :division, optional: true
@@ -103,6 +103,20 @@ class User < ApplicationRecord
 
   def left_a_feedback?(course)
     self.feedbacks.where(course_id: course.id).any?
+  end
+
+  def cluster_message_student(material,course)
+    cluster_of_student = ""
+    if self.score(material) >= 65 && self.sentiment_score(course) >= 50
+      cluster_of_student = "#{self.first_name} is performing well and really enjoy the course."
+    elsif self.score(material) >= 65  && self.sentiment_score(course) < 50
+      cluster_of_student = "#{self.first_name} is performing well and does not enjoy the course that much."
+    elsif self.score(material) < 65  && self.sentiment_score(course)  >= 50
+      cluster_of_student = "#{self.first_name} is not performing well but really enjoy the course."
+    else
+      cluster_of_student = "#{self.first_name} is not performing well and does not enjoy the course that much."
+    end
+    return cluster_of_student
   end
 
   private

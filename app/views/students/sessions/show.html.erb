@@ -1,18 +1,23 @@
-<div class="container-cards-student-mr mt-5">
+<div class="container-cards-student-mr pt-5">
   <div id="stacked-cards-block" class="stackedcards stackedcards--animatable init">
+    <div class="final-message-flashcard">
+      <h3>🎉🎉🎉</h3>
+      <h3>Congrats !</h3>
+      <p>You have finish your flashcards for this chapter</p>
+      <%= link_to 'Go back to course!', students_course_path(@course.id), class: "btn btn-sherpa-transp" %>
+    </div>
     <div class="stackedcards-container">
 
       <% @flashcards.each do |flashcard| %>
 
         <div class="card-item">
           <div class="d-flex flex-column align-items-center front-flashcard">
-            <img class="icon-question-flashcard mt-5" src="https://picsum.photos/201/300" />
-            <div  class="question-flashcard mt-5">
-              <p><%= flashcard.question %></p>
+            <!-- <img class="icon-question-flashcard mt-5" src="https://picsum.photos/201/300" /> -->
+            <div  class="question-flashcard mt-5 mb-4 text-center">
+              <h3><%= flashcard.question %></h3>
             </div>
             <form class='flashcard-form'>
-              <textarea class="form-control" id="user_input_<%= flashcard.id %>" autofocus="" rows="4" placeholder="Enter your answer here (alt + enter to flip card)"  id="user_input"  type="text" name="message">
-              </textarea>
+              <textarea class="user_input" placeholder="Enter your answer here"></textarea>
             </form>
             <label for="card1" class="button-submit-flashcard mt-5" aria-hidden="true" >
                 Check Answer
@@ -22,9 +27,13 @@
             </div>
 
           <div class="global-actions mt-5">
-            <div class="left-action"><%= link_to 'Left', students_session_user_answers_path(session_id: params[:id], flashcard_id: flashcard.id, output: false), method: 'post', remote: true %></div>
+            <%= link_to students_session_user_answers_path(session_id: params[:id], flashcard_id: flashcard.id, output: false), method: 'post', remote: true, class: "left-action" do %>
+              🥴
+            <% end %>
             <div class="top-action" style="display:none;">Top</div>
-            <div class="right-action"><%= link_to 'Right', students_session_user_answers_path(session_id: params[:id], flashcard_id: flashcard.id, output: true), method: 'post', remote: true %></div>
+            <%= link_to students_session_user_answers_path(session_id: params[:id], flashcard_id: flashcard.id, output: true), method: 'post', remote: true, class: "right-action" do %>
+              😎
+            <% end %>
           </div>
 
           </div>

@@ -6,7 +6,6 @@ const doughnutGraphIndexStudent = () => {
     const scores = JSON.parse(chart.dataset.score)
     const material = chart.dataset.course
     let value = scores[material]
-    console.log(value)
     new Chart(chart, {
       type: 'doughnut',
      data: {

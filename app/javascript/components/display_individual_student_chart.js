@@ -13,8 +13,8 @@ const displayIndividualChart= () => {
         dashboardStudentFirstName.innerHTML=item.dataset.name;
         dashboardStudentScore.innerHTML=item.dataset.score;
         dashboardStudentPhoto.src=item.dataset.photo;
-        dougnhutGraphStudent(item.dataset.score);
-        console.log(JSON.parse(item.dataset.value))
+        dougnhutGraphStudent(item.dataset.score, true);
+        console.log(dougnhutGraphStudent)
         const values = JSON.parse(item.dataset.value);
         lineGraphStudent(values);
 
