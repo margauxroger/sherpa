@@ -310,6 +310,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Swipe active card to right.
     function onSwipeRight() {
+      console.log('onSwipeRight');
       removeNoTransition();
       transformUi(1000, 0, 0, currentElementObj);
       // console.log('going-righty')

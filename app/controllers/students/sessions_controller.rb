@@ -1,6 +1,7 @@
 class Students::SessionsController < ApplicationController
 
   def show
+    @sessions_show = true
     authorize current_user
     @session    = Session.find(params[:id])
     division = @session.user.division
