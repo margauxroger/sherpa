@@ -1155,7 +1155,7 @@ feedback_comments = [
 
 User.where(role: "student").each do |student|
   Course.where(division_id: student.division.id).each do |course|
-    Feedback.create!(comment: ,
+    Feedback.create!(comment: "test",
                      course_id: course.id,
                      rating: rand(3..5),
                      sentiment_score: rand(1..100),
@@ -1170,9 +1170,17 @@ puts "Simulating notifications"
 User.where(role: "teacher").each do |teacher|
   Course.where(user_id: teacher.id).each do |course|
     Notification::NOTIFICATION_TYPES[1..3].each do |notification_type|
+      if notification_type == 'flashcards'
+        content = 'It seems that this class has some issue with its flashcards'
+      elsif notification_type == 'feeling'
+        content = 'There are some news about the feeling of students about your class'
+      elsif notification_type == 'message'
+        content = 'You have new messages from this class'
+      else content = 'New feedbacks have arrived'
+      end
       Notification.create!(  user_id: teacher.id,
                            course_id: course.id,
-                             content: "This is a seed notification.",
+                             content: content,
                           notif_type: notification_type,)
     end
   end
