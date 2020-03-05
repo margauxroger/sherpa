@@ -1198,6 +1198,18 @@ puts "Students are now leaving feedbacks to courses they followed"
 #   end
 # end
 
+
+# User.where(role: "student").each do |student|
+#   Course.where(division_id: student.division.id).each do |course|
+#     Feedback.create!(comment: Faker::Lorem.paragraph(sentence_count: 2),
+#                      course_id: course.id,
+#                      rating: rand(1..5),
+#                      sentiment_score: rand(1..100),
+#                      user_id: student.id
+#                      )
+#   end
+# end
+
 feedback_comments = [
   "This course was really helpful. I like the methodology. I would recommend it.",
   "Very good course. Perhaps we need more exercises to train for the final exam this year.",
@@ -1240,4 +1252,3 @@ User.where(role: "teacher").each do |teacher|
     end
   end
 end
-
