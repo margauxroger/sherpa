@@ -6,10 +6,10 @@
 <div class= student-chapter-card-container>
   <% @course.material.chapters.each do |chapter| %>
     <div class= "student-chapter-card">
-      <% if current_user.sessions.last.score %>
-        <span class="badge badge-dark badge-chapter-stud"><%= current_user.sessions.where("chapter_id = #{chapter.id} ").last.score.round() %><%="%" %></span>
-      <% else %>
+      <% if current_user.sessions.where("chapter_id = #{chapter.id}").last.score.nil? %>
         <span class="badge badge-dark badge-chapter-stud"><%= 0 %><%="%" %></span>
+      <% else %>
+        <span class="badge badge-dark badge-chapter-stud"><%= current_user.sessions.where("chapter_id = #{chapter.id}").last.score.fdiv(chapter.flashcards_number) * 100.round() %><%="%" %></span>
       <% end %>
       <%= link_to chapter.name, students_sessions_path(chapter_id: chapter.id), method: :post %>
     </div>
