@@ -7,11 +7,11 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   has_many :messages, dependent: :destroy
-  has_many :courses
+  has_many :courses, dependent: :destroy
   has_many :divisions, through: :courses
   has_many :materials, through: :courses
   has_many :feedbacks, through: :courses
-  has_many :sessions
+  has_many :sessions, dependent: :destroy
   has_many :suggestions
   has_many :feedbacks
   belongs_to :division, optional: true
