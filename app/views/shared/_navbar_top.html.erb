@@ -43,30 +43,16 @@
 
           <% else %>
 
-          <li class="nav-item <%= 'active' if current_page?(materials_path) %>">
-            <%= link_to "Courses", materials_path, class: "nav-link mr-3" %>
+          <li class="nav-item text-right">
+            <%= current_user.email %>
           </li>
-          <li class="nav-item <%= 'active' if current_page?(teachers_flashcards_path) %>  ">
-            <%= link_to "Flashcards", teachers_flashcards_path, class: "nav-link mr-4" %>
+          <li class="nav-item">
+            <%= link_to "All my courses", students_courses_path, class: "nav-link mr-3" %>
           </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="mr-4"><%= current_user.email %></a>
+          <li class="nav-item">
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link mr-3" %>
           </li>
-          <li class="nav-item dropdown ml-3">
 
-            <div class="avatar-with-notification dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             <img class="notification-avatar avatar dropdown-toggle"  src="<%= current_user.picture_url %>" />
-             <% if current_user.count_unread_notifications > 0 %>
-               <p class="notification-count"><%= current_user.count_unread_notifications %></p>
-             <% end %>
-            </div>
-
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">My Profile</a>
-              <a class="dropdown-item" href="#">Notifications</a>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </li>
 
           <% end %>
 
