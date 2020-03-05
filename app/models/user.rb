@@ -34,7 +34,7 @@ class User < ApplicationRecord
 
   def score(material)
     chapter_scores = material.chapters.map { |chapter| flashcards_score(chapter) }
-    chapter_scores.sum.fdiv(chapter_scores.length).round(2)
+    (chapter_scores.sum / material.flashcards_number) * 100
   end
 
   def sentiment_score(course)
