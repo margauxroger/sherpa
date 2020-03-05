@@ -1,0 +1,6 @@
+
+meta_product_name: "Sherpa"
+meta_title: "Help teachers to bring students to new summits"
+meta_description: "Help teachers to bring students to new summits with data"
+meta_image: "flavicon.png" # should exist in `app/assets/images/`
+twitter_account: "@psherpa"   # required for Twitter Cards
