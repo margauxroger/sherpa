@@ -2,7 +2,10 @@
 
           <div class="d-flex justify-content-end">
             <div class="d-flex flex-column align-items-end">
-              <p class="btn btn-message-sent mb-0 pb-0 message"><%= message.content %></p>
+              <div class="d-flex">
+                <p class="btn btn-message-sent mb-0 pb-0 message"><%= message.content %></p>
+                <img class="student-msg-img ml-2" src="<%= message.user.picture_url %>" alt="student profile picture">
+              </div>
               <em class="mr-2" style="font-size: 12px;"><%= "You" %></em>
             </div>
           </div>
@@ -11,8 +14,11 @@
 
           <div class="d-flex justify-content-start">
             <div class="d-flex flex-column align-items-start">
-              <p class="btn btn-message-received mb-0 pb-0 message"><%= message.content %></p>
-              <em class="mr-2" style="font-size: 12px;"><%= User.find(message.user_id).email %></em>
+              <div class="d-flex">
+                <img class="student-msg-img mr-2" src="<%= message.user.picture_url %>" alt="student profile picture">
+                <p class="btn btn-message-received mb-0 pb-0 message"><%= message.content %></p>
+              </div>
+              <em class="mr-2" style="font-size: 12px;"><%= User.find(message.user_id).first_name %></em>
             </div>
           </div>
 <% end %>
