@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         })
       })
 
-
+      currentElement();
     };
 
     //Functions to swipe right elements on logic external action.
@@ -228,7 +228,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
           btn.nextElementSibling.classList.remove('no-show')
         })
       })
-
     };
 
     //Functions to swipe top elements on logic external action.
@@ -250,14 +249,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
     };
 
     function onSwipeLeftDisplay() {
-      removeNoTransition();
-      transformUi(-1000, 0, 0, currentElementObj);
+      // removeNoTransition();
+      // transformUi(-1000, 0, 0, currentElementObj);
       if(useOverlays){
         transformUi(-1000, 0, 0, leftObj); //Move leftOverlay
         transformUi(-1000, 0, 0, topObj); //Move topOverlay
         resetOverlayLeft();
       }
       currentPosition = currentPosition + 1;
+      console.log(currentPosition)
+      console.log(maxElements)
+      console.log('là')
       updateUi();
       currentElement();
       setActiveHidden();
@@ -266,10 +268,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //Swipe active card to left.
     function onSwipeLeft() {
       // console.log('going left')
+      removeNoTransition();
+      transformUi(-1000, 0, 0, currentElementObj);
+
       let activeCard = document.querySelector('.stackedcards-active');
       let activeBtnLeft = activeCard.querySelector('.left-action');
       console.log(activeBtnLeft);
-      activeBtnLeft.firstElementChild.click();
+      activeBtnLeft.click();
       // removeNoTransition();
       // transformUi(-1000, 0, 0, currentElementObj);
       // if(useOverlays){
@@ -287,14 +292,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
     function onSwipeRightDisplay() {
-      removeNoTransition();
-      transformUi(1000, 0, 0, currentElementObj);
+      // removeNoTransition();
+      // transformUi(1000, 0, 0, currentElementObj);
       if(useOverlays){
         transformUi(1000, 0, 0, rightObj); //Move rightOverlay
         transformUi(1000, 0, 0, topObj); //Move topOverlay
         resetOverlayRight();
       }
       currentPosition = currentPosition + 1;
+      console.log(currentPosition)
+      console.log(maxElements)
+      console.log('ici')
       updateUi();
       currentElement();
       setActiveHidden();
@@ -302,6 +310,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Swipe active card to right.
     function onSwipeRight() {
+      removeNoTransition();
+      transformUi(1000, 0, 0, currentElementObj);
       // console.log('going-righty')
       // removeNoTransition();
       // transformUi(1000, 0, 0, currentElementObj);
@@ -313,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       let activeCard = document.querySelector('.stackedcards-active');
       let activeBtnRight = activeCard.querySelector('.right-action');
       console.log(activeBtnRight);
-      activeBtnRight.firstElementChild.click();
+      activeBtnRight.click();
       // removeElement();
       // currentPosition = currentPosition + 1;
       // updateUi();
