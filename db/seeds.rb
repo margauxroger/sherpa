@@ -337,6 +337,27 @@ puts UserAnswer.all.size
 
 puts "Creating teachers"
 
+def AnalyzeSentiment(text)
+  input = MultiLanguageInput.new
+  input.id = '1'
+  input.language = 'en'
+  input.text = text
+  inputDocuments =  MultiLanguageBatchInput.new
+  inputDocuments.documents = [input]
+
+  result = @textAnalyticsClient.sentiment(
+      multi_language_batch_input: inputDocuments
+  )
+
+  result.documents.first.score
+end
+
+def azure_api_launch
+  endpoint = "https://sentimentanalysiscalculator.cognitiveservices.azure.com/"
+  key      = ENV["COGNITIVE_SERVICE_KEY"]
+  TextAnalyticsClient.new(endpoint, key)
+end
+
 teacher1 = User.create!(
   email:        "remi.carette@gmail.com",
   password:     "azerty",
@@ -353,11 +374,6 @@ teacher2 = User.create!(
 )
 
 puts "Creating 4 different divisions, each containing 40 students"
-
-# user = JSON.parse(open('https://randomuser.me/api/').read)["results"].first
-# # p user["results"]
-# p user["name"]
-# p user["name"]["first"]
 
 user_emails = []
 
@@ -803,6 +819,7 @@ mesures destinées à rendre crédible la volonté belge de défendre la neutral
 comme le traité de 1831 garantissant l'indépendance, en fait obligation au royaume.
 C'est la seule façon d'espérer que la France et le Royaume-Uni rempliront leur devoir de garants en venant au secours de la Belgique si celle-ci est envahie par l'Allemagne,
 ce qui paraît la perspective la plus probable.",
+
   material_id: hist_term_s.id,
   )
 
@@ -1043,18 +1060,6 @@ maths_term_s_chap2_fc3 = Flashcard.create!(
                           chapter_id: maths_term_s_chap2.id,
                           )
 
-
-
-
-
-
-
-
-
-
-
-
-
 maths_prem_es = Material.create!(
   name: "Maths for Prem. ES classes",
   category: "Maths"
@@ -1176,16 +1181,12 @@ message1 = Message.create!(
 
 puts "Hard-working students are doing their flashcards"
 
-div1.users.each do |student|
-  student_trains_on_flashcards(student, hist_term_s)
-end
-
-div2.users.each do |student|
-  student_trains_on_flashcards(student, maths_prem_es)
-end
-
-div1.users.each do |student|
-  student_trains_on_flashcards(student, maths_term_s)
+Division.all.each do |division|
+  division.users.each do |student|
+    division.courses.each do |course|
+      student_trains_on_flashcards(student, course.material)
+    end
+  end
 end
 
 puts "Students are now leaving feedbacks to courses they followed"
@@ -1210,26 +1211,44 @@ puts "Students are now leaving feedbacks to courses they followed"
 #   end
 # end
 
-feedback_comments = [
-  "This course was really helpful. I like the methodology. I would recommend it.",
-  "Very good course. Perhaps we need more exercises to train for the final exam this year.",
-  "You helped me understand all the key concepts of this course and I thank you for that !",
-  "Great course !",
-  "This course if a good overview and I want to learn more!",
-  "Awesome course",
-  "I love it"
-]
+feedback_comments = [{ rating:  5,
+                       comment: "This course was really helpful. I like the methodology. I would recommend it."},
+                     { rating:  4,
+                       comment: "Very good course. Perhaps we need more exercises to train for the final exam this year."},
+                     { rating:  5,
+                       comment: "You helped me understand all the key concepts of this course and I thank you for that !"},
+                     { rating:  5,
+                       comment: "Great course !"},
+                     { rating:  5,
+                       comment: "This course is a good overview and I want to learn more!"},
+                     { rating:  5,
+                       comment: "You helped me understand all the key concepts of this course and I thank you for that !"},
+                     { rating:  5,
+                       comment: "That was an awesome course, thanks !"},
+                     { rating:  5,
+                       comment: "I love it"},
+                     { rating:  5,
+                       comment: "I love it"},
+                     { rating:  5,
+                       comment: "I love it"},
+                     { rating:  5,
+                       comment: "I love it"}
+                     ]
 
-User.where(role: "student").each do |student|
-  Course.where(division_id: student.division.id).each do |course|
-    Feedback.create!(comment: "test",
-                     course_id: course.id,
-                     rating: rand(3..5),
-                     sentiment_score: rand(1..100),
-                     user_id: student.id
-                     )
+Division.all.each do |division|
+  division.users.each do |student|
+    division.courses.each do |course|
+      feedback = feedback_comments.sample
+      Feedback.create!(comment: feedback[:comment],
+                       course_id: course.id,
+                       rating: feedback[:rating],
+                       sentiment_score: rand(10...100),
+                       user_id: student.id
+                       )
+    end
   end
 end
+
 
 puts "Simulating notifications"
 

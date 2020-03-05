@@ -1,5 +1,3 @@
-
-
 class Students::FeedbacksController < ApplicationController
 
   require 'json'
@@ -21,17 +19,17 @@ class Students::FeedbacksController < ApplicationController
   end
 
   def create
+    authorize current_user
     @user     = current_user
     @course   = Course.find(params[:course_id])
     @feedback = Feedback.new(params_feedback)
     @feedback.user   = @user
     @feedback.course = @course
     @feedback.sentiment_score = azure_api_launch.AnalyzeSentiment(comment_to_azure_json(@feedback.comment))
-    raise
-    if @cocktail.save
-      redirect_to students_course_feedbacks_path(params[:id])
+    if @feedback.save
+      redirect_to students_course_feedbacks_path(@course)
     else
-      render :index
+      render :new
     end
   end
 
