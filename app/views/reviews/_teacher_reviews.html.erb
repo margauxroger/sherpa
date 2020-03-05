@@ -8,12 +8,15 @@
       </div>
 
       <div class="average-review-grade col-4">
-        <p><%= @reviews_summary %></p>
+        <p><%= @course.average_ratings %></p>
         <div class="review-summary-stars">
-          <% @reviews_summary.times do %>
+          <% @course.show_stars[0].times do %>
             <i id="star-color-feedback" class="fas fa-star"></i>
           <% end %>
-          <% (5 - @reviews_summary).times do %>
+          <% @course.show_stars[1].times do %>
+            <i class="fas fa-star-half-alt" id="star-color-feedback"></i>
+          <% end %>
+          <% @course.show_stars[2].times do %>
             <i class="far fa-star"></i>
           <% end %>
         </div>
