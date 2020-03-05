@@ -32,6 +32,6 @@ class Session < ApplicationRecord
         1
       end
     end
-    flashcards_scores.sum.fdiv(self.chapter.flashcards.length) * 100
+    flashcards_scores.sum
   end
 end

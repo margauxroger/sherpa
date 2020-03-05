@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.6.5'
 
+gem 'azure_cognitiveservices_textanalytics', '~>0.17.3'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'faker'

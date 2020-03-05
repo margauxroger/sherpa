@@ -9,25 +9,29 @@ console.log(deckElement);
 
 flashcardHTML = `
         <div class="card-item no-show">
-          <div class="d-flex flex-column align-items-center front-flashcard">
-            <img class="icon-question-flashcard mt-5" src="https://picsum.photos/201/300" />
-            <div  class="question-flashcard mt-5">
-              <p><%= @flashcard.question %></p>
+            <div class="d-flex flex-column align-items-center front-flashcard">
+            <!-- <img class="icon-question-flashcard mt-5" src="https://picsum.photos/201/300" /> -->
+            <div  class="question-flashcard mt-5 mb-4 text-center">
+              <h3><%= @flashcard.question %></h3>
             </div>
             <form class='flashcard-form'>
-              <textarea class="form-control" id="user_input" autofocus="" rows="4" placeholder="Enter your answer here (alt + enter to flip card)"  id="user_input"  type="text" name="message">
-              </textarea>
+              <textarea class="user_input" placeholder="Enter your answer here"></textarea>
             </form>
-            <label for="card1" class="button-submit-flashcard mt-5" aria-hidden="true" onclick="showInput();">
+            <label for="card1" class="button-submit-flashcard mt-5" aria-hidden="true" >
                 Check Answer
             </label>
             <div class="hidden-answer mt-5 no-show">
               <p><%= @flashcard.answer %></p>
             </div>
-            <div class="global-actions mt-5">
-            <div class="left-action"><%= link_to 'Left', students_session_user_answers_path(session_id: @session.id, flashcard_id: @flashcard.id, output: false), method: 'post', remote: true %></div>
+
+          <div class="global-actions mt-5">
+            <%= link_to students_session_user_answers_path(session_id: @session.id, flashcard_id: @flashcard.id, output: false), method: 'post', remote: true, class: "left-action" do %>
+              🥴
+            <% end %>
             <div class="top-action" style="display:none;">Top</div>
-            <div class="right-action"><%= link_to 'Right', students_session_user_answers_path(session_id: @session.id, flashcard_id: @flashcard.id, output: true), method: 'post', remote: true %></div>
+            <%= link_to students_session_user_answers_path(session_id: @session.id, flashcard_id: @flashcard.id, output: true), method: 'post', remote: true, class: "right-action" do %>
+              😎
+            <% end %>
           </div>
           </div>
         </div>
@@ -48,5 +52,6 @@ function countElements() {
 countElements();
 console.log(maxElements)
 
+console.log('I am here')
 
 

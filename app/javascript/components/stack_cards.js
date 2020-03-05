@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var rotate = true; //Activate the elements' rotation for each move on stacked cards.
     var items = 3; //Number of visible elements when the stacked options are bottom or top.
     var elementsMargin = 10; //Define the distance of each element when the stacked options are bottom or top.
-    var useOverlays = true; //Enable or disable the overlays for swipe elements.
+    var useOverlays = false; //Enable or disable the overlays for swipe elements.
     var maxElements; //Total of stacked cards on DOM.
     var currentPosition = 0; //Keep the position of active stacked card.
     var velocity = 0.3; //Minimum velocity allowed to trigger a swipe.
@@ -163,12 +163,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
           topObj.classList.remove('no-transition');
           leftObj.style.zIndex = '0';
           transformUi(0, 0, 1, leftObj);
-          console.log(leftObj.dataset.swipe)
 
         }
 
         setTimeout(function() {
-          onSwipeLeft();
+          onSwipeLeftDisplay();
           resetOverlayLeft();
         },300);
       // }
@@ -177,10 +176,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
         btn.addEventListener('click', onActionLeft, false);
       });
 
-    let btnRights = document.querySelectorAll('.right-action')
+      let btnRights = document.querySelectorAll('.right-action')
       btnRights.forEach((btn) => {
         btn.addEventListener('click', onActionRight, false);
       })
+
+      let btnCheckAnswer = document.querySelectorAll('.button-submit-flashcard')
+  // const hiddenAnswer = document.querySelectorAll('.hidden-answer')
+
+      btnCheckAnswer.forEach((btn) => {
+        btn.addEventListener('click', (event) => {
+          btn.classList.add('no-show')
+          btn.nextElementSibling.classList.remove('no-show')
+        })
+      })
+
+      currentElement();
     };
 
     //Functions to swipe right elements on logic external action.
@@ -195,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
 
         setTimeout(function(){
-          onSwipeRight();
+          onSwipeRightDisplay();
           resetOverlayRight();
         },300);
       // }
@@ -204,9 +215,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
         btn.addEventListener('click', onActionLeft, false);
       });
 
-    btnRights = document.querySelectorAll('.right-action')
+      btnRights = document.querySelectorAll('.right-action')
       btnRights.forEach((btn) => {
         btn.addEventListener('click', onActionRight, false);
+      })
+
+      let btnCheckAnswer = document.querySelectorAll('.button-submit-flashcard')
+
+      btnCheckAnswer.forEach((btn) => {
+        btn.addEventListener('click', (event) => {
+          btn.classList.add('no-show')
+          btn.nextElementSibling.classList.remove('no-show')
+        })
       })
     };
 
@@ -228,17 +248,61 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     };
 
-    //Swipe active card to left.
-    function onSwipeLeft() {
-      console.log('going left')
-      removeNoTransition();
-      transformUi(-1000, 0, 0, currentElementObj);
+    function onSwipeLeftDisplay() {
+      // removeNoTransition();
+      // transformUi(-1000, 0, 0, currentElementObj);
       if(useOverlays){
         transformUi(-1000, 0, 0, leftObj); //Move leftOverlay
         transformUi(-1000, 0, 0, topObj); //Move topOverlay
         resetOverlayLeft();
       }
       currentPosition = currentPosition + 1;
+      console.log(currentPosition)
+      console.log(maxElements)
+      console.log('là')
+      updateUi();
+      currentElement();
+      setActiveHidden();
+    };
+
+    //Swipe active card to left.
+    function onSwipeLeft() {
+      // console.log('going left')
+      removeNoTransition();
+      transformUi(-1000, 0, 0, currentElementObj);
+
+      let activeCard = document.querySelector('.stackedcards-active');
+      let activeBtnLeft = activeCard.querySelector('.left-action');
+      console.log(activeBtnLeft);
+      activeBtnLeft.click();
+      // removeNoTransition();
+      // transformUi(-1000, 0, 0, currentElementObj);
+      // if(useOverlays){
+      //   transformUi(-1000, 0, 0, leftObj); //Move leftOverlay
+      //   transformUi(-1000, 0, 0, topObj); //Move topOverlay
+      //   resetOverlayLeft();
+      // }
+      // removeElement();
+      // currentPosition = currentPosition + 1;
+      // updateUi();
+      // currentElement();
+      // setActiveHidden();
+    };
+
+
+
+    function onSwipeRightDisplay() {
+      // removeNoTransition();
+      // transformUi(1000, 0, 0, currentElementObj);
+      if(useOverlays){
+        transformUi(1000, 0, 0, rightObj); //Move rightOverlay
+        transformUi(1000, 0, 0, topObj); //Move topOverlay
+        resetOverlayRight();
+      }
+      currentPosition = currentPosition + 1;
+      console.log(currentPosition)
+      console.log(maxElements)
+      console.log('ici')
       updateUi();
       currentElement();
       setActiveHidden();
@@ -246,19 +310,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Swipe active card to right.
     function onSwipeRight() {
-      console.log('going-righty')
       removeNoTransition();
       transformUi(1000, 0, 0, currentElementObj);
-      if(useOverlays){
-        transformUi(1000, 0, 0, rightObj); //Move rightOverlay
-        transformUi(1000, 0, 0, topObj); //Move topOverlay
-        resetOverlayRight();
-      }
-
-      currentPosition = currentPosition + 1;
-      updateUi();
-      currentElement();
-      setActiveHidden();
+      // console.log('going-righty')
+      // removeNoTransition();
+      // transformUi(1000, 0, 0, currentElementObj);
+      // if(useOverlays){
+      //   transformUi(1000, 0, 0, rightObj); //Move rightOverlay
+      //   transformUi(1000, 0, 0, topObj); //Move topOverlay
+      //   resetOverlayRight();
+      // }
+      let activeCard = document.querySelector('.stackedcards-active');
+      let activeBtnRight = activeCard.querySelector('.right-action');
+      console.log(activeBtnRight);
+      activeBtnRight.click();
+      // removeElement();
+      // currentPosition = currentPosition + 1;
+      // updateUi();
+      // currentElement();
+      // setActiveHidden();
     };
 
     //Swipe active card to top.
@@ -587,6 +657,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function gestureStart(evt) {
       startTime = new Date().getTime();
+      countElements();
 
       startX = evt.changedTouches[0].clientX;
       startY = evt.changedTouches[0].clientY;
@@ -657,6 +728,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     };
 
     function gestureEnd(evt) {
+      countElements();
 
       if(!touchingElement){
         return;
