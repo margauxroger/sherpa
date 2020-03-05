@@ -1,0 +1,21 @@
+.feedback-container {
+  width: 90%;
+  margin: 32px auto;
+  display: flex;
+  justify-content: between;
+  h5 {
+    font-weight: bolder;
+    font-size:   35px;
+  }
+}
+
+.feedback-course-details {
+  display: flex;
+  justify-content: between;
+  width: 90%;
+}
+
+.feedback-action {
+  display: flex;
+  justify-content: between;
+}

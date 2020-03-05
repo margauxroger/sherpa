@@ -1,0 +1,21 @@
+<div class="mobile-center-container">
+  <h1>Edit Feedback</h1>
+  <div class="feedback-course-details d-flex w-90 justify-content-between">
+    <h5><%= @course.material.name %></h5>
+    <p><%= @course.user.full_name %></p> <!-- Penser a changer par user.full_name une fois les seeds changees -->
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <div class="form-container">
+          <%= simple_form_for [:students, @feedback] do |f| %>
+            <%= f.input :comment, required: true %>
+            <%= f.input :rating, required: true, collection: (1..5).to_a %>
+            <%= f.submit "Leave a feedback", class: "btn btn-primary w-100" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

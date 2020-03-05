@@ -10,12 +10,6 @@ class Students::CoursesController < ApplicationController
     @user.division.courses.each do |course|
       @user_score[course.material.name] = @user.score(course.material)
     end
-
-  end
-
-  def show
-    @course = Course.find(params[:id])
-    authorize current_user
   end
 
   def show
