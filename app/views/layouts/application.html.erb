@@ -15,7 +15,7 @@
 
   </head>
   <body>
-    <% unless current_page?(root_path) %>
+    <% unless current_page?(root_path) || current_page?(students_session_path) %>
       <%= render 'shared/navbar_top' %>
     <% end %>
 
