@@ -14,28 +14,21 @@ class Teachers::CoursesController < ApplicationController
     @course_students = User.where("division_id = ?", @course.division.id)
     @material = @course.material
 
-    @new_course_students = @course_students.sort_by{ |student| student.score(@material) }
-    @list_students_without_top_offender = @new_course_students.drop(5)
-
     # Score for bar chart
-
-    @chapter_score = {}
-
-    @course.material.chapters.each_with_index do |chapter, index|
-      @chapter_score["Chapter #{index + 1}"] = chapter.score_div(@course.division)
-    end
-
-    # Fin score for bar chart
-
     # cumulative score for line chart
 
+    @chapter_score = {}
     @chapter_cumulative_score = {}
     @cumulative_sum_chapter = 0
 
     @course.material.chapters.each_with_index do |chapter, index|
-      @cumulative_sum_chapter += chapter.score_div(@course.division)
+      score = chapter.score_div(@course.division)
+      @chapter_score["Chapter #{index + 1}"] = score
+      @cumulative_sum_chapter += score
       @chapter_cumulative_score["Chapter #{index + 1}"]  = @cumulative_sum_chapter
     end
+
+    # Fin score for bar chart
 
     # Données pour les review - Martin
 
@@ -92,19 +85,31 @@ class Teachers::CoursesController < ApplicationController
 
     @student_sentiment_score_flashcards_score = {}
 
-    @course_students.each_with_index do |student|
-      if student.score(@material) >= 60 && student.sentiment_score(@course) >= 70
-        @student_sentiment_score_flashcards_score[student.id] = { x: student.score(@material) , y: student.sentiment_score(@course), color: "green" }
+    start_time = Time.now
+    @new_course_students = @course_students.sort_by.with_index do |student, index|
+      score = student.score(@material)
+      sentiment = student.sentiment_score(@course)
 
-      elsif student.score(@material) >= 40 && student.score(@material) < 70 && student.sentiment_score(@course) >= 70
-        @student_sentiment_score_flashcards_score[student.id] = { x: student.score(@material) , y: student.sentiment_score(@course), color: "blue" }
+      if score >= 60 && sentiment >= 70
+        @student_sentiment_score_flashcards_score[student.id] = { x: score , y: sentiment, color: "green" }
 
-      elsif student.score(@material) >= 45 && student.sentiment_score(@course) >= 20 && student.sentiment_score(@course) <= 70
-        @student_sentiment_score_flashcards_score[student.id] = { x: student.score(@material) , y: student.sentiment_score(@course), color: "purple" }
+      elsif score >= 40 && score < 70 && sentiment >= 70
+        @student_sentiment_score_flashcards_score[student.id] = { x: score , y: sentiment, color: "blue" }
 
-      else @student_sentiment_score_flashcards_score[student.id] = { x: student.score(@material) , y: student.sentiment_score(@course), color: "red" }
+      elsif score >= 45 && sentiment >= 20 && sentiment <= 70
+        @student_sentiment_score_flashcards_score[student.id] = { x: score , y: sentiment, color: "purple" }
+
+      else @student_sentiment_score_flashcards_score[student.id] = { x: score , y: sentiment, color: "red" }
       end
+
+      score
     end
+    end_time = Time.now
+
+    puts 'TIMER'
+    puts end_time - start_time
+
+    @list_students_without_top_offender = @new_course_students.drop(5)
 
     # Fin des données pour le scatterplot - Martin
 
