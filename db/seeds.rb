@@ -1168,7 +1168,7 @@ puts "Simulating notifications"
 
 
 User.where(role: "teacher").each do |teacher|
-  Course.where(user_id: teacher.id).each_with_index do |course, index|
+  Course.where(user_id: teacher.id).each do |course|
     Notification::NOTIFICATION_TYPES[1..3].each do |notification_type|
       Notification.create!(  user_id: teacher.id,
                            course_id: course.id,
