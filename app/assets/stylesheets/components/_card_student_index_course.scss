@@ -8,12 +8,14 @@
   justify-content: left;
   align-items: center;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
-
+  border-color: $sherpa-light-violet;
   font-size: 30px;
-  color: #9c47fc;
-  background: -webkit-linear-gradient(#9c47fc, #356ad2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    h3 {
+    color: $sherpa-dark-blue;
+    }
+  // background: -webkit-linear-gradient(#9c47fc, #356ad2);
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
 
 
   -webkit-animation: cardEnter 0.75s ease-in-out 0.5s;

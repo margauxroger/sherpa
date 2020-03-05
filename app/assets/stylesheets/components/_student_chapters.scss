@@ -9,13 +9,16 @@
   padding: 35px 10px 20px 10px;
   margin: auto;
   border-radius: 4px;
+  border-color: $sherpa-light-violet;
   position: relative;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    a {
 
-  color: #9c47fc;
-  background: -webkit-linear-gradient(#9c47fc, #356ad2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: $sherpa-violet;
+    }
+  // background: -webkit-linear-gradient(#9c47fc, #356ad2);
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
 
   &:hover {
     box-shadow: 0 0 15px rgba(0,0,0,0.2);

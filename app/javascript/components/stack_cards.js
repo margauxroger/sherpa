@@ -93,6 +93,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     if(listElNodesObj[currentPosition]){
       listElNodesObj[currentPosition].classList.add('stackedcards-active');
+      // let activeCard = document.querySelector('.stackedcards-active');
+      // let textArea = activeCard.querySelector('.user_input');
+      // console.log(textArea);
+      // textArea.click();
     }
 
     if(useOverlays){
@@ -153,6 +157,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //Keep the active card.
     function currentElement() {
       currentElementObj = listElNodesObj[currentPosition];
+
+      // let activeCard = document.querySelector('.stackedcards-active');
+      // let textArea = activeCard.querySelector('.user_input');
+      // console.log(textArea);
+      // textArea.click();
     };
 
     //Functions to swipe left elements on logic external action.
@@ -249,8 +258,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     };
 
     function onSwipeLeftDisplay() {
-      // removeNoTransition();
-      // transformUi(-1000, 0, 0, currentElementObj);
+      removeNoTransition();
+      transformUi(-1000, 0, 0, currentElementObj);
       if(useOverlays){
         transformUi(-1000, 0, 0, leftObj); //Move leftOverlay
         transformUi(-1000, 0, 0, topObj); //Move topOverlay
@@ -292,8 +301,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
     function onSwipeRightDisplay() {
-      // removeNoTransition();
-      // transformUi(1000, 0, 0, currentElementObj);
+      removeNoTransition();
+      transformUi(1000, 0, 0, currentElementObj);
       if(useOverlays){
         transformUi(1000, 0, 0, rightObj); //Move rightOverlay
         transformUi(1000, 0, 0, topObj); //Move topOverlay
@@ -795,6 +804,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         btn.addEventListener('click', onActionRight, false);
       });
 
+     // activeCard = document.querySelector('.stackedcards-active');
+     //   textArea = activeCard.querySelector('.user_input');
+     //  console.log(textArea);
+     //  textArea.click();
   }
 
   stackedCards();
