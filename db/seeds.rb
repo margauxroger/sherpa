@@ -36,19 +36,42 @@ end
 
 # end
 
-puts "Destroying all"
-
+puts "=============== Destroying user ==============="
 User.destroy_all
-Division.destroy_all
-Course.destroy_all
-Material.destroy_all
-Chapter.destroy_all
-Flashcard.destroy_all
-Forum.destroy_all
-Message.destroy_all
-Feedback.destroy_all
+puts User.all.size
+puts "=============== Destroying session ==============="
 Session.destroy_all
+puts Session.all.size
+puts "=============== Destroying notification ==============="
+Notification.destroy_all
+puts Notification.all.size
+puts "=============== Destroying message ==============="
+Message.destroy_all
+puts Message.all.size
+puts "=============== Destroying forum ==============="
+Forum.destroy_all
+puts Forum.all.size
+puts "=============== Destroying feedback ==============="
+Feedback.destroy_all
+puts Feedback.all.size
+puts "=============== Destroying course ==============="
+Course.destroy_all
+puts Course.all.size
+puts "=============== Destroying division ==============="
+Division.destroy_all
+puts Division.all.size
+puts "=============== Destroying chapter ==============="
+Chapter.destroy_all
+puts Chapter.all.size
+puts "=============== Destroying material ==============="
+Material.destroy_all
+puts Material.all.size
+puts "=============== Destroying flashcard ==============="
+Flashcard.destroy_all
+puts Flashcard.all.size
+puts "=============== Destroying user_answers ==============="
 UserAnswer.destroy_all
+puts UserAnswer.all.size
 
 puts "Creating teachers"
 
@@ -571,9 +594,9 @@ forum5 = Forum.create!(
             course_id: course5.id)
 
 message1 = Message.create!(
-            user_id: 3,
+            user_id: User.first.id,
             content: "Bonjour, j'ai une question sur le 1er chapitre",
-            forum_id: 1)
+            forum_id: forum1.id)
 
 puts "Hard-working students are doing their flashcards"
 

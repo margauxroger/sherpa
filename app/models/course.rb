@@ -3,8 +3,9 @@ class Course < ApplicationRecord
   belongs_to :material
   belongs_to :user
 
-  has_many :feedbacks
+  has_many :feedbacks, dependent: :destroy
   has_many :users, through: :division
+  has_many :notifications, dependent: :destroy
 
   def division_score
     score = []
