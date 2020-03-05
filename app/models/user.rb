@@ -53,7 +53,7 @@ class User < ApplicationRecord
 
   def flashcards_score_student(material)
     score = {}
-    material.chapters.each { |chapter| score[chapter.name] = (flashcards_score(chapter).fdiv(chapter.flashcards_number) * 100 }
+    material.chapters.each { |chapter| score[chapter.name] = (flashcards_score(chapter).fdiv(chapter.flashcards_number)) *100 }
     return score
   end
 
