@@ -21,7 +21,7 @@ class Teachers::CoursesController < ApplicationController
     @cumulative_sum_chapter = 0
 
     @course.material.chapters.each_with_index do |chapter, index|
-      score = chapter.score_div(@course.division) / @course_students.length) * 100
+      score = (chapter.score_div(@course.division) / @course_students.length) * 100
       @chapter_score["Chapter #{index + 1}"] = score
       score_absolute = chapter.score_div(@course.division)
       @cumulative_sum_chapter += score_absolute
@@ -101,7 +101,6 @@ class Teachers::CoursesController < ApplicationController
 
       else @student_sentiment_score_flashcards_score[student.id] = { x: score , y: sentiment, color: "red" }
       end
-
       score
     end
     end_time = Time.now
@@ -120,7 +119,6 @@ class Teachers::CoursesController < ApplicationController
     @unread_message_notifications    = Notification.where(user_id: current_user.id).where(notif_type: "message").where(read_status: false)
 
     # Fin des données pour les alerts dash
-
   end
 
 end
