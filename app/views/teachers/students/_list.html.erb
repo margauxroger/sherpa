@@ -10,7 +10,7 @@
 
         <!-- CARD -->
         <div class="frontside mb-3">
-            <div class="card-student-list" data-email="<%= student.email %>"data-name="<%=  student.first_name%>" data-score="<%=student.score(@material)%>" data-photo="<%=student.picture_url%>" data-label="<%=@course.material.chapter_ids%>" data-value="<%=student.flashcards_score_student(student.division.courses.first.material).to_json%>">
+            <div class="card-student-list" data-email="<%= student.email %>"data-name="<%=  student.first_name%>" data-score="<%=student.score(@material).round%>" data-photo="<%=student.picture_url%>" data-label="<%=@course.material.chapter_ids%>" data-value="<%=student.flashcards_score_student(student.division.courses.first.material).to_json%>">
               <div class="card-body-student d-flex">
                 <div class="photo-nom">
                   <%= image_tag student.picture_url, alt: "card image", class: "img-fluid #{student.border_color(@material)}" %>
@@ -40,7 +40,7 @@
 
           <!-- CARD -->
           <div class="frontside mb-3">
-            <div class="card-student-list" data-email="<%= student.email %>"data-name="<%=  student.first_name%>" data-score="<%=student.score(@material)%>" data-photo="<%=student.picture_url%>" data-label="<%=@course.material.chapter_ids%>" data-value="<%=student.flashcards_score_student(student.division.courses.first.material).to_json%>">
+            <div class="card-student-list" data-email="<%= student.email %>"data-name="<%=  student.first_name%>" data-score="<%=student.score(@material).round%>" data-photo="<%=student.picture_url%>" data-label="<%=@course.material.chapter_ids%>" data-value="<%=student.flashcards_score_student(student.division.courses.first.material).to_json%>">
               <div class="card-student-list">
                 <div class="card-body-student d-flex">
                   <div class="photo-nom">
