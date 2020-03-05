@@ -345,31 +345,39 @@ div1 = Division.create!(
 # ---------------------------------------- Seed students div 1 ---------------------------------------
 
 20.times do
-    student_first_name = first_names_man.sample
-    student_last_name = last_names.sample
+  student_first_name = first_names_man.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
     user_instance = User.new( first_name:  student_first_name,
                               last_name:   student_last_name,
-                              email:       "#{student_first_name}.#{student_last_name}@gmail.com",
+                              email:       student_email,
                               password:    'azerty',
                               division_id: div1.id,
-                              )
+                            )
 
-user_instance.picture_url = man_urls[rand(0...man_urls.length)]
-user_instance.save!
+    user_instance.picture_url = man_urls[rand(0...man_urls.length)]
+    user_instance.save!
+    user_emails << student_email
+  end
 end
 
 20.times do
-    student_first_name = first_names_woman.sample
-    student_last_name = last_names.sample
+  student_first_name = first_names_woman.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
     user_instance = User.new( first_name:  student_first_name,
                               last_name:   student_last_name,
-                              email:       "#{student_first_name}.#{student_last_name}@gmail.com",
+                              email:       student_email,
                               password:    'azerty',
                               division_id: div1.id,
-                              )
+                            )
 
-user_instance.picture_url = woman_urls[rand(0...woman_urls.length)]
-user_instance.save!
+    user_instance.picture_url = woman_urls[rand(0...woman_urls.length)]
+    user_instance.save!
+    user_emails << student_email
+  end
 end
 
 # --------------------------------------Fin Seed students -------------------------------------
@@ -381,31 +389,39 @@ div2 = Division.create!(
 # ---------------------------------------- Seed students div 2 ---------------------------------------
 
 20.times do
-    student_first_name = first_names_man.sample
-    student_last_name = last_names.sample
+  student_first_name = first_names_man.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
     user_instance = User.new( first_name:  student_first_name,
                               last_name:   student_last_name,
-                              email:       "#{student_first_name}.#{student_last_name}@gmail.com",
+                              email:       student_email,
                               password:    'azerty',
                               division_id: div2.id,
-                              )
+                            )
 
-user_instance.picture_url = man_urls[rand(0...man_urls.length)]
-user_instance.save!
+    user_instance.picture_url = man_urls[rand(0...man_urls.length)]
+    user_instance.save!
+    user_emails << student_email
+  end
 end
 
 20.times do
-    student_first_name = first_names_woman.sample
-    student_last_name = last_names.sample
+  student_first_name = first_names_woman.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
     user_instance = User.new( first_name:  student_first_name,
                               last_name:   student_last_name,
-                              email:       "#{student_first_name}.#{student_last_name}@gmail.com",
+                              email:       student_email,
                               password:    'azerty',
                               division_id: div2.id,
-                              )
+                            )
 
-user_instance.picture_url = woman_urls[rand(0...woman_urls.length)]
-user_instance.save!
+    user_instance.picture_url = woman_urls[rand(0...woman_urls.length)]
+    user_instance.save!
+    user_emails << student_email
+  end
 end
 
 # --------------------------------------Fin Seed students -------------------------------------
@@ -418,31 +434,39 @@ div3 = Division.create!(
 # ---------------------------------------- Seed students div 3 ---------------------------------------
 
 20.times do
-    student_first_name = first_names_man.sample
-    student_last_name = last_names.sample
+  student_first_name = first_names_man.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
     user_instance = User.new( first_name:  student_first_name,
                               last_name:   student_last_name,
-                              email:       "#{student_first_name}.#{student_last_name}@gmail.com",
+                              email:       student_email,
                               password:    'azerty',
                               division_id: div3.id,
-                              )
+                            )
 
-user_instance.picture_url = man_urls[rand(0...man_urls.length)]
-user_instance.save!
+    user_instance.picture_url = man_urls[rand(0...man_urls.length)]
+    user_instance.save!
+    user_emails << student_email
+  end
 end
 
 20.times do
-    student_first_name = first_names_woman.sample
-    student_last_name = last_names.sample
+  student_first_name = first_names_woman.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
     user_instance = User.new( first_name:  student_first_name,
                               last_name:   student_last_name,
-                              email:       "#{student_first_name}.#{student_last_name}@gmail.com",
+                              email:       student_email,
                               password:    'azerty',
                               division_id: div3.id,
-                              )
+                            )
 
-user_instance.picture_url = woman_urls[rand(0...woman_urls.length)]
-user_instance.save!
+    user_instance.picture_url = woman_urls[rand(0...woman_urls.length)]
+    user_instance.save!
+    user_emails << student_email
+  end
 end
 
 # --------------------------------------Fin Seed students -------------------------------------
@@ -455,31 +479,39 @@ div4 = Division.create!(
 # ---------------------------------------- Seed students div 4 ---------------------------------------
 
 20.times do
-    student_first_name = first_names_man.sample
-    student_last_name = last_names.sample
+  student_first_name = first_names_man.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
     user_instance = User.new( first_name:  student_first_name,
                               last_name:   student_last_name,
-                              email:       "#{student_first_name}.#{student_last_name}@gmail.com",
+                              email:       student_email,
                               password:    'azerty',
                               division_id: div4.id,
-                              )
+                            )
 
-user_instance.picture_url = man_urls[rand(0...man_urls.length)]
-user_instance.save!
+    user_instance.picture_url = man_urls[rand(0...man_urls.length)]
+    user_instance.save!
+    user_emails << student_email
+  end
 end
 
 20.times do
-    student_first_name = first_names_woman.sample
-    student_last_name = last_names.sample
+  student_first_name = first_names_woman.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
     user_instance = User.new( first_name:  student_first_name,
                               last_name:   student_last_name,
-                              email:       "#{student_first_name}.#{student_last_name}@gmail.com",
+                              email:       student_email,
                               password:    'azerty',
                               division_id: div4.id,
-                              )
+                            )
 
-user_instance.picture_url = woman_urls[rand(0...woman_urls.length)]
-user_instance.save!
+    user_instance.picture_url = woman_urls[rand(0...woman_urls.length)]
+    user_instance.save!
+    user_emails << student_email
+  end
 end
 
 # --------------------------------------Fin Seed students -------------------------------------
