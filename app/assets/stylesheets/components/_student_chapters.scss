@@ -1,0 +1,38 @@
+.student-chapter-card {
+  width: 90%;
+  font-size: 24px;
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 35px 10px 20px 10px;
+  margin: auto;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+
+  color: #9c47fc;
+  background: -webkit-linear-gradient(#9c47fc, #356ad2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+}
+
+
+.student-chapter-card-container {
+  display: grid;
+  grid-template-columns: 1fr ;
+  grid-gap: 1em;
+  margin-top: 10px;
+}
+
+.badge-chapter-stud {
+  position: absolute;
+  -webkit-text-fill-color: white;
+  top: 10px;
+  right: 10px;
+}
