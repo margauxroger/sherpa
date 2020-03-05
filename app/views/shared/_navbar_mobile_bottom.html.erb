@@ -7,7 +7,10 @@
     <%= link_to students_course_path(1), id: "mobile-nav-center-btn" do %>
       <i class="far fa-play-circle navbar-icon"></i>
     <% end %>
-    <%= link_to students_course_feedbacks_path(params[:id]) do %>
-      <i class="fas fa-star navbar-icon"></i>
-    <% end %>
+    <%#= link_to students_course_feedbacks_path(params[:id]) do %>
+    <%# end %>
+    <% star = '<i class="fas fa-star navbar-icon"></i>' %>
+    <%= link_to_if(current_user.left_a_feedback?(course), star.html_safe , students_course_feedback_path(course, Feedback.where(user_id: current_user.id, course_id: course.id))) do
+         link_to(star.html_safe, new_students_course_feedback_path(course))
+        end %>
 </div>

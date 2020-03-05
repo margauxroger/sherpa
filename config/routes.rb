@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   namespace :students do
     root to: 'courses#index'
       resources :courses, only: [:index, :show] do
-        resources :feedbacks, only: [:index, :new, :create]
+        resources :feedbacks, only: [:show, :new, :create]
         resources :forums, only: [:show, :create]
     end
     resources :sessions do
