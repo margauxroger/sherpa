@@ -27,7 +27,7 @@ lineGraph();
 scatterGraph();
 initTranslateMarkdown();
 lineGraphStudent();
-dougnhutGraphStudent(0);
+dougnhutGraphStudent();
 handleClickOnStudentsList();
 handleClickOnForum();
 handleClickOnFeedbackList();

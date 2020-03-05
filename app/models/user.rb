@@ -97,6 +97,21 @@ class User < ApplicationRecord
     Notification.where("user_id = ?", self.id).where(read_status: false).length
   end
 
+  def cluster_message_student(material,course)
+    cluster_of_student = ""
+    if self.score(material) >= 65 && self.sentiment_score(course) >= 50
+      cluster_of_student = "#{self.first_name} is performing well and really enjoy the course."
+    elsif self.score(material) >= 65  && self.sentiment_score(course) < 50
+      cluster_of_student = "#{self.first_name} is performing well and does not enjoy the course that much."
+    elsif self.score(material) < 65  && self.sentiment_score(course)  >= 50
+      cluster_of_student = "#{self.first_name} is not performing well but really enjoy the course."
+    else
+      cluster_of_student = "#{self.first_name} is not performing well and does not enjoy the course that much."
+    end
+    return cluster_of_student
+  end
+
+
   private
 
   def calculate_percentile(array = [], percentile = 0.0)

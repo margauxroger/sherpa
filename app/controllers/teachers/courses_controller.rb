@@ -93,13 +93,13 @@ class Teachers::CoursesController < ApplicationController
     @student_sentiment_score_flashcards_score = {}
 
     @course_students.each_with_index do |student|
-      if student.score(@material) >= 60 && student.sentiment_score(@course) >= 70
+      if student.score(@material) >= 65 && student.sentiment_score(@course) >= 50
         @student_sentiment_score_flashcards_score[student.id] = { x: student.score(@material) , y: student.sentiment_score(@course), color: "green" }
 
-      elsif student.score(@material) >= 40 && student.score(@material) < 70 && student.sentiment_score(@course) >= 70
+      elsif student.score(@material) >= 65  && student.sentiment_score(@course) < 50
         @student_sentiment_score_flashcards_score[student.id] = { x: student.score(@material) , y: student.sentiment_score(@course), color: "blue" }
 
-      elsif student.score(@material) >= 45 && student.sentiment_score(@course) >= 20 && student.sentiment_score(@course) <= 70
+      elsif student.score(@material) < 65  && student.sentiment_score(@course) > 50
         @student_sentiment_score_flashcards_score[student.id] = { x: student.score(@material) , y: student.sentiment_score(@course), color: "purple" }
 
       else @student_sentiment_score_flashcards_score[student.id] = { x: student.score(@material) , y: student.sentiment_score(@course), color: "red" }
