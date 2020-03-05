@@ -77,7 +77,8 @@ class Teachers::CoursesController < ApplicationController
       @sum_reviews += feedback.rating
     end
 
-    @reviews_summary = @sum_reviews / @students_feedbacks.length
+    @reviews_summary_rounded = @sum_reviews / @students_feedbacks.length
+    @reviews_summary_rounded_half = ((@sum_reviews.fdiv(@students_feedbacks.length).round(1)) * 2.0).round() / 2.0
 
     # Fin des données pour les reviews - Martin
 
