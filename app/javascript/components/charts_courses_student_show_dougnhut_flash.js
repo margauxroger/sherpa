@@ -1,4 +1,4 @@
-const dougnhutGraphStudent = (score) => {
+const dougnhutGraphStudent = (score, bool = false) => {
   let chart = document.getElementById("dougnhutChartStudentFlash")
   if (chart) {
   new Chart(chart, {
@@ -16,17 +16,17 @@ const dougnhutGraphStudent = (score) => {
                'rgba(79, 42, 205, 1)',
                'rgba(79, 42, 205, 0.6)'
            ],
-           borderWidth: 1
+           borderWidth: 0
        }]
    },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       legend: {
-        display: true,
+        display: bool,
       },
       title: {
-        display: true,
+        display: bool,
         text: "Flashcards progression over all chapters"
       },
       scales: {

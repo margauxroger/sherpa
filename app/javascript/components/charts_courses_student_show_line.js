@@ -23,16 +23,18 @@ const lineGraphStudent = (values) => {
           },
           title: {
             display: true,
-            text: "Flashcards progression chapter by chapter"
+            text: "Flashcards Score Chapter by Chapter"
           },
           scales: {
               yAxes: [{
                   ticks: {
                       display: true,
                       beginAtZero: true,
+                      suggestedMin: 0,
+                      suggestedMax: 100
                   },
                   gridLines : {
-                    display: false,
+                    display: true,
                   }
               }]
           },
@@ -43,3 +45,4 @@ const lineGraphStudent = (values) => {
 };
 
 export { lineGraphStudent };
+
