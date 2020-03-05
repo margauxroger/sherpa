@@ -30,8 +30,10 @@
   }
 }
 
-.mobile_message > .message_content {
-  width: 100%
+.mobile_message {
+  .message_content {
+    width: 100%
+  }
 }
 
 .student-msg-img {
