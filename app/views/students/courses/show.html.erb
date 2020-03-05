@@ -1,11 +1,20 @@
 
+<h1 class="m-2">
+  <span class="highlight-orange">Choose a chapter</span>
+</h1>
 
-
-<% @course.material.chapters.each do |chapter| %>
-<%= link_to chapter.name, students_sessions_path(chapter_id: chapter.id), method: :post, class: "material-card ml-3" %>
-<% end %>
-
-
+<div class= student-chapter-card-container>
+  <% @course.material.chapters.each do |chapter| %>
+    <div class= "student-chapter-card">
+      <% if current_user.sessions.last.score %>
+        <span class="badge badge-dark badge-chapter-stud"><%= current_user.sessions.where("chapter_id = #{chapter.id} ").last.score.round() %><%="%" %></span>
+      <% else %>
+        <span class="badge badge-dark badge-chapter-stud"><%= 0 %><%="%" %></span>
+      <% end %>
+      <%= link_to chapter.name, students_sessions_path(chapter_id: chapter.id), method: :post %>
+    </div>
+  <% end %>
+</div>
 
 
 

@@ -33,3 +33,14 @@
 .mobile_message > .message_content {
   width: 100%
 }
+
+#mobile-history {
+  height: 100%;
+}
+.container-forum-mobile {
+  padding: 0 10px 0 10px;
+  height: 70vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4fr 1fr;
+}

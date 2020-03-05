@@ -1,7 +1,11 @@
-<div class="container mt-5">
   <% @forum = Forum.where("course_id = '#{params[:course_id]}'").first %>
-  <h1><%= @forum.topic %></h1>
-  <div class="message-history p-3">
+
+<h1 class="m-2">
+  <span class="highlight-orange">Q&A - <%= @forum.topic %></span>
+</h1>
+
+<div class="container-forum-mobile">
+  <div class="message-history p-3" id="mobile-history">
     <% @forum.messages.each do |message| %>
 
     <%= render 'messages/message', message: message, user_is_message_author: message.user == current_user %>
@@ -10,10 +14,10 @@
     <% end %>
   </div>
   <% @message = Message.new %>
-  <%= simple_form_for [@forum, @message], remote: true, html: { class: "form-inline mt-3 mb-5 d-flex w-100 justify-content-between mobile_message" } do |f| %>
+  <%= simple_form_for [@forum, @message], remote: true, html: { class: "form-inline d-flex w-100 justify-content-between mobile_message" } do |f| %>
   <%= f.input :content, input_html: { class: "form-control w-100" }, label: false %>
   <%= f.input :user_id, as: :hidden, input_html: { value: "#{current_user.id}"} %>
-  <%= f.button :submit, 'Send Message', class: "btn btn-sherpa mr-3 w-100" %>
+  <%= f.button :submit, 'Send Message', class: "btn btn-sherpa w-100" %>
   <% end %>
 </div>
 <% content_for :after_js do %>
