@@ -22,7 +22,8 @@ class Teachers::CoursesController < ApplicationController
     @chapter_score = {}
 
     @course.material.chapters.each_with_index do |chapter, index|
-      @chapter_score["Chapter #{index + 1}"] = chapter.score_div(@course.division)
+      @chapter_score_percentage = (chapter.score_div(@course.division) / @course_students.length) * 100
+      @chapter_score["Chapter #{index + 1}"] = @chapter_score_percentage
     end
 
     # Fin score for bar chart
