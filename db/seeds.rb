@@ -13,6 +13,268 @@ require 'faker'
 woman_urls = ["https://randomuser.me/api/portraits/women/47.jpg", "https://randomuser.me/api/portraits/women/43.jpg", "https://randomuser.me/api/portraits/women/38.jpg", "https://randomuser.me/api/portraits/women/8.jpg", "https://randomuser.me/api/portraits/women/57.jpg", "https://randomuser.me/api/portraits/women/13.jpg", "https://randomuser.me/api/portraits/women/78.jpg", "https://randomuser.me/api/portraits/women/9.jpg", "https://randomuser.me/api/portraits/women/69.jpg", "https://randomuser.me/api/portraits/women/10.jpg", "https://randomuser.me/api/portraits/women/93.jpg", "https://randomuser.me/api/portraits/women/79.jpg", "https://randomuser.me/api/portraits/women/73.jpg", "https://randomuser.me/api/portraits/women/89.jpg", "https://randomuser.me/api/portraits/women/67.jpg", "https://randomuser.me/api/portraits/women/83.jpg", "https://randomuser.me/api/portraits/women/23.jpg", "https://randomuser.me/api/portraits/women/86.jpg", "https://randomuser.me/api/portraits/women/85.jpg", "https://randomuser.me/api/portraits/women/11.jpg", "https://randomuser.me/api/portraits/women/63.jpg", "https://randomuser.me/api/portraits/women/90.jpg", "https://randomuser.me/api/portraits/women/37.jpg", "https://randomuser.me/api/portraits/women/6.jpg", "https://randomuser.me/api/portraits/women/30.jpg", "https://randomuser.me/api/portraits/women/91.jpg", "https://randomuser.me/api/portraits/women/16.jpg", "https://randomuser.me/api/portraits/women/88.jpg", "https://randomuser.me/api/portraits/women/92.jpg", "https://randomuser.me/api/portraits/women/39.jpg", "https://randomuser.me/api/portraits/women/2.jpg", "https://randomuser.me/api/portraits/women/28.jpg", "https://randomuser.me/api/portraits/women/45.jpg", "https://randomuser.me/api/portraits/women/68.jpg", "https://randomuser.me/api/portraits/women/33.jpg", "https://randomuser.me/api/portraits/women/62.jpg", "https://randomuser.me/api/portraits/women/3.jpg", "https://randomuser.me/api/portraits/women/65.jpg", "https://randomuser.me/api/portraits/women/32.jpg", "https://randomuser.me/api/portraits/women/22.jpg", "https://randomuser.me/api/portraits/women/70.jpg", "https://randomuser.me/api/portraits/women/76.jpg", "https://randomuser.me/api/portraits/women/40.jpg", "https://randomuser.me/api/portraits/women/21.jpg", "https://randomuser.me/api/portraits/women/64.jpg", "https://randomuser.me/api/portraits/women/66.jpg", "https://randomuser.me/api/portraits/women/31.jpg", "https://randomuser.me/api/portraits/women/53.jpg", "https://randomuser.me/api/portraits/women/80.jpg", "https://randomuser.me/api/portraits/women/17.jpg", "https://randomuser.me/api/portraits/women/14.jpg", "https://randomuser.me/api/portraits/women/58.jpg", "https://randomuser.me/api/portraits/women/81.jpg", "https://randomuser.me/api/portraits/women/0.jpg", "https://randomuser.me/api/portraits/women/27.jpg", "https://randomuser.me/api/portraits/women/71.jpg", "https://randomuser.me/api/portraits/women/50.jpg", "https://randomuser.me/api/portraits/women/4.jpg", "https://randomuser.me/api/portraits/women/12.jpg", "https://randomuser.me/api/portraits/women/49.jpg", "https://randomuser.me/api/portraits/women/29.jpg", "https://randomuser.me/api/portraits/women/24.jpg", "https://randomuser.me/api/portraits/women/54.jpg", "https://randomuser.me/api/portraits/women/60.jpg", "https://randomuser.me/api/portraits/women/48.jpg", "https://randomuser.me/api/portraits/women/52.jpg", "https://randomuser.me/api/portraits/women/26.jpg", "https://randomuser.me/api/portraits/women/34.jpg", "https://randomuser.me/api/portraits/women/36.jpg", "https://randomuser.me/api/portraits/women/82.jpg", "https://randomuser.me/api/portraits/women/1.jpg", "https://randomuser.me/api/portraits/women/77.jpg", "https://randomuser.me/api/portraits/women/74.jpg", "https://randomuser.me/api/portraits/women/72.jpg", "https://randomuser.me/api/portraits/women/15.jpg", "https://randomuser.me/api/portraits/women/35.jpg", "https://randomuser.me/api/portraits/women/20.jpg", "https://randomuser.me/api/portraits/women/55.jpg", "https://randomuser.me/api/portraits/women/42.jpg", "https://randomuser.me/api/portraits/women/41.jpg", "https://randomuser.me/api/portraits/women/25.jpg", "https://randomuser.me/api/portraits/women/19.jpg", "https://randomuser.me/api/portraits/women/46.jpg", "https://randomuser.me/api/portraits/women/7.jpg", "https://randomuser.me/api/portraits/women/87.jpg", "https://randomuser.me/api/portraits/women/18.jpg", "https://randomuser.me/api/portraits/women/51.jpg", "https://randomuser.me/api/portraits/women/5.jpg", "https://randomuser.me/api/portraits/women/75.jpg", "https://randomuser.me/api/portraits/women/44.jpg", "https://randomuser.me/api/portraits/women/94.jpg", "https://randomuser.me/api/portraits/women/59.jpg", "https://randomuser.me/api/portraits/women/61.jpg", "https://randomuser.me/api/portraits/women/56.jpg", "https://randomuser.me/api/portraits/women/84.jpg", "https://randomuser.me/api/portraits/women/undefined.jpg"]
 man_urls = ["https://randomuser.me/api/portraits/men/17.jpg", "https://randomuser.me/api/portraits/men/1.jpg", "https://randomuser.me/api/portraits/men/12.jpg", "https://randomuser.me/api/portraits/men/33.jpg", "https://randomuser.me/api/portraits/men/9.jpg", "https://randomuser.me/api/portraits/men/40.jpg", "https://randomuser.me/api/portraits/men/75.jpg", "https://randomuser.me/api/portraits/men/14.jpg", "https://randomuser.me/api/portraits/men/28.jpg", "https://randomuser.me/api/portraits/men/85.jpg", "https://randomuser.me/api/portraits/men/73.jpg", "https://randomuser.me/api/portraits/men/59.jpg", "https://randomuser.me/api/portraits/men/19.jpg", "https://randomuser.me/api/portraits/men/83.jpg", "https://randomuser.me/api/portraits/men/46.jpg", "https://randomuser.me/api/portraits/men/37.jpg", "https://randomuser.me/api/portraits/men/91.jpg", "https://randomuser.me/api/portraits/men/30.jpg", "https://randomuser.me/api/portraits/men/15.jpg", "https://randomuser.me/api/portraits/men/35.jpg", "https://randomuser.me/api/portraits/men/56.jpg", "https://randomuser.me/api/portraits/men/69.jpg", "https://randomuser.me/api/portraits/men/43.jpg", "https://randomuser.me/api/portraits/men/10.jpg", "https://randomuser.me/api/portraits/men/63.jpg", "https://randomuser.me/api/portraits/men/54.jpg", "https://randomuser.me/api/portraits/men/2.jpg", "https://randomuser.me/api/portraits/men/78.jpg", "https://randomuser.me/api/portraits/men/77.jpg", "https://randomuser.me/api/portraits/men/6.jpg", "https://randomuser.me/api/portraits/men/21.jpg", "https://randomuser.me/api/portraits/men/39.jpg", "https://randomuser.me/api/portraits/men/18.jpg", "https://randomuser.me/api/portraits/men/55.jpg", "https://randomuser.me/api/portraits/men/90.jpg", "https://randomuser.me/api/portraits/men/22.jpg", "https://randomuser.me/api/portraits/men/62.jpg", "https://randomuser.me/api/portraits/men/36.jpg", "https://randomuser.me/api/portraits/men/81.jpg", "https://randomuser.me/api/portraits/men/67.jpg", "https://randomuser.me/api/portraits/men/0.jpg", "https://randomuser.me/api/portraits/men/49.jpg", "https://randomuser.me/api/portraits/men/80.jpg", "https://randomuser.me/api/portraits/men/45.jpg", "https://randomuser.me/api/portraits/men/53.jpg", "https://randomuser.me/api/portraits/men/72.jpg", "https://randomuser.me/api/portraits/men/13.jpg", "https://randomuser.me/api/portraits/men/68.jpg", "https://randomuser.me/api/portraits/men/65.jpg", "https://randomuser.me/api/portraits/men/57.jpg", "https://randomuser.me/api/portraits/men/50.jpg", "https://randomuser.me/api/portraits/men/52.jpg", "https://randomuser.me/api/portraits/men/64.jpg", "https://randomuser.me/api/portraits/men/26.jpg", "https://randomuser.me/api/portraits/men/34.jpg", "https://randomuser.me/api/portraits/men/42.jpg", "https://randomuser.me/api/portraits/men/41.jpg", "https://randomuser.me/api/portraits/men/92.jpg", "https://randomuser.me/api/portraits/men/31.jpg", "https://randomuser.me/api/portraits/men/38.jpg", "https://randomuser.me/api/portraits/men/51.jpg", "https://randomuser.me/api/portraits/men/88.jpg", "https://randomuser.me/api/portraits/men/84.jpg", "https://randomuser.me/api/portraits/men/3.jpg", "https://randomuser.me/api/portraits/men/60.jpg", "https://randomuser.me/api/portraits/men/79.jpg", "https://randomuser.me/api/portraits/men/4.jpg", "https://randomuser.me/api/portraits/men/70.jpg", "https://randomuser.me/api/portraits/men/89.jpg", "https://randomuser.me/api/portraits/men/47.jpg", "https://randomuser.me/api/portraits/men/8.jpg", "https://randomuser.me/api/portraits/men/66.jpg", "https://randomuser.me/api/portraits/men/20.jpg", "https://randomuser.me/api/portraits/men/86.jpg", "https://randomuser.me/api/portraits/men/93.jpg", "https://randomuser.me/api/portraits/men/25.jpg", "https://randomuser.me/api/portraits/men/87.jpg", "https://randomuser.me/api/portraits/men/82.jpg", "https://randomuser.me/api/portraits/men/16.jpg", "https://randomuser.me/api/portraits/men/74.jpg", "https://randomuser.me/api/portraits/men/7.jpg", "https://randomuser.me/api/portraits/men/27.jpg", "https://randomuser.me/api/portraits/men/76.jpg", "https://randomuser.me/api/portraits/men/44.jpg", "https://randomuser.me/api/portraits/men/71.jpg", "https://randomuser.me/api/portraits/men/29.jpg", "https://randomuser.me/api/portraits/men/61.jpg", "https://randomuser.me/api/portraits/men/58.jpg", "https://randomuser.me/api/portraits/men/23.jpg", "https://randomuser.me/api/portraits/men/94.jpg", "https://randomuser.me/api/portraits/men/24.jpg", "https://randomuser.me/api/portraits/men/32.jpg", "https://randomuser.me/api/portraits/men/5.jpg", "https://randomuser.me/api/portraits/men/48.jpg", "https://randomuser.me/api/portraits/men/11.jpg", "https://randomuser.me/api/portraits/men/undefined.jpg", "https://randomuser.me/api/portraits/men/undefined.jpg", "https://randomuser.me/api/portraits/men/undefined.jpg", "https://randomuser.me/api/portraits/men/undefined.jpg", "https://randomuser.me/api/portraits/men/undefined.jpg"]
 
+# Array of last names
+
+last_names = ['Abbott',
+ 'Acevedo',
+ 'Acosta',
+ 'Adams',
+ 'Adkins',
+ 'Aguilar',
+ 'Aguirre',
+ 'Albert',
+ 'Alexander',
+ 'Alford',
+ 'Allen',
+ 'Allison',
+ 'Alston',
+ 'Alvarado',
+ 'Alvarez',
+ 'Anderson',
+ 'Andrews',
+ 'Anthony',
+ 'Armstrong',
+ 'Arnold',
+ 'Ashley',
+ 'Atkins',
+ 'Atkinson',
+ 'Austin',
+ 'Avery',
+ 'Avila',
+ 'Ayala',
+ 'Ayers',
+ 'Bailey',
+ 'Baird',
+ 'Baker',
+ 'Baldwin',
+ 'Ball',
+ 'Ballard',
+ 'Banks',
+ 'Barber',
+ 'Barker',
+ 'Barlow',
+ 'Barnes',
+ 'Barnett',
+ 'Barr',
+ 'Barrera',
+ 'Barrett',
+ 'Barron',
+ 'Barry',
+ 'Bartlett',
+ 'Barton',
+ 'Bass',
+ 'Bates',
+ 'Battle',
+ 'Bauer',
+ 'Baxter',
+ 'Beach',
+ 'Bean',
+ 'Beard',
+ 'Beasley',
+ 'Beck',
+ 'Becker',
+ 'Bell',
+ 'Bender',
+ 'Campbell',
+ 'Campos',
+ 'Cannon',
+ 'Cantrell',
+ 'Cantu',
+ 'Cardenas',
+ 'Carey',
+ 'Carlson',
+ 'Carney',
+ 'Carpenter',
+ 'Carr',
+ 'Carrillo',
+ 'Carroll',
+ 'Carson',
+ 'Carter',
+ 'Carver',
+ 'Case',
+ 'Casey',
+ 'Cash',
+ 'Castaneda',
+ 'Castillo',
+ 'Castro',
+ 'Cervantes',
+ 'Chambers',
+ 'Chan',
+ 'Chandler',
+ 'Chaney',
+ 'Chang',
+ 'Chapman',
+ 'Charles',
+ 'Chase',
+ 'Chavez',
+ 'Chen',
+ 'Cherry',
+ 'Christensen',
+ 'Christian',
+ 'Church',
+ 'Clark',
+ 'Clarke',
+ 'Clay',
+ 'Clayton',
+ 'Clements',
+ 'Clemons',
+ 'Cleveland',
+ 'Cline',
+ 'Cobb',
+ 'Cochran',
+ 'Coffey',
+ 'Cohen',
+ 'Cole',
+ 'Coleman',
+ 'Collier',
+ 'Collins',
+ 'Colon',
+ 'Combs',
+ 'Compton',
+ 'Conley',
+ 'Conner',
+ 'Conrad',
+ 'Contreras',
+ 'Conway',
+ 'Cook',
+ 'Cooke',
+ 'Cooley',
+ 'Cooper',
+ 'Copeland',
+ 'Cortez',
+ 'Cote',
+ 'Cotton',
+ 'Cox',
+ 'Craft',
+ 'Craig',
+ 'Crane',
+ 'Crawford',
+ 'Crosby',
+ 'Cross',
+ 'Cruz',
+ 'Cummings',
+ 'Cunningham',
+ 'Curry',
+ 'Curtis',
+ 'Dale',
+ 'Dalton',
+ 'Daniel',
+ 'Daniels',
+ 'Daugherty',
+ 'Davenport',
+ 'David',
+ 'Davidson',
+ 'Davis',
+ 'Dawson',
+ 'Day',
+ 'Dean',
+ 'Decker',
+ 'Dejesus',
+ 'Delacruz',
+ 'Delaney',
+ 'Deleon',
+ 'Delgado',
+ 'Dennis',
+ 'Diaz',
+ 'Dickerson',
+ 'Dickson',
+ 'Dillard',
+ 'Dillon',
+ 'Dixon',
+ 'Dodson',
+ 'Dominguez',
+ 'Donaldson',
+ 'Donovan',
+ 'Dorsey',
+ 'Dotson',
+ 'Douglas',
+ 'Downs',
+ 'Doyle',
+ 'Drake',
+ 'Dudley',
+ 'Duffy',
+ 'Duke',
+ 'Duncan',
+ 'Dunlap',
+ 'Dunn',
+ 'Duran',
+ 'Durham',
+ 'Dyer',
+ 'Eaton',
+ 'Edwards',
+ 'Elliott',
+ 'Ellis',
+ 'Ellison',
+ 'Emerson',
+ 'England',
+ 'English',
+ 'Erickson',
+ 'Espinoza',
+ 'Estes',
+ 'Estrada',
+ 'Evans',
+ 'Everett',
+ 'Ewing',
+ 'Farley',
+ 'Farmer',
+ 'Farrell',
+ 'Faulkner',
+ 'Ferguson',
+ 'Fernandez',
+ 'Ferrell',
+ 'Fields',
+ 'Figueroa',
+ 'Finch',
+ 'Finley',
+ 'Fischer',
+ 'Fisher',
+ 'Fitzgerald',
+ 'Fitzpatrick',
+ 'Fleming',
+ 'Fletcher',
+ 'Flores',
+ 'Flowers',
+ 'Floyd',
+ 'Flynn',
+ 'Foley',
+ 'Forbes',
+ 'Ford',
+ 'Foreman',
+ 'Foster',
+ 'Fowler',
+ 'Fox',
+ 'Francis',
+ 'Franco',
+ 'Frank',
+ 'Franklin',
+ 'Franks',
+ 'Frazier',
+ 'Frederick',
+ 'Freeman',
+ 'French',
+ 'Frost',
+ 'Fry',
+ 'Frye',
+ 'Fuentes',
+ 'Fuller',
+ 'Fulton',
+ 'Harding',
+ 'Hardy',
+ 'Harmon',
+ 'Harper',
+ 'Harrell',
+ 'Harrington',
+ 'Harris']
+
+# Fin array of last names
+
+# Array of first_names
+
+first_names_man = %w[ Antoine Martin Nad Gaetan Margaux François Xavier Ambroise Dan Daniel Simon Yvon Yves Jacques Basile Pierre Augustin Paul Louis Jeremy Nicolas Maxence Max Edwin Marc Marco Remi Vincent Jerome Tom Thomas ]
+
+first_names_woman = %w[ Sybille Pauline Amandine Jeanne Lea Caroline Laure Clara Anna Mila Rose Lina Ambre Manon Camille Lola Juliette Agathe Eva Lucie Nina]
+# Fin Array of first_names
+
 def student_trains_on_flashcards(student, material)
   material.chapters.each do |chapter|
     session = Session.create!(user_id:    student.id,
@@ -103,77 +365,180 @@ div1 = Division.create!(
          name:  "Term. S2",
          level: "Terminale"
          )
-40.times do
-  user = JSON.parse(open('https://randomuser.me/api/').read)["results"].first
-  unless user_emails.include?(user["email"])
-    user_instance = User.new( first_name:  user["name"]["first"],
-                              last_name:   user["name"]["last"],
-                              email:       user["email"],
+# ---------------------------------------- Seed students div 1 ---------------------------------------
+
+20.times do
+  student_first_name = first_names_man.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
+    user_instance = User.new( first_name:  student_first_name,
+                              last_name:   student_last_name,
+                              email:       student_email,
                               password:    'azerty',
                               division_id: div1.id,
-                              )
-    user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
+                            )
+
+    user_instance.picture_url = man_urls[rand(0...man_urls.length)]
     user_instance.save!
-    user_emails << user["email"]
+    user_emails << student_email
   end
 end
+
+20.times do
+  student_first_name = first_names_woman.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
+    user_instance = User.new( first_name:  student_first_name,
+                              last_name:   student_last_name,
+                              email:       student_email,
+                              password:    'azerty',
+                              division_id: div1.id,
+                            )
+
+    user_instance.picture_url = woman_urls[rand(0...woman_urls.length)]
+    user_instance.save!
+    user_emails << student_email
+  end
+end
+
+# --------------------------------------Fin Seed students -------------------------------------
 
 div2 = Division.create!(
          name:  "Prem. ES3",
          level: "Première"
          )
-40.times do
-  user = JSON.parse(open('https://randomuser.me/api/').read)["results"].first
-  unless user_emails.include?(user["email"])
-    user_instance = User.new( first_name:  user["name"]["first"],
-                              last_name:   user["name"]["last"],
-                              email:       user["email"],
+# ---------------------------------------- Seed students div 2 ---------------------------------------
+
+20.times do
+  student_first_name = first_names_man.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
+    user_instance = User.new( first_name:  student_first_name,
+                              last_name:   student_last_name,
+                              email:       student_email,
                               password:    'azerty',
                               division_id: div2.id,
-                              )
-    user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
+                            )
+
+    user_instance.picture_url = man_urls[rand(0...man_urls.length)]
     user_instance.save!
-    user_emails << user["email"]
+    user_emails << student_email
   end
 end
+
+20.times do
+  student_first_name = first_names_woman.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
+    user_instance = User.new( first_name:  student_first_name,
+                              last_name:   student_last_name,
+                              email:       student_email,
+                              password:    'azerty',
+                              division_id: div2.id,
+                            )
+
+    user_instance.picture_url = woman_urls[rand(0...woman_urls.length)]
+    user_instance.save!
+    user_emails << student_email
+  end
+end
+
+# --------------------------------------Fin Seed students -------------------------------------
+
 
 div3 = Division.create!(
          name:  "Term. L1",
          level: "Terminale"
          )
-40.times do
-  user = JSON.parse(open('https://randomuser.me/api/').read)["results"].first
-  unless user_emails.include?(user["email"])
-    user_instance = User.new( first_name:  user["name"]["first"],
-                              last_name:   user["name"]["last"],
-                              email:       user["email"],
+# ---------------------------------------- Seed students div 3 ---------------------------------------
+
+20.times do
+  student_first_name = first_names_man.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
+    user_instance = User.new( first_name:  student_first_name,
+                              last_name:   student_last_name,
+                              email:       student_email,
                               password:    'azerty',
                               division_id: div3.id,
-                              )
-    user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
+                            )
+
+    user_instance.picture_url = man_urls[rand(0...man_urls.length)]
     user_instance.save!
-    user_emails << user["email"]
+    user_emails << student_email
   end
 end
+
+20.times do
+  student_first_name = first_names_woman.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
+    user_instance = User.new( first_name:  student_first_name,
+                              last_name:   student_last_name,
+                              email:       student_email,
+                              password:    'azerty',
+                              division_id: div3.id,
+                            )
+
+    user_instance.picture_url = woman_urls[rand(0...woman_urls.length)]
+    user_instance.save!
+    user_emails << student_email
+  end
+end
+
+# --------------------------------------Fin Seed students -------------------------------------
+
 
 div4 = Division.create!(
          name:  "Sec. 1",
          level: "Seconde"
          )
-40.times do
-  user = JSON.parse(open('https://randomuser.me/api/').read)["results"].first
-  unless user_emails.include?(user["email"])
-    user_instance = User.new( first_name:  user["name"]["first"],
-                              last_name:   user["name"]["last"],
-                              email:       user["email"],
+# ---------------------------------------- Seed students div 4 ---------------------------------------
+
+20.times do
+  student_first_name = first_names_man.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
+    user_instance = User.new( first_name:  student_first_name,
+                              last_name:   student_last_name,
+                              email:       student_email,
                               password:    'azerty',
                               division_id: div4.id,
-                              )
-    user_instance.picture_url = user["gender"] == "male" ? man_urls[rand(0...man_urls.length)] : woman_urls[rand(0...woman_urls.length)]
+                            )
+
+    user_instance.picture_url = man_urls[rand(0...man_urls.length)]
     user_instance.save!
-    user_emails << user["email"]
+    user_emails << student_email
   end
 end
+
+20.times do
+  student_first_name = first_names_woman.sample
+  student_last_name = last_names.sample
+  student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
+  unless user_emails.include?(student_email)
+    user_instance = User.new( first_name:  student_first_name,
+                              last_name:   student_last_name,
+                              email:       student_email,
+                              password:    'azerty',
+                              division_id: div4.id,
+                            )
+
+    user_instance.picture_url = woman_urls[rand(0...woman_urls.length)]
+    user_instance.save!
+    user_emails << student_email
+  end
+end
+
+# --------------------------------------Fin Seed students -------------------------------------
+
 
 puts "Creating amazing course materials"
 
@@ -402,8 +767,219 @@ hist_term_s_chap2_fc5 = Flashcard.create!(
                           )
 
 
+# --------------------------------- Chap 3 ---------------------------------------------
 
+hist_term_s_chap3 = Chapter.create!(
+  name:    "Stratégie et course à l'armement",
+  content: "Sur le plan stratégique, le Grand État-Major général allemand élabore chaque année un nouveau plan de mobilisation.
+  À partir de 1905, les plans prévoient de déployer la quasi-totalité des forces armées allemandes face à l'armée française29,
+  dans l'espoir d'être rapidement victorieux contre elle : étant donné les fortifications françaises le long de la frontière commune,
+  la victoire décisive doit être obtenue par une vaste manœuvre d'enveloppement par le nord,
+  en passant par le territoire du Luxembourg et de la Belgique, malgré la neutralité de ces deux États (garantie par des traités internationaux).
+  En 1914, le plan à appliquer prévoit de laisser face à la Russie une faible partie des forces allemandesd, en pariant sur la lenteur de la mobilisation russe ;
+  ce plan oblige cependant l’Allemagne à prendre l’initiative des opérations militaires,
+  dans le cas où la France entrerait en guerre immédiatement après la Russie.
 
+De son côté, la France met sur pied à partir de 1913 le plan XVII31 qui, respectant la neutralité belge,
+prévoit de répondre à une attaque allemande en prenant l'offensive en Lorraine sur un terrain moins favorable que les plaines de Flandre.
+Enfin les Britanniques, sous l'impulsion de Henry Hughes Wilson, directeur des opérations militaires au ministère de la Guerre,
+ adoptent un plan de débarquement du Corps expéditionnaire britannique en France en cas d'attaque allemande.
+ L'état-major de la Royal Navy s'oppose à ce projet qui serait trop long à mettre en œuvre ;
+ les Allemands seraient à mi-chemin de Paris avant que l'armée britannique puisse agir.
+ En plus, les quatre à six divisions que les Britanniques seraient susceptibles de mettre sur pied auraient peu de poids dans une guerre où chaque camp alignait entre 70 et 80 divisions.
+ Une autre option envisagée par l’état-major britannique est de débarquer à Anvers en cas d'une menace de l'Armée allemande sur ce port bien abrité dans l'estuaire de l'Escaut,
+ à partir duquel la puissante marine de guerre bâtie par l'empereur Guillaume II pourrait menacer les communications de l'Angleterre dans la Manche.
+
+Dans les deux camps, la course aux armements s’accélère et il y a surenchère dans la préparation de la guerre.
+Les dépenses consacrées aux armées s’envolent. Les fortifications frontalières (du moins à la fin du xixe siècle),
+l’artillerie (le fameux canon de 75 de l’armée française),
+les canons lourds allemands et les flottes de guerre (le Dreadnought britannique et les cuirassés allemands) absorbent une bonne partie des budgets des États.
+Le matériel est modernisé et la durée du service militaire allongée dans plusieurs pays : en France,
+la durée du service militaire passe à trois ans en août 191332 pour pallier (dans une certaine mesure) l’infériorité numérique de la France face à l’Allemagne.
+En effet, si, en 1870, les deux pays avaient une population quasi identique, en 1914 l’Allemagne comprenait une population de 67 millions33,
+tandis que la France, ayant à peine comblé la perte de l’Alsace-Lorraine, était peuplée d'environ 40 millions d’habitants34.
+En Belgique, une loi instaure le service militaire obligatoire et l'armement des forts de l'Est est accéléré,
+mesures destinées à rendre crédible la volonté belge de défendre la neutralité du pays contre toute attaque,
+comme le traité de 1831 garantissant l'indépendance, en fait obligation au royaume.
+C'est la seule façon d'espérer que la France et le Royaume-Uni rempliront leur devoir de garants en venant au secours de la Belgique si celle-ci est envahie par l'Allemagne,
+ce qui paraît la perspective la plus probable.",
+  material_id: hist_term_s.id,
+  )
+
+hist_term_s_chap3_fc1 = Flashcard.create!(
+                          question:   "D'où vient le nom de course à l'armement ?",
+                          answer:     "Des médias et de la propagande de l'époque.",
+                          chapter_id: hist_term_s_chap3.id,
+                        )
+
+hist_term_s_chap3_fc2 = Flashcard.create!(
+                          question:   "A combien d'années passe le service militaire en France en 1913 ?",
+                          answer:     "3 ans.",
+                          chapter_id: hist_term_s_chap3.id,
+                          )
+
+hist_term_s_chap3_fc3 = Flashcard.create!(
+                          question:   "Quel est la stratégie Allemande en 1905 ?",
+                          answer:     "L'Allemagne veut déployer toutes les forces armées contre la France",
+                          chapter_id: hist_term_s_chap3.id,
+                        )
+
+hist_term_s_chap3_fc4 = Flashcard.create!(
+                          question: "Quelle est la date de l'attentat de Sarajevo le 28 juin 1914 ?",
+                          answer: "Il faut toujours lire la question avant de se lancer dans la réponse. (28 juin 2914).",
+                          chapter_id: hist_term_s_chap3.id,
+                        )
+
+hist_term_s_chap3_fc5 = Flashcard.create!(
+                          question:   "Quelle est la date de déclaration de guerre de la France ?",
+                          answer:     "3 novembre 1914.",
+                          chapter_id: hist_term_s_chap3.id,
+                          )
+
+# -------------------------------- Fin Chap 3 ----------------------------------------
+
+# ----------------------------- Chap 4 -------------------------------------------
+
+hist_term_s_chap4 = Chapter.create!(
+  name:    "Les Etats-Unis et le monde depuis 1945",
+  content: "En janvier 2015, dans une interview donnée au média en ligne américain vox.com, le
+président des Etats-Unis Barack Obama résumait ainsi le rôle que doit, selon-lui, occuper son pays
+dans le monde, vision partagée par la majorité de ses concitoyens : « Nous sommes le pays […] le
+plus puissant sur terre. Quand des problèmes surgissent, on n’appelle pas Pékin ni Moscou. On nous
+appelle. Et nous assumons cette responsabilité ».
+
+Jusqu’en 1941, au contraire de cette intervention de Barack Obama, les
+Etats-Unis, jeune état d’Amérique, vaste et peuplé, issu de la colonisation européenne, fondaient
+leur politique extérieur sur l’isolationnisme, depuis 1918. Ainsi, ils n’avaient pas intégré la « Société
+des Nations », ancêtre de l’ONU, pourtant imaginée par un président américain, Woodrow Wilson.
+Agressés par le Japon en décembre 1941, à Pearl Harbor, les Etats-Unis opèrent un tournant capital
+et entrent dans la Seconde Guerre mondiale, ce qui inaugure leur interventionnisme. Les Etats-Unis
+participent ainsi activement à l’après-guerre (création de l’ONU, dénazification, etc.). Ils paraissent
+vouloir user pleinement de leur puissance dans toutes ses dimensions (par leur hard-power, leur
+force militaire et économique, et leur soft-power, leur capacité d’influence), pour peser sur la scène
+internationale et dicter la marche du monde. Ils ambitionnent ainsi de diffuser leur mode de vie et
+leurs valeurs (libéralisme, droits de l’homme, démocratie). En 1945, à la fin de la Seconde Guerre
+mondiale qu’ils remportent avec leurs alliés, les Etats-Unis font donc figure de superpuissance, ou
+puissance globale. Mais ils doivent faire face à une autre l’URSS communiste, autre superpuissance,
+dans le cadre de la Guerre froide, de 1947 à 1991. A la fin de celle-ci, les Etats-Unis s’imposent
+comme l’unique superpuissance mondiale, rapidement contestée.
+
+Comment la puissance états-unienne s’est-elle affirmée sur la scène
+internationale, depuis la fin de la Seconde Guerre mondiale ? Comment a évolué la place que les
+Etats-Unis ont joué dans le monde, depuis 1945 ?
+
+Pour répondre à ces questions, nous adopterons un plan chronologique.
+Après avoir montré que l’après-Seconde Guerre mondiale constitue un tournant dans la politique
+étrangère américaine, nous verrons comme la Guerre froide a pesé sur la place occupée par les EtatsUnis dans le monde,
+avant d’étudier les évolutions de sa politique étrangère depuis 1991.
+
+La Seconde Guerre mondiale a renforcé la puissance
+des Etats-Unis, et rompu son isolationnisme : fort de son hard power et de son soft power, le pays
+s’est posé en champion d’un nouvel ordre mondial, permettant d’assurer la paix. Ce rôle a été
+contesté par la concurrence de l’URSS, dans le cadre de la Guerre froide en fonction de laquelle a été
+définie la politique étrangère américaine jusqu’à la fin des années 1980. En 1991, avec la disparition
+du bloc communiste, la puissance des Etats-Unis apparait sans équivalent, ce qui leur permet de se
+poser en « gendarmes du monde ». Mais la montée de nouvelles formes extrêmes de contestation
+ainsi que l’émergence d’autres superpuissances ont contribué à fragiliser leur place dans le monde.",
+  material_id: hist_term_s.id,
+  )
+
+hist_term_s_chap4_fc1 = Flashcard.create!(
+                          question:   "Définir l'isolationnisme",
+                          answer:     "L'isolationnisme est une doctrine de politique extérieure qui combine un non-interventionnisme militaire et une politique de patriotisme économique.",
+                          chapter_id: hist_term_s_chap4.id,
+                        )
+
+hist_term_s_chap4_fc2 = Flashcard.create!(
+                          question:   "Quel est le nom donné au conflit entre l'URSS et les Etats-Unis",
+                          answer:     "Guerre Froide",
+                          chapter_id: hist_term_s_chap4.id,
+                          )
+
+hist_term_s_chap4_fc3 = Flashcard.create!(
+                          question:   "Quel est le surnom donné aux Etats-Unis",
+                          answer:     "Gendarme des mondes",
+                          chapter_id: hist_term_s_chap4.id,
+                        )
+
+# -------------------------------- Fin Chap 4 ----------------------------------------
+
+# --------------------------------- Chap 5 --------------------------------------------
+
+hist_term_s_chap5 = Chapter.create!(
+  name:    "La Chine et le monde depuis 1949",
+  content: "En 2017, en ouverture du congrès du Parti communiste chinois, le leader du pays, XI
+Jinping, fixe comme objectif de « hisser la Chine au premier rang du monde » d’ici 2049, pour le
+centenaire de la naissance de la République populaire de Chine. Cette ambition traduit
+l’exceptionnelle montée en puissance du pays depuis le milieu du XXème siècle.
+
+Pourtant, au début du XXème siècle, la Chine, ancienne très grande
+puissance de l’Asie orientale (elle fut un Empire dès le IIIème siècle avant J.C.), est un état affaibli :
+elle est soumise à l’impérialisme des grandes puissances occidentales. Ce n’est qu’en 1945 que la
+Chine retrouve sa souveraineté : agressée par le Japon en 1937, le pays, allié des Etats-Unis et de
+l’URSS, obtient alors un siège permanent au Conseil de sécurité de l’ONU et la fin de toute
+domination étrangère. Cependant, le pays bascule immédiatement dans la guerre civile, opposant les
+troupes nationalistes (prônant une imitation du modèle économique et social occidental) aux
+troupes communistes dirigées par MAO Zedong, leader du Parti communiste chinois (PCC) voulant
+transformer la société pour la rendre plus égalitaire, en confiant le pouvoir politique et économique
+au prolétariat (ouvriers et paysans).L’année 1949, marquant le début de notre étude, correspond à la
+victoire des communistes et à la naissance de la « République populaire de Chine » (RPC), le 1er
+octobre. Ce nouvel état communiste, créé dans les premières années de la Guerre froide, n’est pas
+reconnu par les puissances occidentales, qui soutiennent le gouvernement nationaliste en exil,
+réfugié à Taïwan. La Chine de Mao, marquée par le sous-développement, s’aligne dans un premier
+temps sur le modèle soviétique. Mais la rupture politique avec l’URSS dans les années 1950 et, plus
+encore, la mort de Mao en 1976, conduisent la Chine à se convertir économiquement, passant du
+communisme au capitalisme. Ce tournant a été décisif dans l’accès du pays à une position de premier
+plan, devenant la deuxième puissance économique mondiale en 2010.
+
+Comment a évolué la place de la Chine dans le monde depuis 1949 ? Quelles
+ont été les causes des différentes réorientations de sa politique étrangère ?
+
+Pour répondre à ces questions, nous adopterons un plan chronologique.
+Après avoir montré que la victoire des communistes en 1949 a constitué un tournant dans la
+politique étrangère chinoise, nous verrons comment la mort de Mao a permis à la Chine de s’affirmer
+sur la scène internationale.
+
+En 1949, suite à la victoire des forces communistes
+lors de la Guerre civile, la Chine imite le modèle soviétique pour assurer son développement et
+s’affirmer. Dès la fin des années 1950, Pékin rompt avec l’URSS et se retrouve temporairement isolée
+sur la scène internationale, jusqu’à son rapprochement avec l’occident dans les années 1960-1970.
+Mais le véritable tournant fut la mort de Mao et la politique d’ouverture économique menée par
+DENG Xiaoping dans les années 1980, et poursuivie par ses successeurs : elle permis à la Chine de
+s’intégrer à la mondialisation et de devenir une puissance économique mondiale de premier plan,
+dont le rayonnement diplomatique et culturel demeure toutefois limité.
+
+La Chine, gouvernée par le PCC mais capitaliste dans les faits, cultive un paradoxe :
+le régime autoritaire chinois pourra-t-il se maintenir tout en développant l’ouverture du pays au
+monde ?",
+  material_id: hist_term_s.id,
+  )
+
+hist_term_s_chap5_fc1 = Flashcard.create!(
+                          question:   "En quelle année la Chine obtient un siège à l'ONU ?",
+                          answer:     "1945",
+                          chapter_id: hist_term_s_chap5.id,
+                        )
+
+hist_term_s_chap5_fc2 = Flashcard.create!(
+                          question:   "En quelle année meurt Mao ?",
+                          answer:     "1976",
+                          chapter_id: hist_term_s_chap5.id,
+                          )
+
+hist_term_s_chap5_fc3 = Flashcard.create!(
+                          question:   "Quelle est la conséquence de la mort de Mao pour la Chine ?",
+                          answer:     "La Chine s'ouvre au capitalisme.",
+                          chapter_id: hist_term_s_chap5.id,
+                        )
+
+hist_term_s_chap5_fc4 = Flashcard.create!(
+                          question:   "Quel est le paradoxe Chinois ?",
+                          answer:     "La Chine est gouvernée par un régime communiste mais capitaliste sur le plan économique.",
+                          chapter_id: hist_term_s_chap5.id,
+                        )
+
+# ------------------------------------ Fin du Chap 5 -----------------------------------
 
 maths_term_s = Material.create!(
   name: "Maths for Term. S classes",
@@ -622,11 +1198,21 @@ puts "Students are now leaving feedbacks to courses they followed"
 #   end
 # end
 
+feedback_comments = [
+  "This course was really helpful. I like the methodology. I would recommend it.",
+  "Very good course. Perhaps we need more exercises to train for the final exam this year.",
+  "You helped me understand all the key concepts of this course and I thank you for that !",
+  "Great course !",
+  "This course if a good overview and I want to learn more!",
+  "Awesome course",
+  "I love it"
+]
+
 User.where(role: "student").each do |student|
   Course.where(division_id: student.division.id).each do |course|
-    Feedback.create!(comment: Faker::Lorem.paragraph(sentence_count: 2),
+    Feedback.create!(comment: "test",
                      course_id: course.id,
-                     rating: rand(1..5),
+                     rating: rand(3..5),
                      sentiment_score: rand(1..100),
                      user_id: student.id
                      )
@@ -637,11 +1223,19 @@ puts "Simulating notifications"
 
 
 User.where(role: "teacher").each do |teacher|
-  Course.where(user_id: teacher.id).each_with_index do |course, index|
+  Course.where(user_id: teacher.id).each do |course|
     Notification::NOTIFICATION_TYPES[1..3].each do |notification_type|
+      if notification_type == 'flashcards'
+        content = 'It seems that this class has some issue with its flashcards'
+      elsif notification_type == 'feeling'
+        content = 'There are some news about the feeling of students about your class'
+      elsif notification_type == 'message'
+        content = 'You have new messages from this class'
+      else content = 'New feedbacks have arrived'
+      end
       Notification.create!(  user_id: teacher.id,
                            course_id: course.id,
-                             content: "This is a seed notification.",
+                             content: content,
                           notif_type: notification_type,)
     end
   end
