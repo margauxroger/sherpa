@@ -3,6 +3,9 @@ class Students::SessionsController < ApplicationController
   def show
     authorize current_user
     @session    = Session.find(params[:id])
+    division = @session.user.division
+    material = @session.chapter.material
+    @course = Course.where("division_id = #{division.id}").where("material_id = #{material.id}")[0]
     @flashcards = @session.flashcards
     # TODO : Dans l'index des decks de flashcards, injecter le chapter_id dans les params
   end

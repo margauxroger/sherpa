@@ -14,17 +14,17 @@ class Teachers::CoursesController < ApplicationController
     @course_students = User.where("division_id = ?", @course.division.id)
     @material = @course.material
 
-    # Score for bar chart
-    # cumulative score for line chart
+    # Score for bar chart (per chapter + cumulative)
 
     @chapter_score = {}
     @chapter_cumulative_score = {}
     @cumulative_sum_chapter = 0
 
     @course.material.chapters.each_with_index do |chapter, index|
-      score = chapter.score_div(@course.division)
+      score = chapter.score_div(@course.division) / @course_students.length) * 100
       @chapter_score["Chapter #{index + 1}"] = score
-      @cumulative_sum_chapter += score
+      score_absolute = chapter.score_div(@course.division)
+      @cumulative_sum_chapter += score_absolute
       @chapter_cumulative_score["Chapter #{index + 1}"]  = @cumulative_sum_chapter
     end
 
@@ -90,13 +90,13 @@ class Teachers::CoursesController < ApplicationController
       score = student.score(@material)
       sentiment = student.sentiment_score(@course)
 
-      if score >= 60 && sentiment >= 70
+      if score >= 65 && sentiment >= 50
         @student_sentiment_score_flashcards_score[student.id] = { x: score , y: sentiment, color: "green" }
 
-      elsif score >= 40 && score < 70 && sentiment >= 70
+      elsif score >= 65 && sentiment < 50
         @student_sentiment_score_flashcards_score[student.id] = { x: score , y: sentiment, color: "blue" }
 
-      elsif score >= 45 && sentiment >= 20 && sentiment <= 70
+      elsif score < 65 && sentiment >= 50
         @student_sentiment_score_flashcards_score[student.id] = { x: score , y: sentiment, color: "purple" }
 
       else @student_sentiment_score_flashcards_score[student.id] = { x: score , y: sentiment, color: "red" }

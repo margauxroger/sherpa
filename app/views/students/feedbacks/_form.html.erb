@@ -1,0 +1,8 @@
+<div class="form-container">
+  <h2>Leave a Review</h2>
+  <%= simple_form_for [:students, course, feedback] do |f| %>
+    <%= f.input :comment, required: true %>
+    <%= f.input :rating, required: true, collection: (1..5).to_a %>
+    <%= f.submit "Leave a feedback", class: "btn btn-primary w-100" %>
+  <% end %>
+</div>
