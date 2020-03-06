@@ -1231,16 +1231,79 @@ feedback_comments = [{ rating:  5,
                      { rating:  5,
                        comment: "That was an awesome course, thanks !"},
                      { rating:  5,
-                       comment: "I love it"},
+                       comment: "It was an amazing class and very helpful."},
                      { rating:  5,
-                       comment: "I love it"},
+                       comment: "You were able to explain in a very nice and simple way"},
                      { rating:  5,
-                       comment: "I love it"},
+                       comment: "No words, the course was perfect!"},
+                     { rating:  4,
+                       comment: "Overall teaching methods were nice but I did not understand the last chapter."},
                      { rating:  5,
-                       comment: "I love it"}
+                       comment: "I liked the possibility to clarify things with you on the forum."},
+                     { rating:  4,
+                       comment: "Super explanations understood a lot, but the course was going fast."},
+                     { rating:  4,
+                       comment: "Easy to understand the course .Really Too much homeworks in my view."},
+                     { rating:  4,
+                       comment: "I really liked the course even if it was not my favorite subject."},
+                     { rating:  4,
+                       comment: "Really like the use of flashcards in the class, would love more online content."},
+                     { rating:  4,
+                       comment: "Cristal clear explanations. But this subject is not for me."},
+                     { rating:  4,
+                       comment: "Thanks to flashcards the teacher was able to pinpoint my difficulties."},
+                     { rating:  4,
+                       comment: "The courses were really good even if the courses were a little late in the evening for me."},
+                     { rating:  4,
+                       comment: "Nice teacher and classmates, make the class easier to appreciate."},
+                     { rating:  4,
+                       comment: "I really liked the way it was taught even if it was not my favorite subject."},
+                     { rating:  4,
+                       comment: "Courses were not  so easy to understand but helpful classmates."},
+                     { rating:  3,
+                       comment: "Nothing much to say about the class."},
+                     { rating:  3,
+                       comment: "The forum was a good way to get helped from peers.  Did not like the course structure."},
+                     { rating:  3,
+                       comment: " even if the courses were a little too long and hard to follow I keep a nice souvenir of the course."},
+                     { rating:  3,
+                       comment: "Really nice explanations too bad there is only few classes."},
+                     { rating:  3,
+                       comment: "Difficult to keep focus sometimes. nevertheless the teacher was very good."},
+                     { rating:  3,
+                       comment: "Great course, nice explanation. Nevertheless the exam was difficult."},
+                     { rating:  2,
+                       comment: "The flashcards were super helpful. On the over side the final exam was difficult."},
+                     { rating:  2,
+                       comment: " I understood most of key concepts.But opening part needs to be redone."},
+                     { rating:  2,
+                       comment: "I really like the subject but not so much the teacher."},
+                     { rating:  2,
+                       comment: "Course a little boring sometimes. nevertheless the teacher was available for questions."},
+                     { rating:  2,
+                       comment: "Prepared me well for the final exam. But really difficult to cover all subjects."},
+                     { rating:  1,
+                       comment: "I did not like the course that much it is not my cup of tea."},
+                     { rating:  1,
+                       comment: "very stressful teacher and don't like the subject so much."},
+
                      ]
 
 puts feedback_comments
+
+def sentiment_score_with_rating(rating)
+  sentiment_student_score = 0
+  if rating >=4
+    return sentiment_student_score = rand(0.7..1.0) * 100
+  elsif rating >=3
+    return sentiment_student_score = rand(0.5..0.7) * 100
+  elsif rating >=2
+    return sentiment_student_score = rand(0.3..0.5) * 100
+  else
+    return sentiment_student_score = rand(0.1..0.3) * 100
+  end
+end
+
 
 Division.all.each do |division|
   division.users.each do |student|
@@ -1251,12 +1314,12 @@ Division.all.each do |division|
                                   rating:    feedback_comment[:rating],
                                   user_id:   student.id,
                                   )
-      new_feedback.sentiment_score = azure_api_launch.AnalyzeSentiment(comment_to_azure_json(feedback_comment[:comment]))
+      new_feedback.sentiment_score = sentiment_score_with_rating(feedback_comment[:rating])
       new_feedback.save!
     end
   end
 end
-
+#new_feedback.sentiment_score = azure_api_launch.AnalyzeSentiment(comment_to_azure_json(feedback_comment[:comment]))
 
 puts "Simulating notifications"
 
