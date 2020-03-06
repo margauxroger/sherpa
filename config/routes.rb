@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
 
 
-  get '/flashcards_notifications', to: 'teachers/teachers#trigger_flashcard_notifications', as: 'flashcards_notifications'
+  get '/flashcards_notifications', to: 'teachers/teachers#trigger_score_notifications', as: 'flashcards_notifications'
 
   mount ActionCable.server => "/cable"
 end

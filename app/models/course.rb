@@ -6,6 +6,7 @@ class Course < ApplicationRecord
   has_many :feedbacks, dependent: :destroy
   has_many :users, through: :division
   has_many :notifications, dependent: :destroy
+  has_one :forum
 
   def division_score
     score = []
