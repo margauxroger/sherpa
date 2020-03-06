@@ -338,12 +338,12 @@ puts UserAnswer.all.size
 puts "Creating teachers"
 
 teacher1 = User.create!(
-  email:        "remi.carette@gmail.com",
-  first_name:   "Rémi",
-  last_name:    "Carette",
+  email:        "antoine.piguet@gmail.com",
+  first_name:   "Antoine",
+  last_name:    "Piguet",
   password:     "azerty",
   role:         "teacher",
-  picture_url:  "https://avatars1.githubusercontent.com/u/51755761?s=400&v=4"
+  picture_url:  "https://avatars1.githubusercontent.com/u/48388543?s=460&v=4"
 )
 
 teacher2 = User.create!(
@@ -364,6 +364,16 @@ div1 = Division.create!(
          level: "Terminale"
          )
 # ---------------------------------------- Seed students div 1 ---------------------------------------
+
+first_stud = User.new( first_name: "Margaux",
+                        last_name: "Roger",
+                        email: "margaux.roger@gmail.com",
+                        password: "azerty",
+                        division_id: div1.id,
+                        )
+first_stud.picture_url = woman_urls[rand(0...man_urls.length)]
+first_stud.save!
+user_emails << first_stud.email
 
 20.times do
   student_first_name = first_names_man.sample
@@ -1157,7 +1167,7 @@ forum5 = Forum.create!(
             course_id: course5.id)
 
 message1 = Message.create!(
-            user_id: User.first.id,
+            user_id: User.third.id,
             content: "Bonjour, j'ai une question sur le 1er chapitre",
             forum_id: forum1.id)
 
