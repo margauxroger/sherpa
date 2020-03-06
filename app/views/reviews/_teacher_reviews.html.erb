@@ -1,27 +1,30 @@
 <div class="container-reviews">
   <h2 id="title-student-feedbacks" class="animated fadeIn">Feedback Summary</h2>
   <div class="row">
-    <div class="average-review animated fadeIn">
+    <div class="card-review-summary">
+      <div class="average-review animated fadeIn">
 
-      <div class="average-review-graph col-8">
-        <%= render 'shared/chart_teacher_reviews_summary' %>
-      </div>
-
-      <div class="average-review-grade col-4">
-        <p><%= @course.average_ratings %></p>
-        <div class="review-summary-stars">
-          <% @course.show_stars[0].times do %>
-            <i id="star-color-feedback" class="fas fa-star"></i>
-          <% end %>
-          <% @course.show_stars[1].times do %>
-            <i class="fas fa-star-half-alt" id="star-color-feedback"></i>
-          <% end %>
-          <% @course.show_stars[2].times do %>
-            <i class="far fa-star"></i>
-          <% end %>
+        <div class="average-review-graph col-8">
+          <%= render 'shared/chart_teacher_reviews_summary' %>
         </div>
-        <h3>Average Rating</h3>
-      </div>
+
+        <div class="average-review-grade col-4">
+          <p><%= @course.average_ratings %></p>
+          <div class="review-summary-stars">
+            <% @course.show_stars[0].times do %>
+              <i id="star-color-feedback" class="fas fa-star"></i>
+            <% end %>
+            <% @course.show_stars[1].times do %>
+              <i class="fas fa-star-half-alt" id="star-color-feedback"></i>
+            <% end %>
+            <% @course.show_stars[2].times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          </div>
+          <h3>Average Rating</h3>
+        </div>
+
+     </div>
 
     </div>
   </div>
