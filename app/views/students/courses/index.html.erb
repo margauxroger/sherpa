@@ -6,8 +6,8 @@
 <div class="row">
   <div class="col-8">
     <div class="ml-2">
-      <% @courses.each_with_index do |course, index| %>
-        <a class="material-card-student-index m-2 " href="/students/courses/<%=index+1%>" >
+      <% @courses.each do |course| %>
+        <a class="material-card-student-index m-2 " href="/students/courses/<%=course.id%>" >
           <h3 class="m-3"><%= course.material.name %></h3>
           <div class="chart-doughnut-index">
             <%= render'shared/chart_doughnut_index_student', course: course %>
