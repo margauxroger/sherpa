@@ -85,12 +85,12 @@ class User < ApplicationRecord
 
   def feeling_notifications
     Course.where("user_id = ?", self.id).each do |course|
-      warning_students = course.users.select { |student| student.score(course.material) < 50.0 }
+      warning_students = course.users.select { |student| student.feedbacks.where(course_id: course.id).first.sentiment_score < 50.0 }
       unless warning_students.empty?
         Notification.create(notif_type: "feeling",
                                content: "#{warning_students.length} student#{"s" if warning_students.length > 1}
                                           ha#{warning_students.length > 1 ? "ve" : "s"} a sentiment score below 50%
-                                          regarding the course #{course.material.name}",
+                                          regarding #{course.material.name}",
                              course_id: course.id,
                                user_id: self.id)
       end

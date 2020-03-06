@@ -27,6 +27,7 @@ class Students::FeedbacksController < ApplicationController
     @feedback.course = @course
     @feedback.sentiment_score = azure_api_launch.AnalyzeSentiment(comment_to_azure_json(@feedback.comment))
     if @feedback.save
+      Notification.create!()
       redirect_to students_course_path(@course)
     else
       render :new
