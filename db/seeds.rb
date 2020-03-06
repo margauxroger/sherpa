@@ -280,15 +280,19 @@ def student_trains_on_flashcards(student, material)
     session = Session.create!(user_id:    student.id,
                               chapter_id: chapter.id,)
     chapter.flashcards.each do |flashcard|
-      UserAnswer.create!(session_id:   session.id,
-                         flashcard_id: flashcard.id,
-                         output:       [true, false].sample,
-                         )
-      until UserAnswer.where(session_id: session.id).where(flashcard_id: flashcard.id).last.output
-        UserAnswer.create!(session_id:   session.id,
+
+      if UserAnswer.count <= 8500
+
+        user_answer = UserAnswer.create!(session_id:   session.id,
                            flashcard_id: flashcard.id,
                            output:       [true, false].sample,
                            )
+        until user_answer.output
+          user_answer = UserAnswer.create!(session_id:   session.id,
+                             flashcard_id: flashcard.id,
+                             output:       [true, false].sample,
+                             )
+        end
       end
     end
   end
@@ -298,6 +302,9 @@ end
 
 # end
 
+puts "=============== Destroying feedback ==============="
+Feedback.destroy_all
+puts Feedback.all.size
 puts "=============== Destroying user ==============="
 User.destroy_all
 puts User.all.size
@@ -313,9 +320,6 @@ puts Message.all.size
 puts "=============== Destroying forum ==============="
 Forum.destroy_all
 puts Forum.all.size
-puts "=============== Destroying feedback ==============="
-Feedback.destroy_all
-puts Feedback.all.size
 puts "=============== Destroying course ==============="
 Course.destroy_all
 puts Course.all.size
