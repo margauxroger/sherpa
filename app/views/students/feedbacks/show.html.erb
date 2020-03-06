@@ -1,14 +1,19 @@
+<h1 class="m-2">
+  <span class="highlight-orange">Your feedback</span>
+</h1>
+
 <div class="feedback-container">
-    <div class="feedback-course-details">
-      <h5><%= @course.material.name %></h5>
-      <p><%= @course.user.full_name %></p>
+    <div class="feedback-course-details mb-4">
+      <h5 class="text-center mt-3"><strong><%= @course.material.name %></strong></h5>
+      <p class="text-center" style="font-style: italic;"><%= @course.user.full_name %></p>
     </div>
-    <div class="feedback-content">
+    <div class="feedback-content student-chapter-card" style="position: relative;">
       <%= @feedback.comment %>
-    </div>
-    <div class="feedback-action">
+    <div class="feedback-action" style="position: absolute; top: 0px; right: 10px;">
       <%= link_to edit_students_feedback_path(@feedback) do %>
-        <i class="fas fa-edit"></i>
+        <i class="fas fa-edit" style="font-size: 18px;"></i>
       <% end %>
     </div>
+    </div>
 </div>
+

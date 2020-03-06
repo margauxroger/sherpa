@@ -1,15 +1,15 @@
-
 <h1 class="m-2">
   <span class="highlight-orange">Choose a chapter</span>
 </h1>
 
-<div class= student-chapter-card-container>
+<div class= "student-chapter-card-container mb-5 pb-5">
   <% @course.material.chapters.each do |chapter| %>
     <div class= "student-chapter-card">
       <% if current_user.sessions.where("chapter_id = #{chapter.id}").last.score.nil? %>
         <span class="badge badge-dark badge-chapter-stud"><%= 0 %><%="%" %></span>
       <% else %>
-        <span class="badge badge-dark badge-chapter-stud"><%= current_user.sessions.where("chapter_id = #{chapter.id}").last.score.fdiv(chapter.flashcards_number) * 100.round() %><%="%" %></span>
+        <% score = current_user.sessions.where("chapter_id = #{chapter.id}").last.score.fdiv(chapter.flashcards_number) * 100 %>
+        <span class="badge badge-dark badge-chapter-stud"><%= score.round() %><%="%" %></span>
       <% end %>
       <%= link_to chapter.name, students_sessions_path(chapter_id: chapter.id), method: :post %>
     </div>

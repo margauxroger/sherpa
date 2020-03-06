@@ -1,7 +1,11 @@
+<h1 class="m-2">
+  <span class="highlight-orange">Leave a feedback!</span>
+</h1>
+
 <div class="mobile-center-container">
   <div class="feedback-course-details d-flex w-90 justify-content-between">
-    <h5><%= @course.material.name %></h5>
-    <p><%= @course.user %></p> <!-- Penser a changer par user.full_name une fois les seeds changees -->
+    <h5 class="text-center mt-3"><strong><%= @course.material.name %></strong></h5>
+    <p class="text-center" style="font-style: italic;"><%= @course.user.full_name %></p>
   </div>
 
   <div class="container">
@@ -13,5 +17,4 @@
   </div>
 </div>
 
-
-
+<%= render 'shared/navbar_mobile_bottom', course: @course %>
