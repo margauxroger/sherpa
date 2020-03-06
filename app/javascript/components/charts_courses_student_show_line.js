@@ -9,7 +9,7 @@ const lineGraphStudent = (values) => {
           labels: chapters,
           datasets: [{
               data: Object.values(values),
-          label: "Flashcards done",
+          label: "Score Flashcards",
           borderColor: "purple",
           backgroundColor: "purple",
             },

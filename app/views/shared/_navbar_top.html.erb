@@ -1,7 +1,7 @@
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-sherpa">
-    <a class="navbar-brand avatar" href="<%= user_signed_in? ? '/teachers' : '/' %>">
+    <a class="navbar-brand avatar" href="<%= user_signed_in? && current_user.teacher? ? '/teachers' : '/students' %>">
       <%= cl_image_tag("Vector_Sherpa_uznxgg", width: 30, height: 45) %>
-  </a>
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
