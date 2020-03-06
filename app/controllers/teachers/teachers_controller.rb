@@ -1,7 +1,6 @@
 class Teachers::TeachersController < ApplicationController
   include Pundit
   # before_action :verify_authorized, except: :show, unless: :skip_pundit?
-  before_action :new_suggestion, only: :show
 
   def show
     authorize current_user
@@ -14,16 +13,11 @@ class Teachers::TeachersController < ApplicationController
     @unread_feedback_notifications   = Notification.where(user_id: current_user.id).where(notif_type: "feedback").where(read_status: false)
   end
 
-  def trigger_flashcard_notifications
+  def trigger_score_notifications
     authorize(current_user)
     current_user.flashcards_notifications
+    current_user.feeling_notifications
     redirect_to teachers_root_path
-  end
-
-  private
-
-  def new_suggestion
-
   end
 
 end

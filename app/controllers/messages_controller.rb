@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
     authorize current_user
     @message = Message.new(params_message)
     @forum = Forum.find(params[:forum_id])
+    @course = @forum.course
     @message.forum = @forum
     # if @message.save
     #   redirect_to materials_path
@@ -12,6 +13,10 @@ class MessagesController < ApplicationController
     # end
 
     if @message.save
+      Notification.create!(notif_type: "message",
+                             content: "You have unread messages from your students in #{@course.division.name}.",
+                           course_id: @course.id,
+                             user_id: @course.user.id)
       respond_to do |format|
         format.html { redirect_to materials_path }
         format.js  # <-- will render `app/views/reviews/create.js.erb`

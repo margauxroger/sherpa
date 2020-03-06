@@ -5,7 +5,7 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def trigger_flashcard_notifications?
+  def trigger_score_notifications?
     true
   end
 end
