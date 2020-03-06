@@ -1,9 +1,14 @@
-<div class="container">
-    <div class="feedback-course-details d-flex w-90 justify-content-between">
+<div class="feedback-container">
+    <div class="feedback-course-details">
       <h5><%= @course.material.name %></h5>
-      <p><%= @course.user %></p>
+      <p><%= @course.user.full_name %></p>
     </div>
     <div class="feedback-content">
-      <%= @feedback.first.comment %>
+      <%= @feedback.comment %>
+    </div>
+    <div class="feedback-action">
+      <%= link_to edit_students_feedback_path(@feedback) do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
     </div>
 </div>

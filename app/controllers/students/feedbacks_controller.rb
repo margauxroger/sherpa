@@ -7,8 +7,7 @@ class Students::FeedbacksController < ApplicationController
     @user      = current_user
     @division  = @user.division
     @course    = Course.find(params[:course_id])
-    @feedback  = Feedback.where(user_id: @user.id,
-                                course_id: @course.id)
+    @feedback  = Feedback.where(user_id: @user.id, course_id: @course.id).first
     policy_scope(Feedback)
   end
 
@@ -37,12 +36,18 @@ class Students::FeedbacksController < ApplicationController
     end
   end
 
-  def update
-
+  def edit
+    authorize current_user
+    @feedback = Feedback.find(params[:id])
+    @course = @feedback.course
   end
 
-  def delete
-
+  def update
+    authorize current_user
+    @feedback = Feedback.find(params[:id])
+    @course = @feedback.course
+    @feedback.update(params_feedback)
+    redirect_to students_course_path(@course)
   end
 
   private

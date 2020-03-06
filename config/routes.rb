@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :sessions do
       resources :user_answers, only: [:create]
     end
-    resources :feedbacks, only: [:update, :delete]
+    resources :feedbacks, only: [:edit, :update]
   end
 
 

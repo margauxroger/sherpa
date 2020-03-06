@@ -337,40 +337,22 @@ puts UserAnswer.all.size
 
 puts "Creating teachers"
 
-def AnalyzeSentiment(text)
-  input = MultiLanguageInput.new
-  input.id = '1'
-  input.language = 'en'
-  input.text = text
-  inputDocuments =  MultiLanguageBatchInput.new
-  inputDocuments.documents = [input]
-
-  result = @textAnalyticsClient.sentiment(
-      multi_language_batch_input: inputDocuments
-  )
-
-  result.documents.first.score
-end
-
-def azure_api_launch
-  endpoint = "https://sentimentanalysiscalculator.cognitiveservices.azure.com/"
-  key      = ENV["COGNITIVE_SERVICE_KEY"]
-  TextAnalyticsClient.new(endpoint, key)
-end
-
 teacher1 = User.create!(
   email:        "remi.carette@gmail.com",
+  first_name:   "Rémi",
+  last_name:    "Carette",
   password:     "azerty",
   role:         "teacher",
   picture_url:  "https://avatars1.githubusercontent.com/u/51755761?s=400&v=4"
 )
 
 teacher2 = User.create!(
-
-  email:    "diogo.heinen@gmail.com",
-  password: "azerty",
-  role:     "teacher",
-  picture_url: "https://avatars3.githubusercontent.com/u/18058374?s=400&v=4"
+  email:        "diogo.heinen@gmail.com",
+  first_name:   "Diogo",
+  last_name:    "Heinen",
+  password:     "azerty",
+  role:         "teacher",
+  picture_url:  "https://avatars3.githubusercontent.com/u/18058374?s=400&v=4"
 )
 
 puts "Creating 4 different divisions, each containing 40 students"
@@ -1211,6 +1193,29 @@ puts "Students are now leaving feedbacks to courses they followed"
 #   end
 # end
 
+def azure_api_launch
+  endpoint = "https://sentimentanalysiscalculator.cognitiveservices.azure.com/"
+  key      = ENV["COGNITIVE_SERVICE_KEY"]
+  TextAnalyticsClient.new(endpoint, key)
+end
+
+def comment_to_azure_json(text)
+  input = MultiLanguageInput.new
+  input.id = '1'
+  input.language = 'en'
+  input.text = text
+  inputDocuments =  MultiLanguageBatchInput.new
+  inputDocuments.documents = [input]
+  return inputDocuments
+end
+
+def AnalyzeSentiment(inputDocuments)
+  result = @textAnalyticsClient.sentiment(
+      multi_language_batch_input: inputDocuments
+  )
+  result.documents.first.score
+end
+
 feedback_comments = [{ rating:  5,
                        comment: "This course was really helpful. I like the methodology. I would recommend it."},
                      { rating:  4,
@@ -1235,16 +1240,19 @@ feedback_comments = [{ rating:  5,
                        comment: "I love it"}
                      ]
 
+puts feedback_comments
+
 Division.all.each do |division|
   division.users.each do |student|
     division.courses.each do |course|
-      feedback = feedback_comments.sample
-      Feedback.create!(comment: feedback[:comment],
-                       course_id: course.id,
-                       rating: feedback[:rating],
-                       sentiment_score: rand(10...100),
-                       user_id: student.id
-                       )
+      feedback_comment = feedback_comments.sample
+      new_feedback = Feedback.new(comment:   feedback_comment[:comment],
+                                  course_id: course.id,
+                                  rating:    feedback_comment[:rating],
+                                  user_id:   student.id,
+                                  )
+      new_feedback.sentiment_score = azure_api_launch.AnalyzeSentiment(comment_to_azure_json(feedback_comment[:comment]))
+      new_feedback.save!
     end
   end
 end
