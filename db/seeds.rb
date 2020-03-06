@@ -405,7 +405,7 @@ end
 
 div2 = Division.create!(
          name:  "Prem. ES3",
-         level: "Première"
+         level: "Terminale"
          )
 # ---------------------------------------- Seed students div 2 ---------------------------------------
 
@@ -495,7 +495,7 @@ end
 
 div4 = Division.create!(
          name:  "Sec. 1",
-         level: "Seconde"
+         level: "Terminale"
          )
 # ---------------------------------------- Seed students div 4 ---------------------------------------
 
