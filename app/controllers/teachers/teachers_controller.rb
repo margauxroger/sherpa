@@ -6,7 +6,7 @@ class Teachers::TeachersController < ApplicationController
     authorize current_user
 
     @divisions = current_user.divisions
-    @courses = Course.where(user_id: current_user.id).includes([:material])
+    @courses = Course.where(user_id: current_user.id).includes([:material, :division])
     @unread_flashcards_notifications = Notification.where(user_id: current_user.id).where(notif_type: "flashcards").where(read_status: false).includes([:course])
     @unread_feeling_notifications    = Notification.where(user_id: current_user.id).where(notif_type: "feeling").where(read_status: false).includes([:course])
     @unread_message_notifications    = Notification.where(user_id: current_user.id).where(notif_type: "message").where(read_status: false).includes([:course])
