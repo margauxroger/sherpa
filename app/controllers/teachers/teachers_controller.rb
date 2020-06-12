@@ -2,6 +2,8 @@ class Teachers::TeachersController < ApplicationController
   include Pundit
   # before_action :verify_authorized, except: :show, unless: :skip_pundit?
 
+  # This is a test
+
   def show
     authorize current_user
 
