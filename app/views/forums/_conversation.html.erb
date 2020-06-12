@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <% @forum = Forum.where("course_id = '#{params[:id]}'").first %>
+  <% @forum = Forum.where("course_id = '#{params[:course_id]}'").first %>
   <h1><span class="highlight-orange"><%= @forum.topic %></span></h1>
   <div class="message-history p-3">
     <% @forum.messages.each do |message| %>

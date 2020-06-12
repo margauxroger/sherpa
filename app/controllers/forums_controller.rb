@@ -6,7 +6,7 @@ class ForumsController < ApplicationController
 
   def show
     authorize current_user
-    @course  = Course.where("forum_id = ?", params[:id])
+    @course  = Course.find(params[:course_id])
   end
 
 end
