@@ -1,20 +1,20 @@
     <div class="navbar-left">
-        <%= link_to teachers_course_path(@course) do %>
+        <%= link_to teachers_course_path(@course) {course_id: @course.id} do %>
           <div class="btn-nav-left btn-actif" id="teacher-course">
             <i class="fas fa-tachometer-alt navbar-icon"></i>
           </div>
         <% end %>
-        <%= link_to teachers_course_students_path(@course) do %>
+        <%= link_to teachers_course_students_path(@course) {course_id: @course.id} do %>
         <div class="btn-nav-left" id="teacher-student">
           <i class="fas fa-graduation-cap navbar-icon"></i>
         </div>
         <% end %>
-        <%= link_to teachers_feedbacks_path(@course) do %>
+        <%= link_to teachers_feedbacks_path(@course) {course_id: @course.id} do %>
         <div class="btn-nav-left" id="teacher-reviews">
           <i class="fas fa-star navbar-icon"></i>
         </div>
         <% end %>
-        <%= link_to forum_path(@course.forum) do %>
+        <%= link_to forum_path(@course) do %>
         <div class="btn-nav-left" id="teacher-chat">
           <i class="fas fa-comments navbar-icon"></i>
         </div>
