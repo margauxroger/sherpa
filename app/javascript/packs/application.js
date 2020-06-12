@@ -1,7 +1,6 @@
 import "bootstrap";
 import "../components/footer";
 import "../components/dashboardNotifications";
-import "teacher/index";
 
 import { graph  } from "../components/charts_teacher_home";
 import { initMarkdown } from 'pluggins/init_markdown';
