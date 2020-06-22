@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   def score(material)
     chapter_scores = material.chapters.map { |chapter| flashcards_score(chapter) }
-    (chapter_scores.sum / material.flashcards_number) * 100
+    self.grade = (chapter_scores.sum / material.flashcards_number) * 100
   end
 
   def sentiment_score(course)
@@ -118,6 +118,23 @@ class User < ApplicationRecord
     end
     return cluster_of_student
   end
+
+  # def color_student(material,course)
+  #     student_sentiment_score_flashcards_score[self.id] = {}
+  #     if self.score(material) >= 65 && self.sentiment_score(course) >= 50
+  #       student_sentiment_score_flashcards_score[self.id] = { x: score , y: sentiment, color: "green" }
+
+  #     elsif self.score(material) >= 65 && self.sentiment_score(course) < 50
+  #       student_sentiment_score_flashcards_score[self.id] = { x: score , y: sentiment, color: "blue" }
+
+  #     elsif self.score(material) < 65 && self.sentiment_score(course) >= 50
+  #       student_sentiment_score_flashcards_score[self.id] = { x: score , y: sentiment, color: "purple" }
+
+  #     else student_sentiment_score_flashcards_score[self.id] = { x: score , y: sentiment, color: "red" }
+  #     end
+
+  #   end
+  # end
 
   private
 

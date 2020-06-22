@@ -1,6 +1,6 @@
     <div class="navbar-left">
         <%= link_to teachers_course_path(@course, course_id: @course.id) do %>
-          <div class="btn-nav-left <%= 'btn-actif' if current_page?(teachers_course_path(@course, course_id: @course.id)) %>" id="teacher-course">
+          <div class="btn-nav-left <%= 'btn-actif' if (current_page?(teachers_course_path(@course, course_id: @course.id)) || current_page?(teachers_course_path(@course))) %>" id="teacher-course">
             <i class="fas fa-tachometer-alt navbar-icon"></i>
           </div>
         <% end %>
