@@ -43,6 +43,13 @@ Rails.application.routes.draw do
     resources :feedbacks, only: [:edit, :update]
   end
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :users, only: [ :index ]
+      resources :materials, only: [ :index ]
+    end
+  end
+
 
 
   get '/flashcards_notifications', to: 'teachers/teachers#trigger_score_notifications', as: 'flashcards_notifications'
