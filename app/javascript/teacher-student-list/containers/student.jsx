@@ -23,7 +23,7 @@ class Student extends Component {
                   {this.props.student.first_name}
                 </h20>
               </div>
-              <p className="card-student-text flex-grow-1">{this.props.student.email}</p>
+              <p className="card-student-text ml-2 flex-grow-1">{this.props.student.email}</p>
               <p>{this.props.student.grade} / 100</p>
 
 
