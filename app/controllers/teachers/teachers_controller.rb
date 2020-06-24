@@ -6,7 +6,9 @@ class Teachers::TeachersController < ApplicationController
     authorize current_user
 
     @divisions = current_user.divisions
-    @courses = Course.where(user_id: current_user.id).includes([:material, :division])
+    @courses = Course.where(user_id: current_user.id)
+    @courses_students = @courses.map { |course| User.where("division_id = ?", course.division.id) }
+    # @course_students = User.where("division_id = ?", @courses.division.id).sort_by { |student| student.score(@material) }
     @unread_flashcards_notifications = Notification.where(user_id: current_user.id).where(notif_type: "flashcards").where(read_status: false).includes([:course])
     @unread_feeling_notifications    = Notification.where(user_id: current_user.id).where(notif_type: "feeling").where(read_status: false).includes([:course])
     @unread_message_notifications    = Notification.where(user_id: current_user.id).where(notif_type: "message").where(read_status: false).includes([:course])

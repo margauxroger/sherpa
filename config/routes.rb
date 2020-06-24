@@ -47,7 +47,6 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [ :index ]
       resources :materials, only: [ :index ]
-      resources :feedbacks, only: [ :index ]
     end
   end
 

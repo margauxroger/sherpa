@@ -2,6 +2,8 @@ import "bootstrap";
 import "../components/footer";
 import "../components/dashboardNotifications";
 import "../teacher-student-list";
+// import "../teacher-dashboard";
+
 
 import { graph  } from "../components/charts_teacher_home";
 import { initMarkdown } from 'pluggins/init_markdown';
