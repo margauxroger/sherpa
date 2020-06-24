@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   def score(material)
     chapter_scores = material.chapters.map { |chapter| flashcards_score(chapter) }
-    (chapter_scores.sum / material.flashcards_number) * 100
+    self.grade = (chapter_scores.sum / material.flashcards_number) * 100
   end
 
   def sentiment_score(course)
@@ -105,19 +105,36 @@ class User < ApplicationRecord
     self.feedbacks.where(course_id: course.id).any?
   end
 
-  def cluster_message_student(material,course)
+  def cluster_message_student(course)
     cluster_of_student = ""
-    if self.score(material) >= 65 && self.sentiment_score(course) >= 50
+    if self.grade >= 65 && self.sentiment_score(course) >= 50
       cluster_of_student = "#{self.first_name} is performing well and really enjoy the course."
-    elsif self.score(material) >= 65  && self.sentiment_score(course) < 50
+    elsif self.grade >= 65  && self.sentiment_score(course) < 50
       cluster_of_student = "#{self.first_name} is performing well and does not enjoy the course that much."
-    elsif self.score(material) < 65  && self.sentiment_score(course)  >= 50
+    elsif self.grade < 65  && self.sentiment_score(course)  >= 50
       cluster_of_student = "#{self.first_name} is not performing well but really enjoy the course."
     else
       cluster_of_student = "#{self.first_name} is not performing well and does not enjoy the course that much."
     end
     return cluster_of_student
   end
+
+  # def color_student(material,course)
+  #     student_sentiment_score_flashcards_score[self.id] = {}
+  #     if self.score(material) >= 65 && self.sentiment_score(course) >= 50
+  #       student_sentiment_score_flashcards_score[self.id] = { x: score , y: sentiment, color: "green" }
+
+  #     elsif self.score(material) >= 65 && self.sentiment_score(course) < 50
+  #       student_sentiment_score_flashcards_score[self.id] = { x: score , y: sentiment, color: "blue" }
+
+  #     elsif self.score(material) < 65 && self.sentiment_score(course) >= 50
+  #       student_sentiment_score_flashcards_score[self.id] = { x: score , y: sentiment, color: "purple" }
+
+  #     else student_sentiment_score_flashcards_score[self.id] = { x: score , y: sentiment, color: "red" }
+  #     end
+
+  #   end
+  # end
 
   private
 
