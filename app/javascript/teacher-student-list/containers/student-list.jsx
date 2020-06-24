@@ -2,27 +2,34 @@ import React, { Component } from 'react';
 import Student from "./student";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getStudents} from '../actions';
+import { getStudents } from '../actions';
+import { showAllStudents } from '../actions';
 
 class StudentList extends Component {
 
-  componentWillMount() {
-    this.props.getStudents(this.props.course); // to comment to use preloaded data --> cannot be sure if it's faster
+  handleClick = () => {
+    this.props.showAllStudents();
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return false
+  componentDidMount() {
+    // this.props.getStudents(this.props.course); // to comment to use preloaded data --> cannot be sure if it's faster
   }
+
 
   render() {
-    return (
-
-      <div className="student-list">
-        {this.props.students.map((student) => {
+    const students = (this.props.allStudents) ? this.props.students : this.props.students.slice(0,5);
+    const style = `btn-sherpa mb-5 text-center ${(this.props.allStudents) ? "display-none" : "" }`
+        return (
+      <div className="student-list col-6">
+        <h1 className="mt-3 mb-5">
+          <span className="highlight-orange">List of Students</span>
+        </h1>
+          {students.map((student) => {
             return (
               <Student student={student} key={student.id}/>
-          );
-        })}
+            );
+          })}
+          <div className={style} onClick={ this.handleClick }>See all students</div>
       </div>
     )
   }
@@ -30,7 +37,7 @@ class StudentList extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { getStudents: getStudents },
+    { getStudents, showAllStudents },
     dispatch
   );
 }
@@ -39,6 +46,7 @@ function mapStateToProps(state) {
   return {
     students: state.students,
     course: state.course,
+    allStudents: state.allStudents,
   };
 }
 

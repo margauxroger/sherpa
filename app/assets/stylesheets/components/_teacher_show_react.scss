@@ -51,9 +51,17 @@
 }
 
 .student-list {
-  width: 50%;
+
 }
 
 .student-dashboard {
-  width: 50%;
+  padding-top: 90px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+  height: 90vh;
+}
+
+.display-none {
+  display: none;
 }

@@ -105,13 +105,13 @@ class User < ApplicationRecord
     self.feedbacks.where(course_id: course.id).any?
   end
 
-  def cluster_message_student(material,course)
+  def cluster_message_student(course)
     cluster_of_student = ""
-    if self.score(material) >= 65 && self.sentiment_score(course) >= 50
+    if self.grade >= 65 && self.sentiment_score(course) >= 50
       cluster_of_student = "#{self.first_name} is performing well and really enjoy the course."
-    elsif self.score(material) >= 65  && self.sentiment_score(course) < 50
+    elsif self.grade >= 65  && self.sentiment_score(course) < 50
       cluster_of_student = "#{self.first_name} is performing well and does not enjoy the course that much."
-    elsif self.score(material) < 65  && self.sentiment_score(course)  >= 50
+    elsif self.grade < 65  && self.sentiment_score(course)  >= 50
       cluster_of_student = "#{self.first_name} is not performing well but really enjoy the course."
     else
       cluster_of_student = "#{self.first_name} is not performing well and does not enjoy the course that much."

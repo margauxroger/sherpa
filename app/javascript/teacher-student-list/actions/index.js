@@ -8,6 +8,14 @@ export function selectActiveStudent(student) {
   };
 }
 
+export function showAllStudents() {
+  // TODO: Api call! For now, simulate a DB
+  return {
+    type: 'SHOW_STUDENTS',
+    payload: true
+  };
+}
+
 const ROOT_URL_INDEX = `/api/v1/users?course_id=`;
 
 export function getStudents(course) {

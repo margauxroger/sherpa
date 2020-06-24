@@ -26,8 +26,8 @@ class StudentDashboard extends Component {
   render() {
   if (!this.props.activeStudent) {
     return (
-      <div className="active-city">
-        <p>Select a student...</p>
+      <div className="student-dashboard">
+        <h3>Select a student to see his/her performance...</h3>
       </div>
     );
   }
@@ -36,6 +36,7 @@ class StudentDashboard extends Component {
 const data_graph = []
 console.log(this.props.grades)
 const data = Object.keys(this.props.grades).forEach((chapter) => {
+                    let i = 0;
                     let hash = new Object();
 
                     hash.label = chapter;
@@ -46,7 +47,8 @@ const data = Object.keys(this.props.grades).forEach((chapter) => {
 
 const options_bar = {
       title: {
-        text: "Flashcard score chapter by chapter"
+        text: "Flashcard score chapter by chapter",
+        fontSize: 18,
       },
       data: [{
                 type: "column",
@@ -66,10 +68,11 @@ const options_bar = {
                   }
               }]
           },
+        backgroundColor: "transparent",
    }
 
    return (
-      <div>
+      <div className="student-dashboard col-6 position-sticky">
         <h2>{this.props.activeStudent.first_name}'s Individual Dashboard</h2>
         <img src={this.props.activeStudent.picture_url} alt="" className="avatar"/>
         <p>Overall score: {this.props.activeStudent.grade} / 100</p>

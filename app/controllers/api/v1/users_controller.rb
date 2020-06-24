@@ -7,13 +7,10 @@ class Api::V1::UsersController < ApplicationController
     @course_students = User.where("division_id = ?", @course.division.id).includes([:feedbacks, :division])
     @material = @course.material
 
-    @course_students_ordered = @course_students.sort_by { |student| student.score(@material) }
-
-    # @list_students_without_top_offender = @new_course_students.drop(5)
+    @course_students_ordered = @course_students.sort_by { |student| student.score(@material) }.each { |student| student["last_name"] = student.border_color(@material) ; student["email"] = student.cluster_message_student( @course)}
 
     render json: @course_students_ordered
 
-    puts @course_students_ordered
   end
 
 end
