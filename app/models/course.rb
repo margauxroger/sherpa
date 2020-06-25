@@ -21,6 +21,11 @@ class Course < ApplicationRecord
     div_score.sum.fdiv(div_score.length).round(2)
   end
 
+  def division_sentiment_score
+    div_sentiment_score = self.division.users.map { |student| student.sentiment_score(self) }
+    div_sentiment_score.sum.fdiv(div_sentiment_score.length).round(2)
+  end
+
   def average_ratings
     average = feedbacks.sum(&:rating).fdiv(feedbacks.count)
     if average.nan?
