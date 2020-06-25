@@ -1,7 +1,7 @@
 
 
 <div class="card-class-dashboard-student-global animated fadeIn">
-  <% @new_course_students.first(4).each do |student| %>
+  <% @course_students.sort_by { |student| student.grade }.first(4).each do |student| %>
     <div class="card-class-dashboard-student">
       <div class="card-class-dashboard-student-name">
         <%= student.first_name%>

@@ -8,12 +8,17 @@ class Course < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_one :forum
 
+  # def division_score
+  #   score = []
+  #   self.division.users.each do |student|
+  #     score << student.score(self.material)
+  #   end
+  #   score.sum.fdiv(score.length).round(2)
+  # end
+
   def division_score
-    score = []
-    self.division.users.each do |student|
-      score << student.score(self.material)
-    end
-    score.sum.fdiv(score.length).round(2)
+    div_score = self.division.users.map { |student| student.score(self.material) }
+    div_score.sum.fdiv(div_score.length).round(2)
   end
 
   def average_ratings

@@ -8,6 +8,7 @@ import { showAllStudents } from '../actions';
 class StudentList extends Component {
 
   handleClick = () => {
+    this.props.getStudents(this.props.course);
     this.props.showAllStudents();
   }
 
@@ -18,7 +19,7 @@ class StudentList extends Component {
 
   render() {
     const students = (this.props.allStudents) ? this.props.students : this.props.students.slice(0,5);
-    const style = `btn-sherpa mb-5 text-center ${(this.props.allStudents) ? "display-none" : "" }`
+    const style = `btn-sherpa mb-5 text-center ${(this.props.students.length > 5) ? "display-none" : "" }`
         return (
       <div className="student-list col-6">
         <h1 className="mt-3 mb-5">
