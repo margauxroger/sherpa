@@ -27,7 +27,7 @@ class StudentDashboard extends Component {
   if (!this.props.activeStudent) {
     return (
       <div className="student-dashboard">
-        <h3>Select a student to see his/her performance...</h3>
+        <h3 className="pt-5">Select a student to see his/her performance...</h3>
       </div>
     );
   }

@@ -5,10 +5,25 @@ class Teachers::TeachersController < ApplicationController
   def show
     authorize current_user
 
-    @divisions = current_user.divisions
+    # @divisions = current_user.divisions
     @courses = Course.where(user_id: current_user.id)
-    @courses_students = @courses.map { |course| User.where("division_id = ?", course.division.id) }
-    # @course_students = User.where("division_id = ?", @courses.division.id).sort_by { |student| student.score(@material) }
+    # @courses.each { |course| course.division.users.map { |student| student.score(course.material)}}
+    # @courses_students = @courses.map { |course| User.where("division_id = ?", course.division.id) }
+    # @test = @courses_students.map do |students|
+    #   students.map { |student| student.sessions.map { |session| session.score }.sum }.sum
+    # end
+
+    # @number_of_flash = course.material.chapter.flashcards.length
+    # @course_student = User.where("division_id = ?", course.division.id)
+
+    @success_rate = @courses.map do |course|
+      users = course.division.users
+      users.map do |student|
+        student.score(course.material)
+      end
+      .sum / users.length
+    end
+
     @unread_flashcards_notifications = Notification.where(user_id: current_user.id).where(notif_type: "flashcards").where(read_status: false).includes([:course])
     @unread_feeling_notifications    = Notification.where(user_id: current_user.id).where(notif_type: "feeling").where(read_status: false).includes([:course])
     @unread_message_notifications    = Notification.where(user_id: current_user.id).where(notif_type: "message").where(read_status: false).includes([:course])

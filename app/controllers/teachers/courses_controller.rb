@@ -22,6 +22,8 @@ class Teachers::CoursesController < ApplicationController
       end
     end
 
+    # Données pour le bar chart
+
     @chapter_score = {}
     @chapter_cumulative_score = {}
     @cumulative_sum_chapter = 0
