@@ -1,0 +1,17 @@
+<h1 class="m-2">
+  <span class="highlight-orange">My buddy this week is...</span>
+</h1>
+
+
+<div class="buddy-card">
+
+  <%= image_tag @buddy.picture_url, alt: "card image", class: "img-fluid avatar-large mb-3" %>
+  <h2>
+    <%= @buddy.first_name %>
+  </h2>
+
+  <div class="mt-5 d-flex align-items-center text-center">
+      Do not hesitate to help <%= @buddy.first_name %> this week and to collaborate to do exercises 🙌🏼
+  </div>
+
+</div>
