@@ -4,7 +4,7 @@
       <h3>🎉🎉🎉</h3>
       <h3>Congrats !</h3>
       <p>You have finish your flashcards for this chapter</p>
-      <%= link_to 'Go back to course!', students_course_path(@course.id), class: "btn btn-sherpa-transp" %>
+      <%= link_to 'Go back to course!', session_score_path(session_id: @session, course_id: @course), class: "btn btn-sherpa-transp" %>
     </div>
     <div class="stackedcards-container">
 

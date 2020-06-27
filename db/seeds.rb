@@ -275,6 +275,10 @@ first_names_man = %w[ Antoine Martin Nad Gaetan Margaux François Xavier Ambrois
 first_names_woman = %w[ Sybille Pauline Amandine Jeanne Lea Caroline Laure Clara Anna Mila Rose Lina Ambre Manon Camille Lola Juliette Agathe Eva Lucie Nina]
 # Fin Array of first_names
 
+
+
+# TODO : change computation here so that we use the scores hash
+
 def student_trains_on_flashcards(student, material)
   material.chapters.each do |chapter|
     session = Session.create!(user_id:    student.id,

@@ -8,4 +8,8 @@ class UserPolicy < ApplicationPolicy
   def trigger_score_notifications?
     true
   end
+
+  def compute_session_score?
+    true
+  end
 end

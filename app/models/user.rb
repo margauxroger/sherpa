@@ -36,21 +36,25 @@ class User < ApplicationRecord
     self.divisions.map(&:courses).flatten
   end
 
+  # TODO : change computation here so that we use the scores hash
   def score(material)
     chapter_scores = material.chapters.map { |chapter| flashcards_score(chapter) }
     self.grade = (chapter_scores.sum / material.flashcards_number) * 100
   end
 
+  # TODO : change computation here so that we use the scores hash
   def sentiment_score(course)
     Feedback.where(user_id: self.id).where(course_id: course.id).first.sentiment_score
     # self.feedbacks.map { |feedback| feedback.sentiment_score }
   end
 
+  # TODO : change computation here so that we use the scores hash
   def flashcards_score(chapter)
     last_session = Session.where(chapter_id: chapter.id).where(user_id: self.id).last
     return last_session.nil? ? 0 : last_session.score
   end
 
+  # TODO : change computation here so that we use the scores hash
   def flashcards_score_student(material)
     score = {}
     material.chapters.each { |chapter| score[chapter.name] = (flashcards_score(chapter).fdiv(chapter.flashcards_number)) *100 }
@@ -136,9 +140,14 @@ class User < ApplicationRecord
   #   end
   # end
 
+  def save_session_score(session)
+    self.scores[session.chapter_id] = session.score / session.flashcards.length * 100
+  end
+
   private
 
   def calculate_percentile(array = [], percentile = 0.0)
     array.empty? ? 0 : array.sort[((array.length * percentile).ceil) - 1]
   end
+
 end
