@@ -17,11 +17,12 @@ class Teachers::TeachersController < ApplicationController
     # @course_student = User.where("division_id = ?", course.division.id)
 
     @success_rate = @courses.map do |course|
-      users = course.division.users
-      users.map do |student|
-        student.score(course.material)
-      end
-      .sum / users.length
+      # users = course.division.users
+      # users.map do |student|
+      #   student.score(course.material)
+      # end
+      # .sum / users.length
+      course.division_sentiment_score
     end
 
     @unread_flashcards_notifications = Notification.where(user_id: current_user.id).where(notif_type: "flashcards").where(read_status: false).includes([:course])
