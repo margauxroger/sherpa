@@ -5,13 +5,15 @@ class Students::UserAnswersController < ApplicationController
     @session = Session.find(params[:session_id])
     @flashcard = Flashcard.find(params[:flashcard_id])
     @output = params[:output]
+    @image = params[:image]
 
     @flashcards = @session.flashcards
 
     @ua = UserAnswer.new(
       session: @session,
       flashcard: @flashcard,
-      output: @output
+      output: @output,
+      image: @image
     )
 
     if @ua.save

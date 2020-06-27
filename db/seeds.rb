@@ -650,6 +650,7 @@ hist_term_s_chap1_fc1 = Flashcard.create!(
                           question: "Qu'est-ce que la gouvernance?",
                           answer:   "La « gouvernance » est un processus de décision qui associe des acteurs divers, à
     différentes échelles, sans être forcément officiel ou institutionnel.",
+                          image: "gouvernance",
                           chapter_id: hist_term_s_chap1.id,
                         )
 
@@ -657,6 +658,7 @@ hist_term_s_chap1_fc2 = Flashcard.create!(
                           question: "Quand et où le premier système de gouvernance économique a-t-il été mis en place?",
                           answer:   "Le premier système de gouvernance économique
     mondiale est mis en place en 1944, à la conférence de Bretton Woods.",
+                          image: "first-gouvernance",
                           chapter_id: hist_term_s_chap1.id,
                         )
 
@@ -666,6 +668,7 @@ hist_term_s_chap1_fc3 = Flashcard.create!(
     et la course à l’espace, ont épuisé leurs stocks d’or et ont émis des grandes quantités de dollars : le dollar perd
     donc une grande part de sa valeur du fait de l’indexation du dollar sur l’or, et les prix augmentent partout dans
     le monde puisque les autres monnaies sont indexées sur le dollar.",
+                          image: "course-espace",
                           chapter_id: hist_term_s_chap1.id,
                         )
 
@@ -674,6 +677,7 @@ hist_term_s_chap1_fc4 = Flashcard.create!(
                           answer:   "Dans les années 2010,
     l’OMC peine à faire progresser le libre-échange, car dans un contexte de crise, les états se replient sur leurs
     propres intérêts, de plus en plus divergents.",
+                          image: "libre-echange",
                           chapter_id: hist_term_s_chap1.id,
                         )
 
@@ -683,6 +687,7 @@ hist_term_s_chap1_fc5 = Flashcard.create!(
     dérives de la mondialisation, qu’ils voient comme les conséquences de la gouvernance économique libérale. Ce
     sont les ONG, émanations de la société civile, comme ATTAC, fondée en France en 1998 pour obtenir une
     taxation sur les transactions financières dont le produit irait au développement des pays du Sud.",
+                          image: "mondialisation",
                           chapter_id: hist_term_s_chap1.id,
                         )
 

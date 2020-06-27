@@ -20,22 +20,22 @@ class FlashcardsController < ApplicationController
   #   @materials_display = []
   # end
 
-  # def create
-  #       authorize current_user
+  def create
+        authorize current_user
 
-  #   @flashcard = Flashcard.new(params_flash)
-  #   @flashcard.chapter = Chapter.find(params[:chapter_id])
-  #   if @flashcard.save
-  #     redirect_to teachers_flashcards_path
-  #   else
-  #     render :new
-  #   end
-  # end
+    @flashcard = Flashcard.new(params_flash)
+    @flashcard.chapter = Chapter.find(params[:chapter_id])
+    if @flashcard.save
+      redirect_to teachers_flashcards_path
+    else
+      render :new
+    end
+  end
 
-  # private
+  private
 
-  # def params_flash
-  #   params.require(:flashcard).permit(:question, :answer)
-  # end
+  def params_flash
+    params.require(:flashcard).permit(:question, :answer, :image)
+  end
 
 end
