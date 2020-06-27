@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   namespace :students do
     root to: 'courses#index'
+      resources :students, only: [:index, :show]
       resources :courses, only: [:index, :show] do
         resources :feedbacks, only: [:show, :new, :create]
         resources :forums, only: [:show, :create]

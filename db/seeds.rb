@@ -397,7 +397,7 @@ user_emails << first_stud.email
   end
 end
 
-20.times do
+19.times do
   student_first_name = first_names_woman.sample
   student_last_name = last_names.sample
   student_email = "#{student_first_name}.#{student_last_name}@gmail.com"
