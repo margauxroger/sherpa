@@ -22,13 +22,13 @@ class Students::StudentsController < ApplicationController
 
     week_indexation = current_week - start_week
 
-    @buddy_index = @course_students.index(@test_user) + week_indexation
+    @buddy_index = @course_students.index(@user) + week_indexation
 
     if @buddy_index >= 20
       @buddy_index -= 20
     end
 
-    if @course_students.index(@test_user) < 20
+    if @course_students.index(@user) < 20
       @buddy = @half_class2[@buddy_index]
       # @last_buddy = @half_class2[@buddy_index - 1]
       # @next_buddy = @half_class2[@buddy_index + 1]

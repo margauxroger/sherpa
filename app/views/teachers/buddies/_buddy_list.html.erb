@@ -1,0 +1,23 @@
+<h1 class="mt-3 mb-5">
+  <span class="highlight-orange"><%= @course.division.name %> - List of Buddies</span>
+</h1>
+
+<div class="buddy-list">
+  <% @half_class1.each_with_index do |student, index| %>
+  <% buddy_index = @course_students.index(student) + @week_indexation %>
+  <% if buddy_index > 20 %>
+    <% buddy_index -= 20 %>
+  <% end %>
+    <div class="buddies-card">
+      <div class="buddy-profile">
+        <%= image_tag student.picture_url, alt: "card image", class: "img-fluid avatar-medium #{student.border_color(@material)}" %>
+        <p class="text-center mb-0 mt-1"><%= student.first_name %></p>
+      </div>
+      <div class="buddy-profile">
+        <% bud = @half_class2[buddy_index] %>
+        <%= image_tag bud.picture_url, alt: "card image", class: "img-fluid avatar-medium #{student.border_color(@material)}" %>
+        <p class="text-center mb-0 mt-1"><%= bud.first_name %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
