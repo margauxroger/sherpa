@@ -5,19 +5,24 @@
           </div>
         <% end %>
         <%= link_to teachers_course_students_path(@course, course_id: @course.id) do %>
-        <div class="btn-nav-left <%= 'btn-actif' if current_page?(teachers_course_students_path(@course, course_id: @course.id)) %>" id="teacher-student">
-          <i class="fas fa-graduation-cap navbar-icon"></i>
-        </div>
+          <div class="btn-nav-left <%= 'btn-actif' if current_page?(teachers_course_students_path(@course, course_id: @course.id)) %>" id="teacher-student">
+            <i class="fas fa-graduation-cap navbar-icon"></i>
+          </div>
         <% end %>
         <%= link_to teachers_feedbacks_path(@course, course_id: @course.id) do %>
-        <div class="btn-nav-left <%= 'btn-actif' if current_page?(teachers_feedbacks_path(@course, course_id: @course.id)) %>" id="teacher-reviews">
-          <i class="fas fa-star navbar-icon"></i>
-        </div>
+          <div class="btn-nav-left <%= 'btn-actif' if current_page?(teachers_feedbacks_path(@course, course_id: @course.id)) %>" id="teacher-reviews">
+            <i class="fas fa-star navbar-icon"></i>
+          </div>
+        <% end %>
+        <%= link_to teachers_buddies_path(@course, course_id: @course.id) do %>
+          <div class="btn-nav-left <%= 'btn-actif' if current_page?(teachers_buddies_path(@course, course_id: @course.id)) %>" id="teacher-buddies">
+            <i class="fas fa-user-friends navbar-icon"></i>
+          </div>
         <% end %>
         <%= link_to forum_path(@course.forum, course_id: @course.id) do %>
-        <div class="btn-nav-left <%= 'btn-actif' if current_page?(forum_path(@course.forum, course_id: @course.id)) %>" id="teacher-chat">
-          <i class="fas fa-comments navbar-icon"></i>
-        </div>
+          <div class="btn-nav-left <%= 'btn-actif' if current_page?(forum_path(@course.forum, course_id: @course.id)) %>" id="teacher-chat">
+            <i class="fas fa-comments navbar-icon"></i>
+          </div>
         <% end %>
     </div>
 
