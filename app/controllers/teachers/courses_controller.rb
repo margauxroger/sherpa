@@ -6,6 +6,12 @@ class Teachers::CoursesController < ApplicationController
     authorize current_user #([:teachers, @course])
     @material = @course.material
     @student_sentiment_score_flashcards_score = {}
+    @notification        = Notification.where('user_id = ? AND course_id = ?', current_user.id, params[:id]).where(notif_type: params[:notif_type])
+    if @notification.first
+      @notification.first.mark_as_read
+    end
+
+
     @course_students = User.where("division_id = ?", @course.division.id).each do |student|
       score = student.score(@material)
       sentiment = student.sentiment_score(@course)

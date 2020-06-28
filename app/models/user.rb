@@ -36,6 +36,8 @@ class User < ApplicationRecord
     self.divisions.map(&:courses).flatten
   end
 
+  # -----------------------Scoring methods-------------------------
+
   def score(material)
     # recuperer le scores hash
     # selectionner les keys qui correspondent a un chapitre du material
@@ -45,6 +47,14 @@ class User < ApplicationRecord
     # chapter_scores = material.chapters.map { |chapter| flashcards_score(chapter) }
     # self.grade = (chapter_scores.sum / material.flashcards_number) * 100
   end
+
+  # def grade
+  #   output = {}
+  #   self.division.courses.each do |course|
+  #     output[course.material.name] = score(course.material)
+  #   end
+  #   return output
+  # end
 
   def sentiment_score(course)
     Feedback.where(user_id: self.id).where(course_id: course.id).first.sentiment_score
@@ -63,6 +73,8 @@ class User < ApplicationRecord
     material.chapters.each { |chapter| score[chapter.name] = flashcards_score(chapter) }
     return score
   end
+
+  # ----------------------------------------------------------------
 
   def border_color(material)
     return "red-border"     if self.score(material) < 45
