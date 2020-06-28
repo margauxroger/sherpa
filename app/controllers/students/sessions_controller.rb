@@ -40,4 +40,12 @@ class Students::SessionsController < ApplicationController
     @flashcards.append(@flashcard)
   end
 
+  def compute_session_score
+    @user = current_user
+    authorize @user
+    @user.save_session_score(Session.find(params[:session_id]))
+    @user.save!
+    redirect_to students_course_path(params[:course_id])
+  end
+
 end

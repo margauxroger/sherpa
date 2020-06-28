@@ -37,7 +37,5 @@ class Students::StudentsController < ApplicationController
       # @last_buddy = @half_class1[21 - @course_students.index(@test_user) + week_indexation - 1]
       # @next_buddy = @half_class1[21 - @course_students.index(@test_user) + week_indexation + 1]
     end
-
   end
-
 end

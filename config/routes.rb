@@ -52,8 +52,7 @@ Rails.application.routes.draw do
     end
   end
 
-
-
   get '/flashcards_notifications', to: 'teachers/teachers#trigger_score_notifications', as: 'flashcards_notifications'
+  get '/session_score', to: 'students/sessions#compute_session_score', as: 'session_score'
 
 end

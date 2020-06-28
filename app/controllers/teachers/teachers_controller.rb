@@ -22,7 +22,7 @@ class Teachers::TeachersController < ApplicationController
       #   student.score(course.material)
       # end
       # .sum / users.length
-      course.division_sentiment_score
+      course.division_score
     end
 
     @unread_flashcards_notifications = Notification.where(user_id: current_user.id).where(notif_type: "flashcards").where(read_status: false).includes([:course])
