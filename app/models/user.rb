@@ -36,7 +36,6 @@ class User < ApplicationRecord
     self.divisions.map(&:courses).flatten
   end
 
-  # TODO : change computation here so that we use the scores hash
   def score(material)
     # recuperer le scores hash
     # selectionner les keys qui correspondent a un chapitre du material
@@ -47,13 +46,11 @@ class User < ApplicationRecord
     # self.grade = (chapter_scores.sum / material.flashcards_number) * 100
   end
 
-  # TODO : change computation here so that we use the scores hash
   def sentiment_score(course)
     Feedback.where(user_id: self.id).where(course_id: course.id).first.sentiment_score
     # self.feedbacks.map { |feedback| feedback.sentiment_score }
   end
 
-  # TODO : change computation here so that we use the scores hash
   def flashcards_score(chapter)
     # last_session = Session.where(chapter_id: chapter.id).where(user_id: self.id).last
     # return last_session.nil? ? 0 : last_session.score
@@ -63,7 +60,7 @@ class User < ApplicationRecord
   # TODO : change computation here so that we use the scores hash
   def flashcards_score_student(material)
     score = {}
-    material.chapters.each { |chapter| score[chapter.name] = (flashcards_score(chapter).fdiv(chapter.flashcards_number)) *100 }
+    material.chapters.each { |chapter| score[chapter.name] = flashcards_score(chapter) }
     return score
   end
 
