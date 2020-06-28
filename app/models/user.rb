@@ -24,12 +24,12 @@ class User < ApplicationRecord
     role == "teacher"
   end
 
-  def full_name
-    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
-  end
-
   def student?
     role == "student"
+  end
+
+  def full_name
+    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
   end
 
   def courses
