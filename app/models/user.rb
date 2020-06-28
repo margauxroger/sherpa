@@ -38,8 +38,13 @@ class User < ApplicationRecord
 
   # TODO : change computation here so that we use the scores hash
   def score(material)
-    chapter_scores = material.chapters.map { |chapter| flashcards_score(chapter) }
-    self.grade = (chapter_scores.sum / material.flashcards_number) * 100
+    # recuperer le scores hash
+    # selectionner les keys qui correspondent a un chapitre du material
+    material_chapter_ids = material.chapter_ids
+    grades = self.scores.slice(*material_chapter_ids).values.map(&:to_i)
+    return grades.sum / grades.length
+    # chapter_scores = material.chapters.map { |chapter| flashcards_score(chapter) }
+    # self.grade = (chapter_scores.sum / material.flashcards_number) * 100
   end
 
   # TODO : change computation here so that we use the scores hash
@@ -50,8 +55,9 @@ class User < ApplicationRecord
 
   # TODO : change computation here so that we use the scores hash
   def flashcards_score(chapter)
-    last_session = Session.where(chapter_id: chapter.id).where(user_id: self.id).last
-    return last_session.nil? ? 0 : last_session.score
+    # last_session = Session.where(chapter_id: chapter.id).where(user_id: self.id).last
+    # return last_session.nil? ? 0 : last_session.score
+    return self.scores[chapter.id.to_s].nil? ? 0 : self.scores[chapter.id.to_s].to_i
   end
 
   # TODO : change computation here so that we use the scores hash
@@ -141,7 +147,7 @@ class User < ApplicationRecord
   # end
 
   def save_session_score(session)
-    self.scores[session.chapter_id] = session.score / session.flashcards.length * 100
+    self.scores[session.chapter_id.to_s] = session.score / session.flashcards.length * 100
   end
 
   private

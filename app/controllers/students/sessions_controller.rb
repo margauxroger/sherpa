@@ -41,8 +41,10 @@ class Students::SessionsController < ApplicationController
   end
 
   def compute_session_score
-    authorize current_user
-    current_user.save_session_score(Session.find(params[:session_id]))
+    @user = current_user
+    authorize @user
+    @user.save_session_score(Session.find(params[:session_id]))
+    @user.save!
     redirect_to students_course_path(params[:course_id])
   end
 

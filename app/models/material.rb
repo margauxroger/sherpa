@@ -11,4 +11,8 @@ class Material < ApplicationRecord
   def flashcards_number
     self.chapters.map { |chapter| chapter.flashcards_number }.sum
   end
+
+  def chapter_ids
+    self.chapters.map { |chapter| chapter.id.to_s }
+  end
 end
