@@ -26,7 +26,7 @@ class BarChart extends Component {
     const options_bar = {
           title: {
             text: "Flashcard progression over chapters",
-            fontSize: 18,
+            fontSize: 30,
           },
           data: [{
                     type: "column",

@@ -34,7 +34,6 @@ class StudentDashboard extends Component {
 
 
 const data_graph = []
-console.log(this.props.grades)
 const data = Object.keys(this.props.grades).forEach((chapter) => {
                     let i = 0;
                     let hash = new Object();
@@ -43,11 +42,11 @@ const data = Object.keys(this.props.grades).forEach((chapter) => {
                     hash.y = this.props.grades[chapter];
                     data_graph.push(hash);
                 });
-// console.log(data_graph);
+console.log(data_graph);
 
 const options_bar = {
       title: {
-        text: "Flashcard score chapter by chapter",
+        text: "Flashcard Score by Chapters (%)",
         fontSize: 18,
       },
       data: [{
@@ -71,11 +70,14 @@ const options_bar = {
         backgroundColor: "transparent",
    }
 
+   const studentChaptersGrades = Object.values(this.props.activeStudent.scores).map(Number);
+   const studentOverallGrade = Math.round(studentChaptersGrades.reduce((a, b)=> a + b,0) / studentChaptersGrades.length);
+
    return (
       <div className="student-dashboard col-6 position-sticky">
         <h2>{this.props.activeStudent.first_name}'s Individual Dashboard</h2>
         <img src={this.props.activeStudent.picture_url} alt="" className="avatar"/>
-        <p>Overall score: {this.props.activeStudent.grade} / 100</p>
+        <p>{`Overall score: ${studentOverallGrade}%`}</p>
         <CanvasJSChart options = {options_bar} />
       </div>
     );

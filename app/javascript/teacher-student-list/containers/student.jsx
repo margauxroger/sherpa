@@ -13,6 +13,8 @@ class Student extends Component {
   }
 
   render() {
+    const studentChaptersGrades = Object.values(this.props.student.scores).map(Number);
+    const studentOverallGrade = Math.round(studentChaptersGrades.reduce((a, b)=> a + b,0) / studentChaptersGrades.length);
     return (
       <div className="frontside mb-3">
           <div className="card-student-list" onClick={this.handleClick}>
@@ -24,7 +26,7 @@ class Student extends Component {
                 </h20>
               </div>
               <p className="card-student-text ml-2 flex-grow-1">{this.props.student.email}</p>
-              <p>{this.props.student.grades} / 100</p>
+              <p>{`${studentOverallGrade}%`}</p>
 
 
             </div>
@@ -36,7 +38,8 @@ class Student extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { selectActiveStudent: selectActiveStudent, getStudentGrades : getStudentGrades },
+    { selectActiveStudent: selectActiveStudent,
+      getStudentGrades : getStudentGrades },
     dispatch
   );
 }
@@ -44,7 +47,8 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     activeStudent: state.activeStudent,
-    course: state.course
+    course: state.course,
+    grades: state.grades
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Student);
