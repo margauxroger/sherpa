@@ -11,8 +11,6 @@ class Students::StudentsController < ApplicationController
 
     half = @course_students.each_slice(20).to_a
 
-    @test_user = User.find(1154)
-
     @half_class1 = half[0]
     @half_class2 = half[1]
 
