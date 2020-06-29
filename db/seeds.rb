@@ -300,6 +300,7 @@ def student_trains_on_flashcards(student, material)
       end
     end
     student.scores[chapter.id] = session.score / session.flashcards.length * 100
+    # student.memory = session.update_memory
     puts "Updated score hash for #{student.full_name} : #{student.scores}"
   end
   student.save!

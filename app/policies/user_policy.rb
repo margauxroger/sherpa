@@ -12,4 +12,5 @@ class UserPolicy < ApplicationPolicy
   def compute_session_score?
     true
   end
+
 end

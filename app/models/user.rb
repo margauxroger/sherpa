@@ -159,6 +159,18 @@ class User < ApplicationRecord
     self.scores[session.chapter_id.to_s] = session.score / session.flashcards.length * 100
   end
 
+  def save_session_memory(session)
+    latest_memory = session.memory_type
+    # essayer de weighter pour donner plus de poid à la derniere session
+    if self.memory == {}
+      self.memory["image"] = latest_memory[:image]
+      self.memory["text"] = latest_memory[:text]
+    else
+      self.memory["image"] = (self.memory["image"].to_f + latest_memory[:image]) / 2
+      self.memory["text"] = (self.memory["text"].to_f + latest_memory[:text]) / 2
+    end
+  end
+
   private
 
   def calculate_percentile(array = [], percentile = 0.0)

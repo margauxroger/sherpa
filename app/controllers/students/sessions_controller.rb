@@ -53,6 +53,7 @@ class Students::SessionsController < ApplicationController
     @user = current_user
     authorize @user
     @user.save_session_score(Session.find(params[:session_id]))
+    @user.save_session_memory(Session.find(params[:session_id]))
     @user.save!
     redirect_to students_course_path(params[:course_id])
   end

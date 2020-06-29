@@ -71,12 +71,4 @@ class Session < ApplicationRecord
     return memory_results
   end
 
-  def update_memory
-    h = user.memory
-    latest_memory = memory_type
-    # essayer de weighter pour donner plus de poid à la derniere session
-    user.memory["image"] = ( user.memory["image"] + latest_memory["image"] / 2)
-    user.memory["text"] = ( user.memory["text"] + latest_memory["text"] / 2)
-  end
-
 end
