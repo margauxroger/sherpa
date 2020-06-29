@@ -14,18 +14,29 @@
           <div class="d-flex flex-column align-items-center front-flashcard">
             <!-- <img class="icon-question-flashcard mt-5" src="https://picsum.photos/201/300" /> -->
             <div  class="question-flashcard mt-5 mb-4 text-center">
-              <% random_or_not = rand() %>
-              <% memory = [@user.memory["image"], @user.memory["text"]] %>
-              <% best_memory = memory.each_with_index.max[1] %>
-              <% random_or_not > memory[best_memory].to_f %>
-              <% if best_memory == 0 && random_or_not > memory[best_memory].to_f %>
-                <h3><%= flashcard.question %></h3>
-              <% elsif best_memory == 0 && random_or_not < memory[best_memory].to_f %>
-                <%= cl_image_tag(flashcard.image, width: 120, height: 150, crop: :fill) %>
-              <% elsif best_memory == 1 && random_or_not > memory[best_memory].to_f %>
-                <%= cl_image_tag(flashcard.image, width: 120, height: 150, crop: :fill) %>
+              <% random_number = rand() %>
+              <% flashcard_image = false %>
+              <% if !@exploration %>
+                <% memory = [@user.memory["image"], @user.memory["text"]] %>
+                <% best_memory = memory.each_with_index.max[1] %>
+                <% if best_memory == 0 && random_number > memory[best_memory].to_f %>
+                  <h3><%= flashcard.question %></h3>
+                <% elsif best_memory == 0 && random_number < memory[best_memory].to_f %>
+                  <%= cl_image_tag(flashcard.image, width: 120, height: 150, crop: :fill) %>
+                  <% flashcard_image = true %>
+                <% elsif best_memory == 1 && random_number > memory[best_memory].to_f %>
+                  <%= cl_image_tag(flashcard.image, width: 120, height: 150, crop: :fill) %>
+                  <% flashcard_image = true %>
+                <% else %>
+                  <h3><%= flashcard.question %></h3>
+                <% end %>
               <% else %>
-                <h3><%= flashcard.question %></h3>
+                <% if random_number < 0.5 %>
+                  <h3><%= flashcard.question %></h3>
+                <% else %>
+                  <%= cl_image_tag(flashcard.image, width: 120, height: 150, crop: :fill) %>
+                  <% flashcard_image = true %>
+                <% end %>
               <% end %>
             </div>
 
@@ -41,11 +52,11 @@
             </div>
 
           <div class="global-actions mt-5">
-            <%= link_to students_session_user_answers_path(session_id: params[:id], flashcard_id: flashcard.id, output: false, image: random_or_not >= 0.5), method: 'post', remote: true, class: "left-action" do %>
+            <%= link_to students_session_user_answers_path(session_id: params[:id], flashcard_id: flashcard.id, output: false, image: flashcard_image), method: 'post', remote: true, class: "left-action" do %>
               🥴
             <% end %>
             <div class="top-action" style="display:none;">Top</div>
-            <%= link_to students_session_user_answers_path(session_id: params[:id], flashcard_id: flashcard.id, output: true, image: random_or_not >= 0.5), method: 'post', remote: true, class: "right-action" do %>
+            <%= link_to students_session_user_answers_path(session_id: params[:id], flashcard_id: flashcard.id, output: true, image: flashcard_image), method: 'post', remote: true, class: "right-action" do %>
               😎
             <% end %>
           </div>
