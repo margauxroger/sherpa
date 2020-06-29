@@ -71,62 +71,12 @@ class Session < ApplicationRecord
     return memory_results
   end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  #     flashcard_with_image = self.user_answers.where(flashcard_id: flashcard.id).where(image: true)
-  #     flashcard_with_text = self.user_answers.where(flashcard_id: flashcard.id).where(image: false)
-  #     flashcard_with_image_bad_answers = flashcard_with_image.where(output: false)
-  #     flashcard_with_text_bad_answers = flashcard_with_text.where(output: false)
-  #     if flashcard_with_image_bad_answers.length >= 2
-  #       flashcards_mastery[:image][flashcard.id] = "not mastered"
-  #     elsif flashcard_with_image_bad_answers.length == 1
-  #       flashcards_mastery[:image][flashcard.id] = "learning"
-  #     else
-  #       flashcards_mastery[:image][flashcard.id] = "mastered"
-  #     end
-  #     if flashcard_with_text_bad_answers.length >= 2
-  #       flashcards_mastery[:text][flashcard.id] = "not mastered"
-  #     elsif flashcard_with_text_bad_answers.length == 1
-  #       flashcards_mastery[:text][flashcard.id] = "learning"
-  #     else
-  #       flashcards_mastery[:text][flashcard.id] = "mastered"
-  #     end
-  #   end
-
-  #     flashcards_with_image_scores = flashcards_mastery[:image].values.map do |flashcard_mastery|
-  #       if flashcard_mastery == "not mastered"
-  #         0
-  #       elsif flashcard_mastery == "learning"
-  #         0.5
-  #       else
-  #         1
-  #       end
-  #     end
-  #     flashcards_with_text_scores = flashcards_mastery[:text].values.map do |flashcard_mastery|
-  #       if flashcard_mastery == "not mastered"
-  #         0
-  #       elsif flashcard_mastery == "learning"
-  #         0.5
-  #       else
-  #         1
-  #       end
-  #     end
-  #   memory_results = {image: flashcards_with_image_scores.sum,
-  #                     text: flashcards_with_text_scores}
-  #   return memory_results
-  # end
-
+  def update_memory
+    h = user.memory
+    latest_memory = memory_type
+    # essayer de weighter pour donner plus de poid à la derniere session
+    user.memory["image"] = ( user.memory["image"] + latest_memory["image"] / 2)
+    user.memory["text"] = ( user.memory["text"] + latest_memory["text"] / 2)
+  end
 
 end
