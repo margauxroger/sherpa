@@ -10,13 +10,7 @@ class Students::SessionsController < ApplicationController
     @course = Course.where("division_id = #{division.id}").where("material_id = #{material.id}")[0]
     @flashcards = @session.flashcards
     # TODO : Dans l'index des decks de flashcards, injecter le chapter_id dans les params
-    @session_number = @user.sessions.length
-
-    if @session_number < 3
-      @exploration = 1
-    else
-      @exploration = 0.3
-    end
+    @exploration = rand() < 0.1
 
   end
 
