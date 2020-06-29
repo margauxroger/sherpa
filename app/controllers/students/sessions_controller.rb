@@ -5,10 +5,19 @@ class Students::SessionsController < ApplicationController
     authorize current_user
     @session    = Session.find(params[:id])
     division = @session.user.division
+    @user = @session.user
     material = @session.chapter.material
     @course = Course.where("division_id = #{division.id}").where("material_id = #{material.id}")[0]
     @flashcards = @session.flashcards
     # TODO : Dans l'index des decks de flashcards, injecter le chapter_id dans les params
+    @session_number = @user.sessions.length
+
+    if @session_number < 3
+      @exploration = 1
+    else
+      @exploration = 0.3
+    end
+
   end
 
   def create
@@ -44,6 +53,7 @@ class Students::SessionsController < ApplicationController
     @user = current_user
     authorize @user
     @user.save_session_score(Session.find(params[:session_id]))
+    @user.save_session_memory(Session.find(params[:session_id]))
     @user.save!
     redirect_to students_course_path(params[:course_id])
   end

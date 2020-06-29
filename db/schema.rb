@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_27_144639) do
+ActiveRecord::Schema.define(version: 2020_06_29_122853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_06_27_144639) do
     t.bigint "chapter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["chapter_id"], name: "index_flashcards_on_chapter_id"
   end
 
@@ -136,6 +137,7 @@ ActiveRecord::Schema.define(version: 2020_06_27_144639) do
     t.datetime "updated_at", null: false
     t.bigint "session_id"
     t.boolean "output", default: false
+    t.boolean "image", default: false
     t.index ["flashcard_id"], name: "index_user_answers_on_flashcard_id"
     t.index ["session_id"], name: "index_user_answers_on_session_id"
   end
@@ -155,6 +157,7 @@ ActiveRecord::Schema.define(version: 2020_06_27_144639) do
     t.string "last_name"
     t.string "picture_url"
     t.hstore "scores", default: {}
+    t.hstore "memory", default: {}
     t.index ["division_id"], name: "index_users_on_division_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

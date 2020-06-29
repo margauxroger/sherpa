@@ -15,7 +15,7 @@
       </div>
       <div class="buddy-profile">
         <% bud = @half_class2[buddy_index] %>
-        <%= image_tag bud.picture_url, alt: "card image", class: "img-fluid avatar-medium #{student.border_color(@material)}" %>
+        <%= image_tag bud.picture_url, alt: "card image", class: "img-fluid avatar-medium #{bud.border_color(@material)}" %>
         <p class="text-center mb-0 mt-1"><%= bud.first_name %></p>
       </div>
     </div>
