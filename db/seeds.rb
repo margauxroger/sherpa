@@ -290,18 +290,23 @@ def student_trains_on_flashcards(student, material)
         user_answer = UserAnswer.create!(session_id:   session.id,
                            flashcard_id: flashcard.id,
                            output:       [true, false].sample,
+                           image:        [true, false].sample,
                            )
         until user_answer.output
           user_answer = UserAnswer.create!(session_id:   session.id,
                              flashcard_id: flashcard.id,
                              output:       [true, false].sample,
+                             image:        [true, false].sample
                              )
         end
       end
     end
     student.scores[chapter.id] = session.score / session.flashcards.length * 100
-    # student.memory = session.update_memory
     puts "Updated score hash for #{student.full_name} : #{student.scores}"
+    # if chapter.name == "Une gouvernance économique mondiale depuis 1975"
+      student.save_session_memory(session)
+      puts "#{student.full_name} memory #{student.memory}"
+    # end
   end
   student.save!
 end

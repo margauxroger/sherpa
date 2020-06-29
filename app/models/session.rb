@@ -66,9 +66,21 @@ class Session < ApplicationRecord
           1
         end
       end
-    memory_results = {image: flashcards_with_image_scores.sum / flashcards_mastery["image"].values.length,
-                      text: flashcards_with_text_scores.sum / flashcards_mastery["text"].values.length}
+    memory_results = {image: flashcards_with_image_scores.sum / (flashcards_mastery["image"].values.length == 0 ? 1 : flashcards_mastery["image"].values.length),
+                      text: flashcards_with_text_scores.sum / (flashcards_mastery["text"].values.length == 0 ? 1 : flashcards_mastery["text"].values.length) }
     return memory_results
+  end
+
+  def update_memory
+    latest_memory = memory_type
+    # essayer de weighter pour donner plus de poid à la derniere session
+    if self.user.memory == {}
+      self.user.memory[:image] = latest_memory[:image]
+      self.user.memory[:text] = latest_memory[:text]
+    else
+      self.user.memory[:image] += (self.user.memory[:image] + latest_memory[:image]) / self.user.sessions.length
+      self.user.memory[:text] += (self.user.memory[:text] + latest_memory[:text]) / self.user.sessions.length
+    end
   end
 
 end
