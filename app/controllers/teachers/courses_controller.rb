@@ -33,15 +33,13 @@ class Teachers::CoursesController < ApplicationController
     @chapter_score = {}
     @chapter_cumulative_score = {}
     @cumulative_sum_chapter = 0
-      @material.chapters.each_with_index do |chapter, index|
-        score_absolute = @course_students.map { |student| student.flashcards_score(chapter) / chapter.flashcards_number }.sum
-        score = (score_absolute / @course_students.length) * 100
-        @chapter_score["Chapter #{index + 1}"] = score.round
-        @cumulative_sum_chapter += score_absolute
-        @chapter_cumulative_score["Chapter #{index + 1}"]  = @cumulative_sum_chapter
-      end
-    @chapter_score
-    @chapter_cumulative_score
+    @material.chapters.each_with_index do |chapter, index|
+      score_absolute = @course_students.map { |student| student.flashcards_score(chapter) }.sum
+      score = (score_absolute / @course_students.length)
+      @chapter_score["Chapter #{index + 1}"] = score.round
+      @cumulative_sum_chapter += score.round / @material.chapters.length
+      @chapter_cumulative_score["Chapter #{index + 1}"]  = @cumulative_sum_chapter
+    end
 
     # Fin score for bar chart
 
