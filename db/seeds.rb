@@ -275,12 +275,16 @@ first_names_man = %w[ Antoine Martin Nad Gaetan Margaux François Xavier Ambrois
 first_names_woman = %w[ Sybille Pauline Amandine Jeanne Lea Caroline Laure Clara Anna Mila Rose Lina Ambre Manon Camille Lola Juliette Agathe Eva Lucie Nina]
 # Fin Array of first_names
 
+
+
+# TODO : change computation here so that we use the scores hash
+
 def student_trains_on_flashcards(student, material)
   material.chapters.each do |chapter|
     session = Session.create!(user_id:    student.id,
                               chapter_id: chapter.id,)
-    chapter.flashcards.each do |flashcard|
 
+    chapter.flashcards.each do |flashcard|
       if UserAnswer.count <= 8500
 
         user_answer = UserAnswer.create!(session_id:   session.id,
@@ -295,7 +299,10 @@ def student_trains_on_flashcards(student, material)
         end
       end
     end
+    student.scores[chapter.id] = session.score / session.flashcards.length * 100
+    puts "Updated score hash for #{student.full_name} : #{student.scores}"
   end
+  student.save!
 end
 
 # def student_leaves_a_review(student, course)
